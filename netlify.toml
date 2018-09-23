@@ -5,5 +5,5 @@
 
 [build]
   publish = "build"
-  command = "node getPasswords.js && yarn build:lambda && npm run build"
+  command = "node getPasswords.js && npm run build"
   functions = "lambda"
