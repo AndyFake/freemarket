@@ -5,5 +5,5 @@
 
 [build]
   publish = "build"
-  command = "node getPasswords.js && npm run build && yarn build:lambda -c --config webpack.config.js"
+  command = "node getPasswords.js && npm run build && yarn build:lambda -c webpack.config.js"
   functions = "lambda"
