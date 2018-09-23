@@ -3,7 +3,7 @@ import './ProductPage.css'
 
 export default ({ fields }) => {
   console.log(fields)
-  const { productName, price, description, images=[] } = fields
+  const { productName, price, longDescription, images=[] } = fields
   return (
         <div className="Product">
           <Gallery imageList={images}/>
@@ -15,7 +15,7 @@ export default ({ fields }) => {
           <div className="Add-to-cart" >
               add to cart
           </div>
-          <div className="Product-description">{description}</div>
+          <div className="Product-description">{longDescription}</div>
         </div>
   )
 }
