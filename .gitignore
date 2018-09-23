@@ -16,3 +16,4 @@ npm-debug.log
 *error.log
 
 src/data.json
+src/PUBLIC_KEY.js
