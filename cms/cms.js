@@ -39,6 +39,9 @@ CMS.registerPreviewTemplate('blog-page', ({ entry }) => (
 CMS.registerPreviewTemplate('posts', ({ entry }) => (
   <SinglePost fields={entry.toJS().data} />
 ))
+CMS.registerPreviewTemplate('products', ({ entry }) => (
+  <SinglePost fields={entry.toJS().data} />
+))
 
 // Return to home when user logging out
 window.netlifyIdentity.on('logout', function () {
