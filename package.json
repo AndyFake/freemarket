@@ -46,7 +46,8 @@
     "react-markdown": "3",
     "react-router-dom": "^4.1.1",
     "react-snapshot": "^1.1.0",
-    "react-stripe-checkout": "^2.6.3"
+    "react-stripe-checkout": "^2.6.3",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "npm-run-all prepare-content -p start:content start:app start:cms",
