@@ -4,6 +4,10 @@ import StripeCheckout from "react-stripe-checkout"
 import './App.css';
 import {data} from './store.js';
 import uuid from 'uuid/v4'
+// import data from './data.json'
+console.log(data)
+
+// const data2 = JSON.stringify({name:'andy',products:[]})
 
 // import {PUBLIC_KEY} from './PUBLIC_KEY.js'
 
