@@ -1,5 +1,8 @@
 import React from 'react'
 
+import StripeCheckout from "react-stripe-checkout"
+import uuid from 'uuid/v4'
+
 import PageHeader from '../components/PageHeader'
 import LazyImage from '../components/LazyImage'
 import Content from '../components/Content.js'
@@ -16,6 +19,7 @@ export default ({ fields }) => {
       />
       <div className='section'>
         <div className='container'>
+        <StripeCheckout/>
           <Content source={section1} />
         </div>
       </div>

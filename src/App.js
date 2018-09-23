@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Helmet from 'react-helmet'
-import StripeCheckout from "react-stripe-checkout"
-import uuid from 'uuid/v4'
 
 
 import ScrollToTop from './components/ScrollToTop'
@@ -145,15 +143,15 @@ class App extends Component {
             <RouteWithMeta
               path='/about/'
               exact
-              render={(_)=>{
-                return(
-                  <div>
-                    <StripeCheckout token={this.onToken} stripeKey={PUBLIC_KEY}/>
-                  </div>
-                )
-              }}
-              // component={About}
-              // fields={this.getDocument('pages', 'about')}
+              // render={(_)=>{
+              //   return(
+              //     <div>
+              //       <StripeCheckout token={this.onToken} stripeKey={PUBLIC_KEY}/>
+              //     </div>
+              //   )
+              // }}
+              component={About}
+              fields={this.getDocument('pages', 'about')}
             />
             <RouteWithMeta
               path='/contact/'
