@@ -45,7 +45,7 @@ class Gallery extends Component{
               style={{opacity:view==0?.5:1}}
             >{'<'}</p>
           </div>
-          <img className='Gallery-Image' src={imageList[view].photo}/>
+          <img className='Gallery-Image' src={imageList[view].image}/>
           <div className='Gallery-Right-Nav' onClick={this.handleClickRight}>
             <p className='Gallery-Right-Nav-Icon'
               style={{opacity:view==imageList.length-1?.5:1}}
