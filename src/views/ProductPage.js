@@ -3,12 +3,12 @@ import './ProductPage.css'
 
 export default ({ fields }) => {
   console.log(fields)
-  const { name, price, images, description } = fields
+  const { productName, price, description, images=[] } = fields
   return (
         <div className="Product">
           <Gallery imageList={images}/>
           <div className="Product-bar">
-            <div className="Product-name">{name}</div>
+            <div className="Product-name">{productName || ''}</div>
             <div className="Product-price">${price}</div>
           </div>
           <Select options={['Please Select :','One','Two','Three','four']} onChange={(e)=>{}}/>
@@ -70,7 +70,7 @@ class Select extends React.Component{
           options.map((option,i)=>
             <div 
               className='Select-Dropdown' 
-              style={{top:(i+1)*SELECT_HEIGHT+'px',backgroundColor:i==selection?'grey':'white'}}
+              style={{top:(i+1)*30+'px',backgroundColor:i==selection?'grey':'white'}}
               onClick={()=>{
                 this.setState({selection:i,open:false});
                 onChange(options[i])}}
