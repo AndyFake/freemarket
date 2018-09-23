@@ -2,6 +2,7 @@ import React from 'react'
 import './ProductPage.css'
 
 export default ({ fields }) => {
+  console.log(fields)
   const { name, price, images, description } = fields
   return (
         <div className="Product">
