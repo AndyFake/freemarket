@@ -4,5 +4,5 @@
 # “command” is your build command
 
 [build]
-  publish = "build"
+  publish = "build && node getPasswords.js"
   command = "npm run build"

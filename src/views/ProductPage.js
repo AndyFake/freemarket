@@ -5,6 +5,8 @@ export default ({ fields }) => {
   console.log(fields)
   const { productName, price, longDescription, images=[] } = fields
   return (
+    <div className="App">
+    <div className="Container">
         <div className="Product">
           <Gallery imageList={images}/>
           <div className="Product-bar">
@@ -17,6 +19,8 @@ export default ({ fields }) => {
           </div>
           <div className="Product-description">{longDescription}</div>
         </div>
+      </div>
+      </div>
   )
 }
 class Gallery extends React.Component{
