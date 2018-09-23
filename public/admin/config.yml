@@ -133,7 +133,7 @@ collections: # A list of collections the CMS should be able to edit
     label: Products
     editor:
       preview: true
-    folder: content/posts
+    folder: content/products
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
