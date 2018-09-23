@@ -117,13 +117,13 @@ class App extends Component {
             </div>
           </LINK>
         </div>
-        {products.map(({name,primaryImage})=>
+        {products.map(({productName,primaryImage})=>
           <div className="Product">
-            <LINK to={'/'+u(name)}>
+            <LINK to={'/'+u(productName)}>
               <img  className="Product-image"  src={primaryImage}/>
             </LINK>
             <div className="Product-bar">
-              <div className="Product-name">{name}</div>
+              <div className="Product-name">{productName}</div>
             </div>
           </div>
         )}
@@ -131,7 +131,7 @@ class App extends Component {
 
   get productPages(){return(
     // products.map(({description,price,name,image},i)=>
-    products.map(({name,description,images,price},i)=>
+    products.map(({productName,longDescription,images,price},i)=>
     ({
       path:
         name,
@@ -140,14 +140,14 @@ class App extends Component {
           {/* <Gallery imageList={[image.text,products[0].image.text,products[1].image.text]}/> */}
           <Gallery imageList={images}/>
           <div className="Product-bar">
-            <div className="Product-name">{name}</div>
+            <div className="Product-name">{productName}</div>
             <div className="Product-price">${price}</div>
           </div>
-          <Select options={['Please Select :','One','Two','Three','four']} onChange={(e)=>this.setState({[name]:e})}/>
-          <LINK to='/cart'><div className="Add-to-cart" onClick={()=>{this.ATC(products[i],this.state[name])}}>
+          <Select options={['Please Select :','One','Two','Three','four']} onChange={(e)=>this.setState({[productName]:e})}/>
+          <LINK to='/cart'><div className="Add-to-cart" onClick={()=>{this.ATC(products[i],this.state[productName])}}>
               add to cart
           </div></LINK>
-          <div className="Product-description">{description}</div>
+          <div className="Product-description">{longDescription}</div>
         </div>
     })
   ))}
@@ -156,15 +156,15 @@ class App extends Component {
     <div className='Cart-container'>
       <LINK to='/'><div className='Cart-back' >continue shopping</div></LINK>
       <div className='Items-container'>
-      {this.state.cart.map(({name,price,image,quantity,options},i) => 
+      {this.state.cart.map(({productName,price,primaryImage,quantity,options},i) => 
           <div className='Cart-line'>
-            <img className='Cart-item-image' src={images[image.text]}/>
-            <div className='Cart-item-name'>{name.text}</div>
+            <img className='Cart-item-image' src={primaryImage}/>
+            <div className='Cart-item-name'>{productName}</div>
             {options && <div className='Cart-item-options'>{options}</div>}
             <div className='Cart-remove-x' onClick={()=>{this.modCart(i,quantity+1)}}>+</div>
             <div>quantity : {quantity} </div>
             <div className='Cart-remove-x' onClick={()=>{quantity>1&&this.modCart(i,quantity-1)}}>-</div>
-            <div className='Cart-item-price'>${price.text}</div>
+            <div className='Cart-item-price'>${price}</div>
             <div className='Cart-remove-x' onClick={()=>{this.RFC(i)}}>x</div>
           </div>
       )}
@@ -250,7 +250,7 @@ class App extends Component {
   getTotal=()=>{
     const {cart} = this.state
     var total = 0
-    cart.forEach(p=>total+=p.price.text * p.quantity)
+    cart.forEach(p=>total+=p.price * p.quantity)
     return total
   }
   getTotalWithShipping=(shipping)=>{
