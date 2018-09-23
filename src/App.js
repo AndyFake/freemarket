@@ -37,49 +37,49 @@ class App extends Component {
   state = {
     data
   }
-  onToken = token => {
-    const data = {
-      token:token,
-      amount : 111,
-      idempotency_key:uuid(),
-    }
-    console.log(token)
-    fetch("/.netlify/functions/purchase", {
-      method: "POST",
-      body: JSON.stringify(data)
-    }).then(response => {
-      response.json().then(data => {
-        console.log(data)
-        if(data.status=='succeeded'){
-          alert(`payment was successful`);
-          this.submit(this.encodeData(token))
-        }
-      });
-    });
-  }
-  encode = (data) => {
-    return Object.keys(data)
-        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-        .join("&");
-  }
-  encodeData=token=>{
-    const names = Object.keys(this.state)
-    const userDataStrings = names.map(name=>`${name} : ${this.state[name]}`)
-    const userData = userDataStrings.join('\n')
-    const tokenString = JSON.stringify(token,null,3).replace(/[^\w\s:_@.-]/g,'')
-    return`
-  ${userData}
-  stripe payment meta-data:${tokenString}`
-  }
-  submit = (data) => {
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: this.encode({ "form-name": "purchase", "data":data })
-    })
-      .then(() => alert("Success!"))
-      .catch(error => alert(error));
-  };
+  // onToken = token => {
+  //   const data = {
+  //     token:token,
+  //     amount : 111,
+  //     idempotency_key:uuid(),
+  //   }
+  //   console.log(token)
+  //   fetch("/.netlify/functions/purchase", {
+  //     method: "POST",
+  //     body: JSON.stringify(data)
+  //   }).then(response => {
+  //     response.json().then(data => {
+  //       console.log(data)
+  //       if(data.status=='succeeded'){
+  //         alert(`payment was successful`);
+  //         this.submit(this.encodeData(token))
+  //       }
+  //     });
+  //   });
+  // }
+  // encode = (data) => {
+  //   return Object.keys(data)
+  //       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+  //       .join("&");
+  // }
+  // encodeData=token=>{
+  //   const names = Object.keys(this.state)
+  //   const userDataStrings = names.map(name=>`${name} : ${this.state[name]}`)
+  //   const userData = userDataStrings.join('\n')
+  //   const tokenString = JSON.stringify(token,null,3).replace(/[^\w\s:_@.-]/g,'')
+  //   return`
+  // ${userData}
+  // stripe payment meta-data:${tokenString}`
+  // }
+  // submit = (data) => {
+  //   fetch("/", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //     body: this.encode({ "form-name": "purchase", "data":data })
+  //   })
+  //     .then(() => alert("Success!"))
+  //     .catch(error => alert(error));
+  // };
 
   getDocument = (collection, name) =>
     this.state.data[collection] &&
