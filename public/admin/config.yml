@@ -129,8 +129,8 @@ collections: # A list of collections the CMS should be able to edit
           - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
           - {label: Noindex, name: noindex, widget: boolean, required: false}
 
-  - name: products
-    label: Products
+  - name: product
+    label: Product
     editor:
       preview: true
     folder: content/products
@@ -158,6 +158,15 @@ collections: # A list of collections the CMS should be able to edit
             collection: "postCategories"
             searchFields: ["title"]
             valueField: "title"
+      - label: "Photos"
+        name: "photos"
+        widget: "list"
+        required: false
+        fields:
+          - label: "Photo"
+            name: "photo"
+            widget: "image"
+
       - label: "Meta"
         required: false
         name: "meta"
