@@ -108,7 +108,7 @@ class App extends Component {
       <div>
         <div className='Top-bar'>
           <div className='Store-title'>
-            {name.text}
+            {name}
           </div>
           <LINK to='/cart'>
             <div className='Cart-icon'>
@@ -117,10 +117,10 @@ class App extends Component {
             </div>
           </LINK>
         </div>
-        {products.map(({name,photos})=>
+        {products.map(({name,primaryImage})=>
           <div className="Product">
             <LINK to={'/'+u(name)}>
-              <img  className="Product-image"  src={photos[0].photo}/>
+              <img  className="Product-image"  src={primaryImage}/>
             </LINK>
             <div className="Product-bar">
               <div className="Product-name">{name}</div>
