@@ -18,11 +18,6 @@ const Cart = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 const SELECT_HEIGHT = 30
 const {products} = data
 const name = 'freestore'
-const images = {}
-// products.forEach(product=>{
-//   var imageName = product.image.text
-//   images[imageName]=require('./images/'+imageName)  
-// })
 
 const LINK = x => <Link {...x} style={{textDecoration:'none'}}/>
 const u = name => name.replace(/\s/g, '');
@@ -117,34 +112,33 @@ class App extends Component {
             </div>
           </LINK>
         </div>
-        {products.map(({productName,primaryImage})=>
+        {products.map(({title,primaryImage})=>
           <div className="Product">
-            <LINK to={'/'+u(productName)}>
+            <LINK to={'/'+u(title)}>
               <img  className="Product-image"  src={primaryImage}/>
             </LINK>
             <div className="Product-bar">
-              <div className="Product-name">{productName}</div>
+              <div className="Product-name">{title}</div>
             </div>
           </div>
         )}
       </div>)}
 
   get productPages(){return(
-    // products.map(({description,price,name,image},i)=>
-    products.map(({productName,longDescription,images,price},i)=>
+    products.map(({title,longDescription,images,price},i)=>
     ({
       path:
-        name,
+      title,
       html:
         <div className="Product">
           {/* <Gallery imageList={[image.text,products[0].image.text,products[1].image.text]}/> */}
           <Gallery imageList={images}/>
           <div className="Product-bar">
-            <div className="Product-name">{productName}</div>
+            <div className="Product-name">{title}</div>
             <div className="Product-price">${price}</div>
           </div>
-          <Select options={['Please Select :','One','Two','Three','four']} onChange={(e)=>this.setState({[productName]:e})}/>
-          <LINK to='/cart'><div className="Add-to-cart" onClick={()=>{this.ATC(products[i],this.state[productName])}}>
+          <Select options={['Please Select :','One','Two','Three','four']} onChange={(e)=>this.setState({[title]:e})}/>
+          <LINK to='/cart'><div className="Add-to-cart" onClick={()=>{this.ATC(products[i],this.state[title])}}>
               add to cart
           </div></LINK>
           <div className="Product-description">{longDescription}</div>
@@ -156,10 +150,10 @@ class App extends Component {
     <div className='Cart-container'>
       <LINK to='/'><div className='Cart-back' >continue shopping</div></LINK>
       <div className='Items-container'>
-      {this.state.cart.map(({productName,price,primaryImage,quantity,options},i) => 
+      {this.state.cart.map(({title,price,primaryImage,quantity,options},i) => 
           <div className='Cart-line'>
             <img className='Cart-item-image' src={primaryImage}/>
-            <div className='Cart-item-name'>{productName}</div>
+            <div className='Cart-item-name'>{title}</div>
             {options && <div className='Cart-item-options'>{options}</div>}
             <div className='Cart-remove-x' onClick={()=>{this.modCart(i,quantity+1)}}>+</div>
             <div>quantity : {quantity} </div>

@@ -137,8 +137,7 @@ collections: # A list of collections the CMS should be able to edit
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
-      - {label: Title, name: title, widget: string}
-      - {label: Name, name: productName, widget: string}
+      - {label: Name, name: title, widget: string}
       - label: 'Status'
         name: 'status'
         widget: 'select'
@@ -148,7 +147,7 @@ collections: # A list of collections the CMS should be able to edit
       - {label: Price, name: price, widget: number, required: true}
       - {label: Primary Image, name: primaryImage, widget: image, required: true}
       - {label: BriefDescription, name: briefDescription, widget: markdown}
-      - {label: Description, name: longDescription, widget: markdown}
+      - {label: fullDescription, name: longDescription, widget: markdown}
       - label: "Images"
         name: "images"
         widget: "list"
@@ -157,6 +156,14 @@ collections: # A list of collections the CMS should be able to edit
           - label: "Image"
             name: "image"
             widget: "image"
+      - label: "Options"
+        name: "options"
+        widget: "list"
+        required: false
+        fields:
+          - label: "option"
+            name: "option"
+            widget: string
       - label: "Meta"
         required: false
         name: "meta"
