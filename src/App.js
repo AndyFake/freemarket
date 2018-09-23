@@ -16,12 +16,13 @@ const PUBLIC_KEY = 345657
 
 const Cart = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"/></svg>
 const SELECT_HEIGHT = 30
-const {name,products} = JSON.parse(data2)
+const {products} = data
+const name = 'freestore'
 const images = {}
-products.forEach(product=>{
-  var imageName = product.image.text
-  images[imageName]=require('./images/'+imageName)  
-})
+// products.forEach(product=>{
+//   var imageName = product.image.text
+//   images[imageName]=require('./images/'+imageName)  
+// })
 
 const LINK = x => <Link {...x} style={{textDecoration:'none'}}/>
 const u = name => name.replace(/\s/g, '');
@@ -44,7 +45,7 @@ class Gallery extends Component{
               style={{opacity:view==0?.5:1}}
             >{'<'}</p>
           </div>
-          <img className='Gallery-Image' src={images[imageList[view]]}/>
+          <img className='Gallery-Image' src={imageList[view].photo}/>
           <div className='Gallery-Right-Nav' onClick={this.handleClickRight}>
             <p className='Gallery-Right-Nav-Icon'
               style={{opacity:view==imageList.length-1?.5:1}}
@@ -116,35 +117,37 @@ class App extends Component {
             </div>
           </LINK>
         </div>
-        {products.map(({name,image})=>
+        {products.map(({name,photos})=>
           <div className="Product">
-            <LINK to={'/'+u(name.text)}>
-              <img  className="Product-image"  src={images[image.text]}/>
+            <LINK to={'/'+u(name)}>
+              <img  className="Product-image"  src={photos[0].photo}/>
             </LINK>
             <div className="Product-bar">
-              <div className="Product-name">{name.text}</div>
+              <div className="Product-name">{name}</div>
             </div>
           </div>
         )}
       </div>)}
 
   get productPages(){return(
-    products.map(({description,price,name,image},i)=>
+    // products.map(({description,price,name,image},i)=>
+    products.map(({name,description,images,price},i)=>
     ({
       path:
-        name.text,
+        name,
       html:
         <div className="Product">
-          <Gallery imageList={[image.text,products[0].image.text,products[1].image.text]}/>
+          {/* <Gallery imageList={[image.text,products[0].image.text,products[1].image.text]}/> */}
+          <Gallery imageList={images}/>
           <div className="Product-bar">
-            <div className="Product-name">{name.text}</div>
-            <div className="Product-price">${price.text}</div>
+            <div className="Product-name">{name}</div>
+            <div className="Product-price">${price}</div>
           </div>
-          <Select options={['Please Select :','One','Two','Three','four']} onChange={(e)=>this.setState({[name.text]:e})}/>
-          <LINK to='/cart'><div className="Add-to-cart" onClick={()=>{this.ATC(products[i],this.state[name.text])}}>
+          <Select options={['Please Select :','One','Two','Three','four']} onChange={(e)=>this.setState({[name]:e})}/>
+          <LINK to='/cart'><div className="Add-to-cart" onClick={()=>{this.ATC(products[i],this.state[name])}}>
               add to cart
           </div></LINK>
-          <div className="Product-description">{description.text}</div>
+          <div className="Product-description">{description}</div>
         </div>
     })
   ))}

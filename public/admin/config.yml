@@ -137,36 +137,25 @@ collections: # A list of collections the CMS should be able to edit
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
-      - {label: Title, name: title, widget: string}
+      - {label: Name, name: name`, widget: string}
       - label: 'Status'
         name: 'status'
         widget: 'select'
         options: ["Published", "Featured", "Draft"]
         default: 'Published'
       - {label: Date / Order, name: date, widget: date}
-      - {label: Post Featured Image, name: postFeaturedImage, widget: image, required: false}
-      - {label: Excerpt, name: excerpt, widget: text}
-      - {label: Content, name: body, widget: markdown}
-      - label: "Categories"
-        name: "categories"
+      - {label: Price, name: price, widget: number, required: true}
+      - {label: Primary Image, name: primaryImage, widget: image, required: true}
+      - {label: BriefDescription, name: briefDescription, widget: markdown}
+      - {label: Description, name: description, widget: markdown}
+      - label: "Images"
+        name: "images"
         widget: "list"
         required: false
         fields:
-          - label: "Category"
-            name: "category"
-            widget: "relation"
-            collection: "postCategories"
-            searchFields: ["title"]
-            valueField: "title"
-      - label: "Photos"
-        name: "photos"
-        widget: "list"
-        required: false
-        fields:
-          - label: "Photo"
-            name: "photo"
+          - label: "Image"
+            name: "image"
             widget: "image"
-
       - label: "Meta"
         required: false
         name: "meta"
