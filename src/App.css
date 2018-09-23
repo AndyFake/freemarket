@@ -147,7 +147,7 @@
 .checkout-container{
   width:100%;
   margin: 0 auto;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   display: flex;
   align-items: center;
   justify-content: center
@@ -155,7 +155,7 @@
 
 .Container {
   width:100%;
-  margin: 0 auto;
+  margin: 0;
 }
 
 div {
@@ -377,7 +377,7 @@ svg {
 .Top-bar {
   display: flex;
   flex-direction: row;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   margin-bottom: 20px;
   font-size: 40px;
   background-color: #3d3838;
