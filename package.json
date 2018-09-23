@@ -30,7 +30,9 @@
     "sw-precache": "^5.2.0"
   },
   "dependencies": {
+    "@babel/core": "^7.1.0",
     "@researchgate/react-intersection-observer": "^0.7.0",
+    "babel-loader": "^8.0.2",
     "core-js": "^2.5.3",
     "date-fns": "^1.29.0",
     "dom-form-serializer": "^1.0.7",
