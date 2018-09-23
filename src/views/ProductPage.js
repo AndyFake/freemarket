@@ -16,64 +16,9 @@ export default ({ fields }) => {
           </div>
           <div className="Product-description">{description}</div>
         </div>
-    // <article className='SinglePost section light'>
-    //   {postFeaturedImage && (
-    //     <BackgroundImage
-    //       className='SinglePost--BackgroundImage'
-    //       src={postFeaturedImage}
-    //       alt={title}
-    //     />
-    //   )}
-
-    //   <div className='container skinny'>
-    //     <Link className='SinglePost--BackButton' to='/blog/'>
-    //       <ChevronLeft /> BACK
-    //     </Link>
-    //     <div className='SinglePost--Content relative'>
-    //       <div className='SinglePost--Meta'>
-    //         {!!categories.length &&
-    //           categories.map(obj => (
-    //             <span key={obj.category} className='SinglePost--Meta--Category'>
-    //               {obj.category}
-    //             </span>
-    //           ))}
-    //         {date && (
-    //           <span className='SinglePost--Meta--Date'>
-    //             {dateFormatted(date)}
-    //           </span>
-    //         )}
-    //       </div>
-
-    //       {title && <h1 className='SinglePost--Title'>{title}</h1>}
-
-    //       <div className='SinglePost--InnerContent'>
-    //         <Content source={body} />
-    //       </div>
-
-    //       <div className='SinglePost--Pagination'>
-    //         {prevPostURL && (
-    //           <Link
-    //             className='SinglePost--Pagination--Link prev'
-    //             to={prevPostURL}
-    //           >
-    //             Previous Post
-    //           </Link>
-    //         )}
-    //         {nextPostURL && (
-    //           <Link
-    //             className='SinglePost--Pagination--Link next'
-    //             to={nextPostURL}
-    //           >
-    //             Next Post
-    //           </Link>
-    //         )}
-    //       </div>
-    //     </div>
-    //   </div>
-    // </article>
   )
 }
-class Gallery extends Component{
+class Gallery extends React.Component{
   constructor(){
     super()
     this.state={
@@ -106,7 +51,7 @@ class Gallery extends Component{
   handleClickRight=()=>this.setState(s=>({view: s.view>=this.props.imageList.length-1 ? this.props.imageList.length-1 : s.view+1}))
 }
 
-class Select extends Component{
+class Select extends React.Component{
   constructor(){
     super()
     this.state={open:false,selection:0}
