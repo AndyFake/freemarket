@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Helmet from 'react-helmet'
+import StripeCheckout from "react-stripe-checkout"
+import uuid from 'uuid/v4'
+
 
 import ScrollToTop from './components/ScrollToTop'
 import Meta from './components/Meta'
@@ -18,6 +21,8 @@ import data from './data.json'
 import { slugify } from './util/url'
 import { documentHasTerm, getCollectionTerms } from './util/collection'
 
+const PUBLIC_KEY = 345657
+
 const RouteWithMeta = ({ component: Component, ...props }) => (
   <Route
     {...props}
@@ -34,6 +39,49 @@ class App extends Component {
   state = {
     data
   }
+  onToken = token => {
+    const data = {
+      token:token,
+      amount : 111,
+      idempotency_key:uuid(),
+    }
+    console.log(token)
+    fetch("/.netlify/functions/purchase", {
+      method: "POST",
+      body: JSON.stringify(data)
+    }).then(response => {
+      response.json().then(data => {
+        console.log(data)
+        if(data.status=='succeeded'){
+          alert(`payment was successful`);
+          this.submit(this.encodeData(token))
+        }
+      });
+    });
+  }
+  encode = (data) => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+  }
+  encodeData=token=>{
+    const names = Object.keys(this.state)
+    const userDataStrings = names.map(name=>`${name} : ${this.state[name]}`)
+    const userData = userDataStrings.join('\n')
+    const tokenString = JSON.stringify(token,null,3).replace(/[^\w\s:_@.-]/g,'')
+    return`
+  ${userData}
+  stripe payment meta-data:${tokenString}`
+  }
+  submit = (data) => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: this.encode({ "form-name": "purchase", "data":data })
+    })
+      .then(() => alert("Success!"))
+      .catch(error => alert(error));
+  };
 
   getDocument = (collection, name) =>
     this.state.data[collection] &&
@@ -97,8 +145,15 @@ class App extends Component {
             <RouteWithMeta
               path='/about/'
               exact
-              component={About}
-              fields={this.getDocument('pages', 'about')}
+              render={(_)=>{
+                return(
+                  <div>
+                    <StripeCheckout token={this.onToken} stripeKey={PUBLIC_KEY}/>
+                  </div>
+                )
+              }}
+              // component={About}
+              // fields={this.getDocument('pages', 'about')}
             />
             <RouteWithMeta
               path='/contact/'
