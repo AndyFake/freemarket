@@ -11,8 +11,6 @@ import {PUBLIC_KEY} from '../PUBLIC_KEY.js'
 // const PUBLIC_KEY = 1234
 // console.log('public key: ' + PUBLIC_KEY)
 
-console.log(State)
-
 const uspsShippingCost = 10
 const upsShippingCost  = 15
 const fedexShippingCost= 20
@@ -30,11 +28,6 @@ date : ${Date()}
   `
   const userData = userDataStrings.join('\n')
   const tokenString = JSON.stringify(token||'',null,3).replace(/[^\w\s:_@.-]/g,'')
-  // console.log(`${userData}
-  //   ${purchaseInfo}
-  //   ${cartInfo}
-  //   stripe payment meta-data:${tokenString}`
-  //   )
   return`
 ${userData}
 ${purchaseInfo}

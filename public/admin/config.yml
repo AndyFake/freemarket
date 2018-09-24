@@ -10,6 +10,7 @@ public_folder: "/images/uploads" # The src attribute for uploaded media will beg
 collections: # A list of collections the CMS should be able to edit
   - name: "pages"
     label: "Page"
+    create: true
     delete: false # Prevent users from deleting documents in this collection
     editor:
       preview: true
