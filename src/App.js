@@ -2,32 +2,28 @@ import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Helmet from 'react-helmet'
 
-
 import ScrollToTop from './components/ScrollToTop'
 import Meta from './components/Meta'
+
 import Home from './views/Home'
 import Store from './views/Store'
 import Cart from './views/Cart'
 import ProductPage from './views/ProductPage'
+import Checkout from './views/Checkout'
 
 import About from './views/About'
 import Blog from './views/Blog'
-import Checkout from './views/Checkout'
 import SinglePost from './views/SinglePost'
 import Contact from './views/Contact'
 import NoMatch from './views/NoMatch'
 import Nav from './components/Nav'
+import NavIconAndy from './components/NavIconAndy'
 import Footer from './components/Footer'
 import GithubCorner from './components/GithubCorner'
 import ServiceWorkerNotifications from './components/ServiceWorkerNotifications'
 import data from './data.json'
 import { slugify } from './util/url'
 import { documentHasTerm, getCollectionTerms } from './util/collection'
-
-// const Store = ()=><div>stest</div>
-// const Cart = ()=><div>stest</div>
-// const ProductPage = ()=><div>stest</div>
-// const Checkout = ()=><div>stest</div>
 
 console.log(data)
 
@@ -76,7 +72,7 @@ class App extends Component {
         <div className='React-Wrap'>
           <ScrollToTop />
           <ServiceWorkerNotifications reloadOnUpdate />
-          <GithubCorner url='https://github.com/Jinksi/netlify-cms-react-starter' />
+          {/* <GithubCorner url='https://github.com/Jinksi/netlify-cms-react-starter' /> */}
           <Helmet
             defaultTitle={siteTitle}
             titleTemplate={`${siteTitle} | %s`}
@@ -96,7 +92,7 @@ class App extends Component {
             }
           />
 
-          <Nav />
+          <NavIconAndy/>
 
           <Switch>
             <RouteWithMeta
@@ -107,25 +103,28 @@ class App extends Component {
               fields={this.getDocument('pages', 'home')}
             />
             <RouteWithMeta
-              path='/store'
+              path='/store/'
               exact
               component={Store}
               description={siteDescription}
               fields={data}
+              title={'Store'}
             />
             <RouteWithMeta
-              path='/cart'
+              path='/cart/'
               exact
               component={Cart}
               description={siteDescription}
               fields={this.getDocument('pages', 'home')}
+              title={'Cart'}
             />
             <RouteWithMeta
-              path='/checkout'
+              path='/checkout/'
               exact
               component={Checkout}
               description={siteDescription}
               fields={this.getDocument('pages', 'home')}
+              title={'Checkout'}
             />
             <RouteWithMeta
               path='/about/'
@@ -175,6 +174,7 @@ class App extends Component {
                   exact
                   component={ProductPage}
                   fields={product}
+                  title={product.productName}
                 />
               )
             })}

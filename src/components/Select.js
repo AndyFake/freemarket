@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import './andy.css'
 
 class Select extends React.Component{
@@ -16,16 +17,34 @@ class Select extends React.Component{
           <span className='Select-Chevron' style={{transform: `rotate(${open?90:-90}deg)`}}>{'<'}</span>
         </div>
         {open && 
-          options.map((option,i)=>
-            <div 
-              className='Select-Dropdown' 
-              style={{top:(i+1)*30+'px',backgroundColor:i==selection?'grey':'white'}}
-              onClick={()=>{
-                this.setState({selection:i,open:false});
-                onChange(options[i])}}
-            >
-              <p className='Select-Text'>{option.label || option}</p>
-            </div>)
+          options.map((option,i)=>{
+            if(option.link!=true){
+              return(
+                <div 
+                  className='Select-Dropdown' 
+                  style={{top:(i+1)*30+'px',backgroundColor:i==selection?'grey':'white'}}
+                  onClick={()=>{
+                    this.setState({selection:i,open:false});
+                    onChange(options[i].value || options[i])}}
+                >
+                  <p className='Select-Text'>{option.label || option}</p>
+                  </div>
+              )
+            }
+            return(
+              <Link to={option.value}>
+                <div 
+                  className='Select-Dropdown' 
+                  style={{top:(i+1)*30+'px',backgroundColor:i==selection?'grey':'white'}}
+                  onClick={()=>{
+                    this.setState({selection:i,open:false});
+                    onChange(options[i].value || options[i])}}
+                >
+                  <p className='Select-Text'>{option.label || option}</p>
+                </div>
+              </Link>
+            )
+          })
         }
       </div>
     )

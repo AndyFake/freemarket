@@ -19,18 +19,23 @@ const getSmallImages = (images) => {
 }
 
 export default ({ fields }) => {
-  const { productName, price, longDescription, images, options=[] } = fields
+  const { productName, price, longDescription, images, options } = fields
   State.setSelection('')
   return (
     <div className="App">
-    <div className="Container">
+      <div className="Container">
         <div className="Product">
           <Gallery imageList={getSmallImages(images)}/>
           <div className="Product-bar">
             <div className="Product-name">{productName || ''}</div>
             <div className="Product-price">${price}</div>
           </div>
-          <Select options={['Please Select :',...options.map(o=>o.option)]} onChange={(selection)=>{State.setSelection(selection)}}/>
+          {options &&
+            <Select 
+              options={['Please Select :',...options.map(o=>o.option)]}
+              onChange={(selection)=>{State.setSelection(selection)}}
+            />
+          }
           <Link to='/cart'>
             <div 
               className="Add-to-cart" 
@@ -42,7 +47,7 @@ export default ({ fields }) => {
           <div className="Product-description">{longDescription}</div>
         </div>
       </div>
-      </div>
+    </div>
   )
 }
 
