@@ -30,14 +30,18 @@ date : ${Date()}
   `
   const userData = userDataStrings.join('\n')
   const tokenString = JSON.stringify(token||'',null,3).replace(/[^\w\s:_@.-]/g,'')
-  console.log(`${userData}
-    ${purchaseInfo}
-    ${cartInfo}
-    stripe payment meta-data:${tokenString}`
-    )
+  // console.log(`${userData}
+  //   ${purchaseInfo}
+  //   ${cartInfo}
+  //   stripe payment meta-data:${tokenString}`
+  //   )
   return`
 ${userData}
-stripe payment meta-data:${tokenString}`
+${purchaseInfo}
+${cartInfo}
+
+stripe payment meta-data:
+${tokenString}`
 }
 const onToken = token => {
   const data = {
