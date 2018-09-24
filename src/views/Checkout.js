@@ -77,7 +77,7 @@ const submit = (data) => {
 const Checkout = observer( 
   ()=>
     <div className='checkout-container'>
-    <form>
+    <form name='purchase'>
       {formfields.map((field,index)=>{
         const slug = slugify(field)
         return(
