@@ -18,7 +18,7 @@ class State {
   }
   getTotalWithShipping=(shipping)=>{
     if(shipping=='USPS'){return this.getTotal()+10}
-    if(shipping=='UPS'){return this.getTotal()+14}
+    if(shipping=='UPS'){return this.getTotal()+13}
     if(shipping=='FEDEX'){return this.getTotal()+12}
     return this.getTotal()
   }
