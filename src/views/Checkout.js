@@ -2,12 +2,13 @@ import React from 'react'
 import { observer } from 'mobx-react';
 import Select from '../components/Select.js'
 import State from './state'
-import { Link } from 'react-router-dom'
 import { slugify } from '../util/url'
 import uuid from 'uuid/v4'
 import StripeCheckout from "react-stripe-checkout"
 import './ProductPage.css'
 import {PUBLIC_KEY} from '../PUBLIC_KEY.js'
+console.log('public key: ' + PUBLIC_KEY)
+
 
 
 const uspsShippingCost = 10
