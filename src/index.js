@@ -8,7 +8,7 @@ import registerServiceWorker, { unregister } from './registerServiceWorker'
 import data from './data.json'
 
 const rootEl = document.getElementById('root')
-render(<App />, rootEl)
+render(<App/>, rootEl)
 
 if (module.hot) {
   module.hot.accept('./App', () => {
