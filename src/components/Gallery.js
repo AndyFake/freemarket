@@ -32,7 +32,15 @@ class Gallery extends React.Component{
             </div>
           </div>
         </div>
-        <div>{[...imageList].map((_,i)=><div className='Select-Bullets' style={{fontSize:i==view?'10px':'8px' ,opacity:i==view?0.4:1}}> {' O '} </div>)}</div>
+        <div>
+          <div style={{height:'13px'}}>
+          {[...imageList].map((_,i)=>
+            <div className='Select-Bullets' style={{fontSize:i==view?'10px':'8px' ,opacity:i!=view?0.4:1}}>
+              {' O '}
+            </div>
+          )}
+          </div>
+        </div>
       </div>
     )
   }

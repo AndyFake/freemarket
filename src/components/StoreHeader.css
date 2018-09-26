@@ -1,0 +1,32 @@
+.Store-Header{
+  position: relative;
+  width:100%;
+  height:50px;
+  text-align: center;
+  line-height: 50px;
+}
+.Icon{
+  stroke: black;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.Menu-Box{
+  display: inline-table;
+  position: absolute;
+  top:10;
+  left:10;
+  height: 30px;
+  width: 30px;
+}
+
+.Cart-Box{
+  display: inline-table;
+  position: absolute;
+  top:12;
+  right:25;
+  height: 30px;
+  width: 30px;
+}

@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import Link from '../components/Link'
 import Select from '../components/Select'
 import Gallery from '../components/Gallery'
+import StoreHeader from '../components/StoreHeader'
 
 import './ProductPage.css'
 
@@ -25,6 +26,7 @@ export default ({ fields }) => {
   return (
     <div className="App">
       <div className="Container">
+      <StoreHeader title='Fish Store'/>
         <div className="Product">
           <Gallery imageList={getSmallImages(images)}/>
           <div className="Product-bar">
@@ -46,7 +48,10 @@ export default ({ fields }) => {
               add to cart
             </div>
           </Link>
-          <ReactMarkdown source={longDescription} className="Product-description"/>
+          <ReactMarkdown 
+            source={longDescription} 
+            renderers={{image:(props)=><img {...props} style={{maxWidth: '100%'}}/>}}
+            className="Product-description"/>
         </div>
       </div>
     </div>

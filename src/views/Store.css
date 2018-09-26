@@ -28,11 +28,13 @@
 }
 
 .Cart-back{
+  padding:10px;
   align-self: flex-start;
   cursor: pointer;
   background-color: #3d3838;
   border: 1px solid black;
   margin-top: 5px;
+  text-align: center;
   margin-bottom: 5px;
   color: white;
   font-size: 15px;
@@ -41,7 +43,6 @@
 .Cart-back:hover{
   opacity:.8;
   transition: .2s ease-in-out;
-
 }
 
 

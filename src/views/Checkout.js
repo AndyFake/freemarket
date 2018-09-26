@@ -89,8 +89,8 @@ const Checkout = observer(
       )})}
       <div className='checkout-shipping-dropdown'>
       <Select 
-        options={[{label:'please select'},
-                  {label:`USPS ($ ${uspsShippingCost})`  ,value:uspsShippingCost},
+        title='Please Select Shipping :'
+        options={[{label:`USPS ($ ${uspsShippingCost})`  ,value:uspsShippingCost},
                   {label:`UPS ($ ${upsShippingCost})`    ,value:upsShippingCost},
                   {label:`FEDEX ($ ${fedexShippingCost})`,value:fedexShippingCost}
                 ]}

@@ -6,7 +6,7 @@ import {ChevronLeft} from 'react-feather'
 class Select extends React.Component{
   constructor(){
     super()
-    this.state={open:false,selection:undefined}
+    this.state={open:false,selection:null}
   }
   render(){
     const {options,onChange,title} = this.props
@@ -14,8 +14,10 @@ class Select extends React.Component{
     return(
       <div className='Select-Container'>
         <div className='Select-Main' onClick={()=>this.setState(s=>({open:!s.open})) } >
-          <div className='Select-Text'>{selection ? (options[selection].label||options[selection]) : title}</div>
-            <ChevronLeft className='Select-Feather' style={{transform: `rotate(${open?90:-90}deg)`}}/>
+          <div className='Select-Text'>{!open ? selection!=null ? (options[selection].label||options[selection]) : title : title}</div>
+          <div className='Select-Feather-Circle'>
+            <ChevronLeft size={19} className='Select-Feather' style={{transform: `rotate(${open?90:-90}deg)`}}/>
+          </div>
         </div>
         {open && 
           options.map((option,i)=>{

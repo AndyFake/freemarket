@@ -92,9 +92,9 @@ class App extends Component {
               socialMediaCard && socialMediaCard.twitterSiteAccount
             }
           />
-          <div>
-          <MenuNav/>
-          </div>
+          {/* <div> */}
+          {/* <MenuNav/> */}
+          {/* </div> */}
 
           <Switch>
             <RouteWithMeta

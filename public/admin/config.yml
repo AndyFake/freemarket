@@ -152,7 +152,7 @@ collections: # A list of collections the CMS should be able to edit
       - label: "Images"
         name: "images"
         widget: "list"
-        required: false
+        required: true
         fields:
           - label: "Image"
             name: "image"

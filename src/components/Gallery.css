@@ -10,14 +10,17 @@
 
 .Gallery-Container{
   position: relative;
-  margin-bottom: 10px
+  margin-bottom: 10px;
+  /* padding-top: 90%; */
 }
 .Gallery-Image-Container{
   position: relative;
 }
 
 .Gallery-Image{
-  width:90%;
+  width:70vw;
+  height:70vw;
+  object-fit: contain;
   border: 1px solid lightgray;
 }
 

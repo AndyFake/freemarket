@@ -1,25 +1,24 @@
-.Select-Feather {
+.Select-Feather-Circle {
   width: 22px;
   height: 22px;
+  position: absolute;
+  right:10px;
+  top:12%;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+.Select-Feather{
+  right:4;
   stroke: black;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
   position: absolute;
-  /* height:18px; */
-  /* width:18px; */
-  /* top:15%; */
-  right:10px;
-  top:10%;
-  /* user-select: none; */
-  /* font-weight: 900; */
-  /* font-size: 13px; */
-  border: 1px solid black;
-  border-radius: 100px;
   transition: .2s ease-in-out;
-
+  transform-origin: 70% 50%;
 }
+
 .Select-Bullets{
   display:inline;
   user-select: none;
@@ -52,22 +51,6 @@
   color:grey;
   transition: .2s ease-in-out;
 }
-
-
-.Select-Chevron{
-  position: absolute;
-  height:18px;
-  width:18px;
-  top:15%;
-  right:10px;
-  user-select: none;
-  font-weight: 900;
-  font-size: 13px;
-  border: 1px solid black;
-  border-radius: 100px;
-  transition: .2s ease-in-out;
-}
-
 
 .Select-Main{
   box-sizing: border-box;

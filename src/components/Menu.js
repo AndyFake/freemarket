@@ -17,8 +17,8 @@ class MenuNav extends React.Component{
     const {open,selection} = this.state
     return(
       <div className='Menu-Container'>
-        <div onClick={()=>this.setState(s=>({open:!s.open}))}>
-          <Menu size={30}/>
+        <div onClick={(e)=>{e.preventDefault();this.setState(s=>({open:!s.open}))}}>
+          <Menu size={29}/>
         </div>
         {open &&
           pages.map((page,i)=>
@@ -26,7 +26,7 @@ class MenuNav extends React.Component{
               <div 
                 className='Menu-Dropdown' 
                 style={{top:(i+1)*30+'px',backgroundColor:i==selection?'grey':'white'}}
-                onClick={()=>this.setState({selection:i,open:false})}
+                onClick={(e)=>{this.setState({selection:i,open:false})}}
               >
               {i!=0 && <hr className='Menu-hr'/>}
                 <div className='Menu-Text'>{page}</div>
