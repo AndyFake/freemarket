@@ -17,17 +17,24 @@ export default ({fields}) => {
         <Link to='/cart'>
           <div className='Store-Cart-icon'>
             <ShoppingCart className='Store-Feather'/>
-            <div className='Store-Cart-Icon-Number'>{State.cart.reduce((acc,cur)=>acc+cur.quantity,0)}</div>
+            <div className='Store-Cart-Icon-Number'>
+              {State.cart.reduce((acc,cur)=>acc+cur.quantity,0)}
+            </div>
           </div>
         </Link >
       </div>
       {products.map(({title,primaryImage})=>
         <div className="Store-Product">
           <Link  to={'/'+slugify(title)}>
-            <img  className="Store-Product-Page-image"  src={primaryImage}/>
+            <img  
+              className="Store-Product-Page-image"  
+              src={primaryImage}
+            />
           </Link >
           <div className="Store-Product-bar">
-            <div className="Store-Product-name">{title}</div>
+            <div className="Store-Product-name">
+              {title}
+            </div>
           </div>
         </div>
       )}

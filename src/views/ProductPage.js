@@ -32,8 +32,9 @@ export default ({ fields }) => {
             <div className="Product-price">${price}</div>
           </div>
           {options &&
-            <Select 
-              options={['Please Select :',...options.map(o=>o.option)]}
+            <Select
+              title='Please Select :'
+              options={[...options.map(o=>o.option)]}
               onChange={(selection)=>{State.setSelection(selection)}}
             />
           }
