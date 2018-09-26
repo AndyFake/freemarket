@@ -1,5 +1,6 @@
 import React from 'react'
 import State from './state'
+import ReactMarkdown from 'react-markdown'
 import Link from '../components/Link'
 import Select from '../components/Select'
 import Gallery from '../components/Gallery'
@@ -44,7 +45,7 @@ export default ({ fields }) => {
               add to cart
             </div>
           </Link>
-          <div className="Product-description">{longDescription}</div>
+          <ReactMarkdown source={longDescription} className="Product-description"/>
         </div>
       </div>
     </div>
