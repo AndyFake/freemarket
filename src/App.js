@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 
 import ScrollToTop from './components/ScrollToTop'
 import Meta from './components/Meta'
+import MenuNav from './components/Menu'
 
 import Home from './views/Home'
 import Store from './views/Store'
@@ -91,8 +92,9 @@ class App extends Component {
               socialMediaCard && socialMediaCard.twitterSiteAccount
             }
           />
-
-          <NavIconAndy/>
+          <div>
+          <MenuNav/>
+          </div>
 
           <Switch>
             <RouteWithMeta

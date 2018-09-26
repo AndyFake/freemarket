@@ -1,0 +1,94 @@
+.Select-Feather {
+  width: 22px;
+  height: 22px;
+  stroke: black;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  position: absolute;
+  /* height:18px; */
+  /* width:18px; */
+  /* top:15%; */
+  right:10px;
+  top:10%;
+  /* user-select: none; */
+  /* font-weight: 900; */
+  /* font-size: 13px; */
+  border: 1px solid black;
+  border-radius: 100px;
+  transition: .2s ease-in-out;
+
+}
+.Select-Bullets{
+  display:inline;
+  user-select: none;
+  transition: .2s ease-in-out;
+  font-size: 8px;
+  opacity:.6
+}
+
+.Select-Container{
+  position: relative;
+  width:100%;
+  height:30px;
+  background-color: 'white';
+  box-sizing: border-box;
+}
+
+.Select-Dropdown{
+  box-sizing: border-box;
+  position: absolute;
+  width:100%;
+  height:30px;
+  border: 1px solid black;
+  border-top-width: 0px;
+  cursor: pointer;
+  z-index: 5;
+
+}
+
+.Select-Dropdown:hover {
+  color:grey;
+  transition: .2s ease-in-out;
+}
+
+
+.Select-Chevron{
+  position: absolute;
+  height:18px;
+  width:18px;
+  top:15%;
+  right:10px;
+  user-select: none;
+  font-weight: 900;
+  font-size: 13px;
+  border: 1px solid black;
+  border-radius: 100px;
+  transition: .2s ease-in-out;
+}
+
+
+.Select-Main{
+  box-sizing: border-box;
+  position: absolute;
+  top:0;
+  width:100%;
+  height:30px;
+  border: 1px solid black;
+  background-color: 'white';
+  cursor: pointer;
+}
+
+.Select-Main:hover {
+  opacity: .6;
+  transition: .2s ease-in-out;
+
+}
+
+.Select-Text{
+  position: relative;
+  top:15%;
+  user-select: none;
+  display: inline;
+}

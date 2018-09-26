@@ -1,6 +1,6 @@
 import React from 'react'
 import State from './state'
-import { Link } from 'react-router-dom'
+import Link from '../components/Link'
 import Select from '../components/Select'
 import Gallery from '../components/Gallery'
 
@@ -50,4 +50,3 @@ export default ({ fields }) => {
     </div>
   )
 }
-

@@ -1,0 +1,96 @@
+.Store-Feather{
+  width: 24px;
+  height: 24px;
+  stroke: black;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.Store-Top-bar {
+  display: flex;
+  flex-direction: row;
+  /* margin-top: 20px; */
+  margin-bottom: 20px;
+  padding-left:100px;
+  font-size: 40px;
+  background-color: #dfdfdf;
+}
+
+.Store-Cart-icon {
+  position: relative;
+  margin: 2px;
+  margin-right: 20px;
+  padding: 5px;
+  width:35px;
+  height:35px;
+  cursor: pointer;
+  background-color: white;
+  font-size: 20px;
+}
+
+.Store-Cart-Icon-Number{
+  position: absolute;
+  left:16px;
+  top:6px;
+  font-size: 12px;
+}
+
+.Store-Product {
+  padding:20px;
+  padding-top: 30px;
+  border: 1px solid lightgray; 
+}
+
+.Store-Product-bar {
+  flex:1;
+  display: flex;
+}
+
+.Store-Product-Page-image {
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid lightgray; 
+}
+
+.Store-Product-Page-image {
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid lightgray; 
+}
+
+
+.Store-Product-image:hover { 
+  border: 1px solid black; 
+} 
+
+.Store-Product-name {
+  flex: 4;
+  font-family: "Gotham A", "Gotham B", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 25px;
+  color: #222;
+  text-align: left;
+}
+.Store-Store-title {
+  flex:10;
+  font-family: "Playfair Display", serif;
+  text-align: justify;
+}
+
+
+
+@media (min-width: 750px) {
+  .Container {
+    width:75%;
+    margin: 0 auto;
+  }
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

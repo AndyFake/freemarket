@@ -1,0 +1,52 @@
+.Menu-Container{
+  position: fixed;
+  border-radius: 3px;
+  /* width:10%; */
+  top:5px;
+  left:5px;
+  width:32px;
+  height:32px;
+  background-color: white;
+  box-sizing: border-box;
+  z-index: 100;
+  cursor: pointer;
+
+}
+
+.Menu-Dropdown{
+  box-sizing: border-box;
+  position: absolute;
+  width:100px;
+  /* width:100px; */
+  height:30px;
+  /* border: 1px solid black; */
+  /* border-top-width: 0px; */
+  cursor: pointer;
+  z-index: 5;
+
+}
+
+.Menu-Dropdown:hover {
+  color:black;
+  transition: .2s ease-in-out;
+}
+
+.Menu-hr{
+  /* color:red; */
+  position: absolute;
+  margin:0;
+  border: 0;
+  height: 1px;
+  background: #333;
+  width:80%;
+  left:10%
+}
+
+.Menu-Text{
+  position: relative;
+  top:10%;
+  user-select: none;
+  display: inline;
+  color:black;
+  padding:5px;
+}

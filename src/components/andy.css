@@ -162,7 +162,7 @@ div {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-.Gallery-Container{
+/* .Gallery-Container{
   position: relative;
   margin-bottom: 10px
 }
@@ -215,7 +215,7 @@ div {
   right:0;
   cursor: pointer;
 
-}
+} */
 
 input{
   width: 250px;
@@ -369,10 +369,10 @@ input{
   text-align: justify;
 }
 
-svg {
+/* svg {
   fill: rgb(200, 200, 200);
   float:left;
-}
+} */
 
 .Top-bar {
   display: flex;

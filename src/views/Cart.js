@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Link from '../components/Link'
 import './Store.css';
 import State from './state'
 import { observer } from 'mobx-react';

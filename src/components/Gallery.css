@@ -1,0 +1,73 @@
+.feather {
+  width: 24px;
+  height: 24px;
+  stroke: black;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.Gallery-Container{
+  position: relative;
+  margin-bottom: 10px
+}
+.Gallery-Image-Container{
+  position: relative;
+}
+
+.Gallery-Image{
+  width:90%;
+  border: 1px solid lightgray;
+}
+
+.Gallery-Left-Nav-Icon{
+  position:absolute;
+  top:50%;
+  /* text-align: left; */
+  /* user-select: none; */
+  transform: translate(0, 0);
+  /* font-weight: 900;
+  font-size: 18px; */
+  /* transition: .2s ease-in-out; */
+
+}
+
+.Gallery-Right-Nav-Icon{
+  position:absolute;
+  top:50%;
+  right:0px;
+  /* text-align: right; */
+  /* font-weight: 900; */
+  /* user-select: none; */
+  transform: translate(0, 0);
+  /* transition: .2s ease-in-out; */
+  /* font-size: 18px; */
+}
+
+.Gallery-Left-Nav{
+  position: absolute;
+  width:10%;
+  height:100%;
+  top:0;
+  left:0;
+  cursor: pointer;
+}
+
+.Gallery-Right-Nav{
+  position: absolute;
+  width:10%;
+  height:100%;
+  top:0;
+  right:0;
+  cursor: pointer;
+
+}
+
+.Select-Bullets{
+  display:inline;
+  user-select: none;
+  transition: .2s ease-in-out;
+  font-size: 8px;
+  opacity:.6
+}

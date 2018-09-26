@@ -1,6 +1,7 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import './andy.css'
+import Link from './Link'
+import './Select.css'
+import {ChevronLeft} from 'react-feather'
 
 class Select extends React.Component{
   constructor(){
@@ -14,7 +15,9 @@ class Select extends React.Component{
       <div className='Select-Container'>
         <div className='Select-Main' onClick={()=>this.setState(s=>({open:!s.open})) } >
           <div className='Select-Text'>{options[selection].label||options[selection]}</div>
-          <span className='Select-Chevron' style={{transform: `rotate(${open?90:-90}deg)`}}>{'<'}</span>
+          {/* <span className='Select-Chevron' style={{transform: `rotate(${open?90:-90}deg)`}}> */}
+            <ChevronLeft className='Select-Feather' style={{transform: `rotate(${open?90:-90}deg)`}}/>
+          {/* </span> */}
         </div>
         {open && 
           options.map((option,i)=>{
@@ -28,7 +31,7 @@ class Select extends React.Component{
                     onChange(options[i].value || options[i])}}
                 >
                   <p className='Select-Text'>{option.label || option}</p>
-                  </div>
+                </div>
               )
             }
             return(
