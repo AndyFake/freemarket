@@ -24,17 +24,17 @@
 .Menu-Box{
   /* display:inline; */
   position: absolute;
-  top:10;
-  left:10;
-  height: 30px;
+  top:10px;
+  left:10px;
+  height: 31px;
   width: 30px;
 }
 
 .Cart-Box{
   position: absolute;
   /* display:inline; */
-  top:12;
-  right:25;
+  top:12px;
+  right:25px;
   height: 30px;
-  width: 30px;
+  width: 31px;
 }
