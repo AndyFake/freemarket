@@ -5,7 +5,7 @@ import uuid from 'uuid/v4'
 import StripeCheckout from "react-stripe-checkout"
 import Select from '../components/Select.js'
 import State from './state'
-import './ProductPage.css'
+import './Checkout.css'
 
 import {PUBLIC_KEY} from '../PUBLIC_KEY.js'
 // const PUBLIC_KEY = 1234

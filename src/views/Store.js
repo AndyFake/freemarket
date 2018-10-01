@@ -11,7 +11,6 @@ export default ({fields}) => {
   const name = settings[0].siteTitle
   return(
     <div>
-      <StoreHeader title='Fish Store'/>
       {products.map(({title,primaryImage})=>
         <div className="Store-Product">
           <Link  to={'/'+slugify(title)}>

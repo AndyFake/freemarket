@@ -1,4 +1,4 @@
-.feather {
+.Gallery-Feather {
   width: 24px;
   height: 24px;
   stroke: black;
@@ -67,7 +67,7 @@
 
 }
 
-.Select-Bullets{
+.Gallery-Select-Bullets{
   display:inline;
   user-select: none;
   transition: .2s ease-in-out;

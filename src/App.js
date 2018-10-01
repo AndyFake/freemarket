@@ -22,6 +22,8 @@ import NavIconAndy from './components/NavIconAndy'
 import Footer from './components/Footer'
 import GithubCorner from './components/GithubCorner'
 import ServiceWorkerNotifications from './components/ServiceWorkerNotifications'
+import StoreHeader from './components/StoreHeader'
+
 import data from './data.json'
 import { slugify } from './util/url'
 import { documentHasTerm, getCollectionTerms } from './util/collection'
@@ -95,15 +97,15 @@ class App extends Component {
           {/* <div> */}
           {/* <MenuNav/> */}
           {/* </div> */}
-
+          <StoreHeader title={'Fish Store'}/>
           <Switch>
             <RouteWithMeta
               path='/'
               exact
-              component={Home}
+              component={Store}
               description={siteDescription}
-              fields={this.getDocument('pages', 'home')}
-            />
+              fields={data}
+              title={'Store'}            />
             <RouteWithMeta
               path='/store/'
               exact

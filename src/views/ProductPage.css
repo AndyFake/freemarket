@@ -1,3 +1,32 @@
+.Add-to-cart {
+  background-color: #3d3838;
+  border: 1px solid black;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: white;
+  font-size: 15px;
+  padding:10px;
+  user-select: none;
+  transition: .2s ease-in-out;
+}
+
+.Add-to-cart:hover {
+  opacity: .8;
+}
+
+.App {
+  width:100%;
+  text-align: center;
+  background-color: white;
+  padding-bottom: 50px;
+}
+
+.Container {
+  width:100%;
+  margin: 0;
+}
+
 .Product {
   padding:20px;
   padding-top: 30px;

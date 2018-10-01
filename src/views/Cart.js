@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from '../components/Link'
-import './Store.css';
+import './Cart.css';
 import State from './state'
 import { observer } from 'mobx-react';
 

@@ -26,7 +26,6 @@ export default ({ fields }) => {
   return (
     <div className="App">
       <div className="Container">
-      <StoreHeader title='Fish Store'/>
         <div className="Product">
           <Gallery imageList={getSmallImages(images)}/>
           <div className="Product-bar">
