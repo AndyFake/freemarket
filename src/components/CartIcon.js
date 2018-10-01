@@ -8,12 +8,12 @@ import './CartIcon.css'
 const CartIcon = () =>
   // <div>
     <Link to='/cart'>
-      {/* <div className='Store-Cart-icon'> */}
+      <div className='Store-Cart-icon'>
         <ShoppingCart className='Store-Feather'/>
         <div className='Store-Cart-Icon-Number'>
           {State.cart.reduce((acc,cur)=>acc+cur.quantity,0)}
         </div>
-      {/* </div> */}
+      </div>
     </Link>
   {/* </div> */}
 
