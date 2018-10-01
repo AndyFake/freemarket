@@ -7,11 +7,15 @@ const StoreHeader = ({title}) =>
 <Fragment>
   <div className='Store-Header'>
     <div className ='Menu-Box'>
-      <MenuNav className ='Icon'/>
+      <MenuNav 
+      // className ='Icon'
+      />
     </div>
      {title}
     <div className='Cart-Box'>
-      <CartIcon className ='Icon'/>
+      <CartIcon 
+      // className ='Icon'
+      />
     </div>
   </div>
     <div className='Header-Spacer'/>

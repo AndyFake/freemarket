@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{Fragment} from 'react'
 import Link from './Link'
 import './Menu.css'
 import { Menu } from 'react-feather'
@@ -16,7 +16,8 @@ class MenuNav extends React.Component{
   render(){
     const {open,selection} = this.state
     return(
-      <div className='Menu-Container'>
+      // <div className='Menu-Container'>
+      <Fragment>
         <div onClick={(e)=>{e.preventDefault();this.setState(s=>({open:!s.open}))}}>
           <Menu size={29}/>
         </div>
@@ -35,7 +36,9 @@ class MenuNav extends React.Component{
 
             )
         }
-      </div>
+      </Fragment>
+      // </div>
+
 
 
     )
