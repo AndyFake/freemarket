@@ -6,24 +6,23 @@ import {ShoppingCart} from 'react-feather'
 import State from '../views/state'
 
 const StoreHeader = ({title}) =>
-<Fragment>
-  <div className='Store-Header'>
-    <div className ='Menu-Box'>
-      <MenuNav 
-      // className ='Icon'
+  <Fragment>
+    <div className='Store-Header'>
+      <div className ='Menu-Box'>
+        <MenuNav 
       />
+      </div>
+      {title}
+        <Link to='/cart' className='Cart-Box'>
+      {/* <div className='Cart-Box'> */}
+            <ShoppingCart className='Store-Feather'/>
+            <div className='Store-Cart-Icon-Number'>
+              {State.cart.reduce((acc,cur)=>acc+cur.quantity,0)}
+            </div>
+      {/* </div> */}
+        </Link>
     </div>
-     {title}
-    <div className='Cart-Box'>
-      <Link to='/cart'>        {/* <div className='Store-Cart-icon'> */}
-          <ShoppingCart className='Store-Feather'/>
-          <div className='Store-Cart-Icon-Number'>
-            {State.cart.reduce((acc,cur)=>acc+cur.quantity,0)}
-          </div>
-      </Link>
-    </div>
-  </div>
     <div className='Header-Spacer'/>
-    </Fragment>
+  </Fragment>
 
 export default StoreHeader
