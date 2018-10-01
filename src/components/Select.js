@@ -1,5 +1,4 @@
-import React,{Fragment} from 'react'
-import Link from './Link'
+import React from 'react'
 import './Select.css'
 import {ChevronLeft} from 'react-feather'
 
@@ -29,7 +28,8 @@ class Select extends React.Component{
                 style={{top:(i+1)*30+'px',backgroundColor:i==selection?'grey':'white'}}
                 onClick={()=>{
                   this.setState({selection:i,open:false});
-                  onChange(options[i].value || options[i])}}
+                  onChange(options[i])
+                }}
                   >
                   <p className='Select-Text'>{option.label || option}</p>
               </div>

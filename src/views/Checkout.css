@@ -1,18 +1,21 @@
 .checkout-shipping-dropdown{
   width:250px;
-  padding:10px;
   margin:10px;
   margin-bottom: 10px
+}
 
+.Checkout-Text{
+  width:250px;
+  /* margin:10px; */
 }
 
 .checkout-container{
   width:100%;
-  margin: 0 auto;
-  /* margin-top: 30px; */
+  padding: 30px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center
+  /* justify-content: center */
 }
 
 input{
@@ -20,5 +23,12 @@ input{
   padding:10px;
   margin:10px;
   box-sizing: border-box;
+}
 
+form{
+  margin-bottom: 10px;
+}
+
+p{
+  margin-bottom: 8px;
 }

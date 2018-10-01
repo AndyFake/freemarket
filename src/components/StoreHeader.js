@@ -4,6 +4,7 @@ import './StoreHeader.css'
 import Link from './Link'
 import {ShoppingCart} from 'react-feather'
 import State from '../views/state'
+import { observer } from 'mobx-react'
 
 const StoreHeader = ({title}) =>
   <Fragment>
@@ -23,4 +24,4 @@ const StoreHeader = ({title}) =>
     <div className='Header-Spacer'/>
   </Fragment>
 
-export default StoreHeader
+export default observer(StoreHeader)

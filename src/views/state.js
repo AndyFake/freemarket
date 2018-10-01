@@ -5,7 +5,6 @@ class State {
   selection = observable.box(' ')
   fields = observable({})
   shippingCost = observable.box(0)
-  shippingKind = observable.box('')
   setField =(field,val)=>this.fields[field]=val
   getField = field => this.fields[field]
   ATC = (item,options='')=> this.cart.push({...item,quantity:1,options})
@@ -16,12 +15,11 @@ class State {
     this.cart.forEach(p=>total+=p.price * p.quantity)
     return total
   }
-  getTotalWithShipping=(shipping)=>{
-    if(shipping=='USPS'){return this.getTotal()+10}
-    if(shipping=='UPS'){return this.getTotal()+13}
-    if(shipping=='FEDEX'){return this.getTotal()+12}
-    return this.getTotal()
+  getTotalWithShipping=()=>{
+    const total= this.getTotal()+this.shippingCost.get()
+    return total
   }
   setSelection=(x)=>this.selection=x
+  setShippingCost=x=>this.shippingCost.set(x)
 }
 export default State = new State()

@@ -42,13 +42,13 @@ const onToken = token => {
     amount : 111,
     idempotency_key:uuid(),
   }
-  console.log(token)
+//  console.log(token)
   fetch("/.netlify/functions/purchase", {
     method: "POST",
     body: JSON.stringify(data)
   }).then(response => {
     response.json().then(data => {
-      console.log(data)
+      // console.log(data)
       if(data.status=='succeeded'){
         alert(`payment was successful`);
         submit(encodeData(token))
@@ -71,9 +71,10 @@ const submit = (data) => {
     .catch(error => alert(error));
 };
 
-const Checkout = observer( 
+const Checkout = 
   ()=>
     <div className='checkout-container'>
+    <p>Please enter your shipping info:</p>
     <form name='purchase'>
       {formfields.map((field,index)=>{
         const slug = slugify(field)
@@ -94,14 +95,16 @@ const Checkout = observer(
                   {label:`UPS ($ ${upsShippingCost})`    ,value:upsShippingCost},
                   {label:`FEDEX ($ ${fedexShippingCost})`,value:fedexShippingCost}
                 ]}
-        onChange={(e)=>{State.shippingCost=e.value;State.shippingKind=e.label;encodeData()}}
+        onChange={(e)=>{
+          State.setShippingCost(e.value);
+          encodeData()
+        }}
       />
       </div>
-      <div>{"total with shipping : $" + (State.getTotal()+State.shippingCost).toFixed(2)}</div>
-      <div>{"total with taxes    : $" + ((State.getTotal()+State.shippingCost)*1.15).toFixed(2)}</div>
     </form>
+      <p className="Checkout-Text">{"total with shipping : $" + (State.getTotalWithShipping()).toFixed(2)}</p>
+      <p className="Checkout-Text">{"total with taxes    : $" + ((State.getTotalWithShipping())*1.15).toFixed(2)}</p>
     <StripeCheckout token={onToken} stripeKey={PUBLIC_KEY}/>      
   </div>
-  )
 
-export default Checkout
+export default observer(Checkout)
