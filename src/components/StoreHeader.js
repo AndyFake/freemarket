@@ -1,7 +1,9 @@
 import React,{Fragment} from 'react'
 import MenuNav from './Menu'
-import CartIcon from './CartIcon'
 import './StoreHeader.css'
+import Link from './Link'
+import {ShoppingCart} from 'react-feather'
+import State from '../views/state'
 
 const StoreHeader = ({title}) =>
 <Fragment>
@@ -13,9 +15,12 @@ const StoreHeader = ({title}) =>
     </div>
      {title}
     <div className='Cart-Box'>
-      <CartIcon 
-      // className ='Icon'
-      />
+      <Link to='/cart'>        {/* <div className='Store-Cart-icon'> */}
+          <ShoppingCart className='Store-Feather'/>
+          <div className='Store-Cart-Icon-Number'>
+            {State.cart.reduce((acc,cur)=>acc+cur.quantity,0)}
+          </div>
+      </Link>
     </div>
   </div>
     <div className='Header-Spacer'/>

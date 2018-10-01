@@ -32,9 +32,24 @@
 
 .Cart-Box{
   position: absolute;
-  /* display:inline; */
   top:12px;
   right:25px;
   height: 30px;
   width: 31px;
+}
+
+.Store-Cart-Icon-Number{
+  position: absolute;
+  left:16px;
+  top:-14px;
+  font-size: 12px;
+}
+.Store-Feather{
+  width: 24px;
+  height: 24px;
+  stroke: black;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
 }
