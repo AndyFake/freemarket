@@ -21,7 +21,8 @@ const getSmallImages = (images) => {
 }
 
 export default ({ fields }) => {
-  const { productName, price, longDescription, images, options } = fields
+  console.log(fields)
+  const { title, price, longDescription, images, options } = fields
   State.setSelection('')
   return (
     <div className="App">
@@ -29,7 +30,7 @@ export default ({ fields }) => {
         <div className="Product">
           <Gallery imageList={getSmallImages(images)}/>
           <div className="Product-bar">
-            <div className="Product-name">{productName || ''}</div>
+            <div className="Product-name">{title || ''}</div>
             <div className="Product-price">${price}</div>
           </div>
           {options &&

@@ -12,8 +12,8 @@ class Select extends React.Component{
     const {options,onChange,title} = this.props
     const {open,selection} = this.state
     return(
-      <Fragment>
-        <div className='Select-Main' onClick={()=>this.setState(s=>({open:!s.open})) } >
+      <div className='Select-Container'>
+        <div className='Select-Main' onClick={()=>this.setState({open:true}) } >
           <div className='Select-Text'>{!open ? selection!=null ? (options[selection].label||options[selection]) : title : title}</div>
             <div className='Select-Icon-Box'>
             <div className='Select-Feather-Circle'>
@@ -30,13 +30,13 @@ class Select extends React.Component{
                 onClick={()=>{
                   this.setState({selection:i,open:false});
                   onChange(options[i].value || options[i])}}
-              >
-                <p className='Select-Text'>{option.label || option}</p>
+                  >
+                  <p className='Select-Text'>{option.label || option}</p>
               </div>
             )
           })
         }
-      </Fragment>
+      </div>
     )
   }
 }
