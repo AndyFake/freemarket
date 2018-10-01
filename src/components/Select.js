@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{Fragment} from 'react'
 import Link from './Link'
 import './Select.css'
 import {ChevronLeft} from 'react-feather'
@@ -12,11 +12,13 @@ class Select extends React.Component{
     const {options,onChange,title} = this.props
     const {open,selection} = this.state
     return(
-      <div className='Select-Container'>
+      <Fragment>
         <div className='Select-Main' onClick={()=>this.setState(s=>({open:!s.open})) } >
           <div className='Select-Text'>{!open ? selection!=null ? (options[selection].label||options[selection]) : title : title}</div>
-          <div className='Select-Feather-Circle'>
-            <ChevronLeft size={19} className='Select-Feather' style={{transform: `rotate(${open?90:-90}deg)`}}/>
+            <div className='Select-Icon-Box'>
+            <div className='Select-Feather-Circle'>
+              <ChevronLeft size={19} className='Select-Feather' style={{transform: [`rotate(${open?90:-90}deg)`]}}/>
+            </div>
           </div>
         </div>
         {open && 
@@ -34,7 +36,7 @@ class Select extends React.Component{
             )
           })
         }
-      </div>
+      </Fragment>
     )
   }
 }

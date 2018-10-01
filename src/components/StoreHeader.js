@@ -14,12 +14,10 @@ const StoreHeader = ({title}) =>
       </div>
       {title}
         <Link to='/cart' className='Cart-Box'>
-      {/* <div className='Cart-Box'> */}
-            <ShoppingCart className='Store-Feather'/>
-            <div className='Store-Cart-Icon-Number'>
-              {State.cart.reduce((acc,cur)=>acc+cur.quantity,0)}
-            </div>
-      {/* </div> */}
+          <ShoppingCart className='Store-Feather'/>
+          <div className='Store-Cart-Icon-Number'>
+            {State.cart.reduce((acc,cur)=>acc+cur.quantity,0)}
+          </div>
         </Link>
     </div>
     <div className='Header-Spacer'/>
