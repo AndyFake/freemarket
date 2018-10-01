@@ -22,7 +22,7 @@
 }
 
 .Menu-Box{
-  display: inline-table;
+  /* display: inline-table; */
   position: absolute;
   top:10;
   left:10;
@@ -31,7 +31,7 @@
 }
 
 .Cart-Box{
-  display: inline-table;
+  /* display: inline-table; */
   position: absolute;
   top:12;
   right:25;
