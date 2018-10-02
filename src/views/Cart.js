@@ -16,12 +16,12 @@ const Cart = observer(
               <div className='Cart-Empty-Message'>Cart is Empty</div>
             }
             {State.cart.map((item,i) => 
-              <div className='Cart-line'>
+              <div className='Cart-Line'>
                 <div className='Cart-Remove' onClick={()=>{State.RFC(i)}}>
                   <XSquare className='Cart-Feather'/>
                 </div>
-                <div className='Cart-Item-Name'>{item.title}{item.options.length>0 && '('+item.options+')'}</div>
-                <div className='Cart-item-price'>${item.price*item.quantity}</div>
+                <div className='Cart-Item-Name'>{item.title}{item.options.length>0 && ' ('+item.options+')'}</div>
+                <div className='Cart-Item-Price'>${item.price*item.quantity}</div>
                 <div className='Cart-Quantity-Widget'>
                   <div className='Cart-Button' onClick={()=>{State.modCart(i,item.quantity+1)}}>
                   <PlusSquare className='Cart-Feather'/>
