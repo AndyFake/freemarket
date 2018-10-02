@@ -7,7 +7,7 @@ import About from '../src/views/About'
 import Contact from '../src/views/Contact'
 import Blog from '../src/views/Blog'
 import SinglePost from '../src/views/SinglePost'
-import ProductPageTemplate from '../src/views/ProductPage'
+import ProductPageTemplate from '../src/views/ProductPageTemplate'
 
 console.log('React version', React.version)
 
