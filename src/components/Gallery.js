@@ -10,7 +10,7 @@ class Gallery extends React.Component{
     }
   }
   render(){
-    const {imageList} = this.props
+    const {imageList = []} = this.props
     const {view} = this.state
     return(
       <div className='Gallery-Container'>

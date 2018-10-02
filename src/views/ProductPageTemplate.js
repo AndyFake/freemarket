@@ -7,18 +7,6 @@ import Gallery from '../components/Gallery'
 
 import './ProductPage.css'
 
-const getSmallImages = (images) => {
-  var smallImages = []
-  images.forEach((image,i)=>{
-    const name = image.image.split('/')[image.image.split('/').length-1]
-    const nameWithoutExtension = name.split('.')[0]
-    const extension = name.split('.')[1]
-    const path = '/images/uploads/resized/' + nameWithoutExtension + '.600.' + extension
-    smallImages.push({...image,image:path})
-  })
-  return smallImages
-}
-
 export default ({ fields }) => {
   const { title, price, longDescription, images, options } = fields
   State.setSelection('')

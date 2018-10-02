@@ -2,33 +2,26 @@ import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Helmet from 'react-helmet'
 
-import ScrollToTop from './components/ScrollToTop'
-import Meta from './components/Meta'
-import MenuNav from './components/Menu'
-
-import Home from './views/Home'
 import Store from './views/Store'
 import Cart from './views/Cart'
 import ProductPage from './views/ProductPage'
 import Checkout from './views/Checkout'
+import StoreHeader from './components/StoreHeader'
 
 import About from './views/About'
 import Blog from './views/Blog'
 import SinglePost from './views/SinglePost'
 import Contact from './views/Contact'
 import NoMatch from './views/NoMatch'
-import Nav from './components/Nav'
-import NavIconAndy from './components/NavIconAndy'
+
 import Footer from './components/Footer'
-import GithubCorner from './components/GithubCorner'
 import ServiceWorkerNotifications from './components/ServiceWorkerNotifications'
-import StoreHeader from './components/StoreHeader'
+import Meta from './components/Meta'
+import ScrollToTop from './components/ScrollToTop'
 
 import data from './data.json'
 import { slugify } from './util/url'
 import { documentHasTerm, getCollectionTerms } from './util/collection'
-
-// console.log(data)
 
 const RouteWithMeta = ({ component: Component, ...props }) => (
   <Route
@@ -75,7 +68,6 @@ class App extends Component {
         <div className='React-Wrap'>
           <ScrollToTop />
           <ServiceWorkerNotifications reloadOnUpdate />
-          {/* <GithubCorner url='https://github.com/Jinksi/netlify-cms-react-starter' /> */}
           <Helmet
             defaultTitle={siteTitle}
             titleTemplate={`${siteTitle} | %s`}
@@ -94,10 +86,9 @@ class App extends Component {
               socialMediaCard && socialMediaCard.twitterSiteAccount
             }
           />
-          {/* <div> */}
-          {/* <MenuNav/> */}
-          {/* </div> */}
-          <StoreHeader title={'Fish Store'}/>
+          <StoreHeader 
+            title={siteTitle}
+          />
           <Switch>
             <RouteWithMeta
               path='/'
@@ -105,7 +96,8 @@ class App extends Component {
               component={Store}
               description={siteDescription}
               fields={data}
-              title={'Store'}            />
+              title={'Store'}            
+            />
             <RouteWithMeta
               path='/store/'
               exact
@@ -201,7 +193,6 @@ class App extends Component {
                 />
               )
             })}
-
             <Route render={() => <NoMatch siteUrl={siteUrl} />} />
           </Switch>
           <Footer />

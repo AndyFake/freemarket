@@ -8,7 +8,7 @@ class Select extends React.Component{
     this.state={open:false,selection:null}
   }
   render(){
-    const {options,onChange,title} = this.props
+    const {options=[],onChange=()=>{},title=''} = this.props
     const {open,selection} = this.state
     return(
       <div className='Select-Container'>
