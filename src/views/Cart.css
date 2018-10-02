@@ -1,7 +1,6 @@
-.Cart-back{
+.Cart-Back{
   padding:10px;
   margin:5px;
-  align-self: flex-start;
   cursor: pointer;
   background-color: #3d3838;
   border: 1px solid black;
@@ -10,13 +9,12 @@
   margin-bottom: 5px;
   color: white;
   font-size: 15px;
-  padding:10px;
 }
-.Cart-back:hover{
+.Cart-Back:hover{
   opacity:.8;
   transition: .2s ease-in-out;
 }
-.Cart-container {
+.Cart-Container {
   width:100%;
   border: 1px solid black;
   background-color: white;
@@ -26,77 +24,62 @@
   margin:5px;
 }
 
-.Cart-footer{
+.Cart-Footer{
   width:100%;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.Cart-footer-total{
+.Cart-Footer-Total{
   flex:10;
   text-align: center;
 }
-.Cart-footer-checkout{
+.Cart-Footer-Checkout{
   background-color: #3d3838;
   border: 1px solid black;
   cursor: pointer;
   color: white ;
   font-size: 15px;
   margin:5px;
+  margin-right: 10px;
   padding:10px;
   box-sizing: border-box;
 }
-.Cart-footer-checkout:hover{
+.Cart-Footer-Checkout:hover{
   opacity:.8;
   transition: .2s ease-in-out;
 }
 
 .Cart-Line {
   display: block;
-  /* width:100%; */
   height:40px;
   margin:5px;
-  /* line-height: 40px; */
   background-color: whitesmoke;
   font-size: 12px;
 }
 
-.Cart-Item-Image{
-  /* flex:1; */
-  display: inline;
-  float: left;
-  object-fit: contain;
-  width:10%;
-  height:100%;
-}
-
 .Cart-Item-Name{
   box-sizing: border-box;
-  display: inline;
-  margin: 5px;
+  display: inline-flex;
+  flex-direction: column;
   overflow: hidden;
-  text-overflow: ellipsis
-
-  /* float: left; */
-}
-
-.Cart-Item-Options{
-  box-sizing: border-box;
-  display: inline;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: left;
   margin:5px;
-  overflow: hidden;
-  text-overflow: ellipsis
-
-  /* float: left; */
+  margin-right:1px;
+  line-height: 13px;
+  width:52%;
 }
 
 .Cart-Item-Price{
   box-sizing: border-box;
   display: inline;
   float:right;
-  width:20%;
-  height:100%;
+  width:15%;
+  /* height:100%; */
   line-height: 40px;
   text-align: center;
 }
@@ -109,22 +92,14 @@
 }
 
 .Cart-Item-Quantity{
-  box-sizing: border-box;
-  display: inline;
-  float:right;
-  width:20px;
-  /* float: left; */
+  display: inline-flex;
 }
 
 .Cart-Button{
   position: relative;
   box-sizing: border-box;
   display: inline;
-  float:right;
   height:100%;
-
-  /* transform: translate(0, 50%) */
-  /* float: left; */
 }
 
 .Cart-Remove{
@@ -137,7 +112,9 @@
 
 .Cart-Feather{
   position: relative;
-  /* top:50%; */
+  user-select: none;
   transform: translateY(30%);
-  /* display: block; */
 }
+/* div{
+  overflow-wrap: break-word;
+} */
