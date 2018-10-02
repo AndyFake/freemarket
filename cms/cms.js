@@ -7,7 +7,7 @@ import About from '../src/views/About'
 import Contact from '../src/views/Contact'
 import Blog from '../src/views/Blog'
 import SinglePost from '../src/views/SinglePost'
-import ProductPage from '../src/views/ProductPage'
+import ProductPageTemplate from '../src/views/ProductPage'
 
 console.log('React version', React.version)
 
@@ -41,8 +41,8 @@ CMS.registerPreviewTemplate('blog-page', ({ entry }) => (
 CMS.registerPreviewTemplate('posts', ({ entry }) => (
   <SinglePost fields={entry.toJS().data} />
 ))
-CMS.registerPreviewTemplate('product', ({ entry }) => (
-  <ProductPage fields={entry.toJS().data} />
+CMS.registerPreviewTemplate('products', ({ entry }) => (
+  <ProductPageTemplate fields={entry.toJS().data} />
 ))
 
 // Return to home when user logging out
