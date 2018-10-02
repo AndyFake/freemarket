@@ -22,7 +22,7 @@ class Gallery extends React.Component{
               <ChevronLeft className='Gallery-Feather'/>
             </div>
           </div>
-          <img className='Gallery-Image' src={imageList[view].image}/>
+          {imageList.length>0 && <img className='Gallery-Image' src={imageList[view].image}/>}
           <div className='Gallery-Right-Nav' onClick={this.handleClickRight}>
             <div
                 className='Gallery-Right-Nav-Icon'

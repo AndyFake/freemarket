@@ -32,7 +32,6 @@ export default ({ fields }) => {
           </Link>
           <ReactMarkdown 
             source={longDescription} 
-            renderers={{image:(props)=><img {...props} style={{maxWidth: '100%'}}/>}}
             className="Product-description"/>
         </div>
       </div>
