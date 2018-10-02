@@ -3,7 +3,7 @@ import Link from './Link'
 import './Menu.css'
 import { Menu } from 'react-feather'
 
-const pages = ['home','store','blog','about','contact','cart','checkout']
+const pages = ['store','blog','about','contact']
 
 class MenuNav extends React.Component{
   constructor(){

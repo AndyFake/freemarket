@@ -130,7 +130,7 @@ collections: # A list of collections the CMS should be able to edit
           - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
           - {label: Noindex, name: noindex, widget: boolean, required: false}
 
-  - name: product
+  - name: products
     label: Product
     editor:
       preview: true
