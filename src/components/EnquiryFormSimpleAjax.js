@@ -87,7 +87,7 @@ class Form extends React.Component {
             required
           />
         </label>
-        <label className='EnquiryForm--Label has-arrow'>
+        {/* <label className='EnquiryForm--Label has-arrow'>
           <select
             className='EnquiryForm--Input EnquiryForm--Select'
             name='type'
@@ -101,7 +101,7 @@ class Form extends React.Component {
             <option>Found a bug</option>
             <option>Want to say hello</option>
           </select>
-        </label>
+        </label> */}
         <label className='EnquiryForm--Label'>
           <textarea
             className='EnquiryForm--Input EnquiryForm--Textarea'
