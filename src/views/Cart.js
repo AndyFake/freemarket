@@ -3,24 +3,34 @@ import Link from '../components/Link'
 import './Cart.css';
 import State from './state'
 import { observer } from 'mobx-react';
+import {PlusSquare, MinusSquare, XSquare} from 'react-feather'
 
 const Cart = observer( 
   class Cart extends React.Component{
     render(){
       return(
         <div className='Cart-container'>
-          <Link to='/store'><div className='Cart-back' >continue shopping</div></Link>
+          <Link to='/store'><div className='Cart-back'>continue shopping</div></Link>
           <div className='Items-container'>
+            {State.cart.reduce((acc,cur)=>acc+cur.quantity,0)<=0 && 
+              <div className='Cart-Empty-Message'>Cart is Empty</div>
+            }
             {State.cart.map((item,i) => 
               <div className='Cart-line'>
-                <img className='Cart-item-image' src={item.primaryImage}/>
-                <div className='Cart-item-name'>{item.title}</div>
-                {item.options!='' && <div className='Cart-item-options'>{item.options}</div>}
-                <div className='Cart-remove-x' onClick={()=>{State.modCart(i,item.quantity+1)}}>+</div>
-                <div>quantity : {item.quantity} </div>
-                <div className='Cart-remove-x' onClick={()=>{item.quantity>1&&State.modCart(i,item.quantity-1)}}>-</div>
-                <div className='Cart-item-price'>${item.price}</div>
-                <div className='Cart-remove-x' onClick={()=>{State.RFC(i)}}>x</div>
+                <div className='Cart-Remove' onClick={()=>{State.RFC(i)}}>
+                  <XSquare className='Cart-Feather'/>
+                </div>
+                <div className='Cart-Item-Name'>{item.title}{item.options.length>0 && '('+item.options+')'}</div>
+                <div className='Cart-item-price'>${item.price*item.quantity}</div>
+                <div className='Cart-Quantity-Widget'>
+                  <div className='Cart-Button' onClick={()=>{State.modCart(i,item.quantity+1)}}>
+                  <PlusSquare className='Cart-Feather'/>
+                  </div>
+                  <div className='Cart-Item-Quantity'> {item.quantity} </div>
+                  <div className='Cart-Button' onClick={()=>{item.quantity>1&&State.modCart(i,item.quantity-1)}}>
+                    <MinusSquare className='Cart-Feather'/>
+                  </div>
+                </div>
               </div>
             )}
           </div>

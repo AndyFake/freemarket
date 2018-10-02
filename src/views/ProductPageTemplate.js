@@ -23,13 +23,11 @@ export default ({ fields }) => {
               options={[...options.map(o=>o.option)]}
             />
           }
-          <Link to='/cart'>
-            <div 
-              className="Add-to-cart" 
-            >
-              add to cart
-            </div>
-          </Link>
+          <div 
+            className="Add-to-cart" 
+          >
+            add to cart
+          </div>
           <ReactMarkdown 
             source={longDescription} 
             className="Product-description"/>
