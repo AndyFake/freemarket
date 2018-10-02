@@ -4,24 +4,22 @@ import ReactMarkdown from 'react-markdown'
 import Link from '../components/Link'
 import Select from '../components/Select'
 import Gallery from '../components/Gallery'
-import StoreHeader from '../components/StoreHeader'
 
 import './ProductPage.css'
 
 const getSmallImages = (images) => {
   var smallImages = []
-  images.forEach((image,i)=>{
-    const name = image.image.split('/')[image.image.split('/').length-1]
-    const nameWithoutExtension = name.splitOnLast('.')[0]
-    const extension = name.splitOnLast('.')[1]
-    const path = '/images/uploads/resized/' + nameWithoutExtension + '.600.' + extension
+  images.forEach(image=>{
+    var img = image.image.split('/')[image.image.split('/').length-1]
+    var name = img.substring(0, img.lastIndexOf("."));
+    var extension = img.substring(img.lastIndexOf(".") + 1, img.length);  
+    const path = '/images/uploads/resized/' + name + '.600.' + extension
     smallImages.push({...image,image:path})
   })
   return smallImages
 }
 
 export default ({ fields }) => {
-  // console.log(fields)
   const { title, price, longDescription, images, options } = fields
   State.setSelection('')
   return (
