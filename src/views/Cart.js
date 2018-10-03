@@ -38,7 +38,7 @@ const Cart = () =>
           <div className='Cart-Item-Quantity'>
             <input
               ref={el=>this[i]=el}
-              style={{width:`${String(item.quantity).length*8+5}px`,minWidth:'23px', textAlign:'center',height:'25px',margin:'3px',padding:'0px'}}
+              style={{width:`${String(item.quantity).length*8+5}px`,minWidth:'33px', textAlign:'center',height:'25px',margin:'3px',padding:'0px'}}
               value={item.quantity?item.quantity:''}
               onChange={e=>State.modCart(i,parseInt(e.target.value)||0)}
               onKeyPress={e=>e.key==='Enter'&&this[i].blur()}
