@@ -18,6 +18,8 @@
   width:100%;
   border: 1px solid black;
   background-color: white;
+  display:flex;
+  flex-direction: column;
 }
 
 .Cart-Empty-Message{
@@ -52,62 +54,74 @@
 }
 
 .Cart-Line {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   height:40px;
   margin:5px;
   background-color: whitesmoke;
   font-size: 12px;
+  /* flex: 1; */
+  /* overflow-y:auto;; */
+  /* overflow:wrap; */
+
 }
 
 .Cart-Item-Name{
   box-sizing: border-box;
   display: inline-flex;
   flex-direction: column;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   vertical-align: middle;
   text-align: left;
   margin:5px;
-  margin-right:1px;
-  line-height: 13px;
+  line-height: 15px;
   width:52%;
+  justify-content: center;
+  min-width: 0px;
 }
 
+.Cart-Item-Name-Text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* flex: 0 0 auto */
+  /* flex: auto; */
+
+}
+
+
 .Cart-Item-Price{
-  box-sizing: border-box;
-  display: inline;
-  float:right;
-  width:15%;
-  /* height:100%; */
+  /* box-sizing: border-box; */
+  /* display: inline-flex; */
   line-height: 40px;
   text-align: center;
+  flex:2;
+  margin-right: 8px;
+  margin-left:5x;
 }
 
 .Cart-Quantity-Widget{
-  display:inline;
-  float:right;
-  line-height: 40px;
-  text-align: center;
+  display:flex;
+  flex-direction: row;
+  margin-left: auto;
 }
 
 .Cart-Item-Quantity{
   display: inline-flex;
-}
-
-.Cart-Button{
-  position: relative;
-  box-sizing: border-box;
-  display: inline;
-  height:100%;
+  align-items: center;
 }
 
 .Cart-Remove{
   box-sizing: border-box;
-  display: inline;
+  display: inline-flex;
   position: relative;
   margin-left: 5px;
   margin-right: 5px;
+  transform: translateY(1px)
+  /* flex:1; */
+  /* flex: 1 0 1em */
+  /* flex: auto; */
+
 }
 
 .Cart-Feather{
