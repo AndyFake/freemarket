@@ -125,7 +125,8 @@
 .Cart-Feather{
   position: relative;
   user-select: none;
-  transform: translateY(30%);
+  transform: translateY(20%);
+  stroke-width: .5px;
 }
 /* div{
   overflow-wrap: break-word;

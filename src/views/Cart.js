@@ -14,7 +14,7 @@ const Cart = () =>
       </div>
     }
     {State.cart.map((item,i) => 
-      <div className='Cart-Line'>
+      <div className='Cart-Line' onClick={(e)=>e.preventDefault()}>
         <div 
           className='Cart-Remove' 
           onClick={()=>{State.RFC(i)}}
@@ -31,9 +31,12 @@ const Cart = () =>
         </div>
         <div className='Cart-Quantity-Widget'>
           <div 
-            onClick={()=>{State.modCart(i,item.quantity+1)}}
+            onClick={(e)=>{
+              e.preventDefault()
+              State.modCart(i,item.quantity+1)
+            }}
           >
-          <PlusSquare className='Cart-Feather'/>
+          <PlusSquare size={29} className='Cart-Feather'/>
           </div>
           <div className='Cart-Item-Quantity'>
             <input
@@ -45,9 +48,12 @@ const Cart = () =>
             />
           </div>
           <div 
-            onClick={()=>{item.quantity>1&&State.modCart(i,item.quantity-1)}}
+            onClick={(e)=>{
+              e.preventDefault()
+              item.quantity>1&&State.modCart(i,item.quantity-1)
+            }}
           >
-            <MinusSquare className='Cart-Feather'/>
+            <MinusSquare size={29} className='Cart-Feather'/>
           </div>
         </div>
         <div className='Cart-Item-Price'>${item.price*item.quantity}</div>
