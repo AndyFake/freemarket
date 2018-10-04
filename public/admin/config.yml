@@ -19,7 +19,7 @@ collections: # A list of collections the CMS should be able to edit
         label: "Contact Page"
         name: "contact-page"
         fields:
-          - {label: Show, name: show, widget: boolean, default: false}
+          - {label: Show, name: show, widget: boolean, default: true}
           - {label: Title, name: title, widget: string}
           - {label: Featured Image, name: featuredImage, widget: image}
           - {label: Subtitle, name: subtitle, widget: markdown}

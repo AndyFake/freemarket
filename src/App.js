@@ -71,6 +71,7 @@ class App extends Component {
     const postCategories = this.getDocuments('postCategories').filter(
       category => categoriesFromPosts.indexOf(category.name.toLowerCase()) >= 0
     )
+    const storeIsHome = this.getDocument('pages','home').show
 
     return (
       <Router>
@@ -108,20 +109,20 @@ class App extends Component {
             <RouteWithMeta
               path='/'
               exact
-              component={this.getDocument('pages','home').show ? Home : Store}
+              component={storeIsHome ? Home : Store}
               description={siteDescription}
-              fields={this.getDocument('pages','home').show ? 
+              fields={storeIsHome ? 
                         this.getDocument('pages','home') :
-                        data
+                        this.getDocuments('products')
                       }
-              title={'Store'}            
+              title={storeIsHome?'Home':'Store'}            
             />
             <RouteWithMeta
               path='/store/'
               exact
               component={Store}
               description={siteDescription}
-              fields={data}
+              fields={this.getDocuments('products')}
               title={'Store'}
             />
             <RouteWithMeta
@@ -129,7 +130,6 @@ class App extends Component {
               exact
               component={Cart}
               description={siteDescription}
-              fields={this.getDocument('pages', 'home')}
               title={'Cart'}
             />
             <RouteWithMeta
@@ -137,7 +137,6 @@ class App extends Component {
               exact
               component={Checkout}
               description={siteDescription}
-              fields={this.getDocument('pages', 'home')}
               title={'Checkout'}
             />
             {this.getDocument('pages', 'about').show&&
