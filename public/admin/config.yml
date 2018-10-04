@@ -19,6 +19,7 @@ collections: # A list of collections the CMS should be able to edit
         label: "Contact Page"
         name: "contact-page"
         fields:
+          - {label: Show, name: show, widget: boolean, default: false}
           - {label: Title, name: title, widget: string}
           - {label: Featured Image, name: featuredImage, widget: image}
           - {label: Subtitle, name: subtitle, widget: markdown}
@@ -40,6 +41,7 @@ collections: # A list of collections the CMS should be able to edit
         label: "Blog Page"
         name: "blog-page"
         fields:
+          - {label: Show, name: show, widget: boolean}
           - {label: Title, name: title, widget: string}
           - {label: Featured Image, name: featuredImage, widget: image}
           - {label: Subtitle, name: subtitle, widget: markdown}
@@ -57,6 +59,7 @@ collections: # A list of collections the CMS should be able to edit
         label: "About Page"
         name: "about-page"
         fields:
+          - {label: Show, name: show, widget: boolean}
           - {label: Title, name: title, widget: string}
           - {label: Featured Image, name: featuredImage, widget: image}
           - {label: Subtitle, name: subtitle, widget: markdown}
@@ -76,6 +79,7 @@ collections: # A list of collections the CMS should be able to edit
         label: "Home Page"
         name: "home-page"
         fields:
+          - {label: Show, name: show, widget: boolean}
           - {label: Title, name: title, widget: string}
           - {label: Featured Image, name: featuredImage, widget: image}
           - {label: Subtitle, name: subtitle, widget: markdown}
