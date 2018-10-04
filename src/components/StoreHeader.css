@@ -6,7 +6,7 @@
   line-height: 50px;
   background-color: white;
   border-bottom: 1px solid gray;
-  z-index: 100
+  z-index: 10
 }
 .Header-Spacer{
   width:100%;

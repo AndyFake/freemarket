@@ -1,16 +1,21 @@
 .Menu-Container{
-  position: relatve;
-  border-radius: 3px;
-  top:15px;
-  left:15px;
-  width:35px;
-  height:30 px;
-  text-align: center;
-  background-color: white;
-  box-sizing: border-box;
-  z-index: 100;
-  cursor: pointer;
+  position: absolute;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:100vw;
+  height:100vh;
+  background-color:  #3d3838;
+  z-index: 50;
+  cursor: auto;
+}
 
+.Menu-Link{
+  display:flex;
+  flex:1;
+  background-color: #3d3838;
+  
 }
 
 .Menu-Feather{
@@ -53,11 +58,12 @@
 }
 
 .Menu-Text{
-  position: relative;
-  /* top:10%; */
+  /* position: relative; */
   user-select: none;
-  display: inline;
-  color:black;
-  padding:5px;
-  line-height: 30px;
+  /* display: inline; */
+  background-color:  #3d3838;
+  color: white;
+  /* line-height: 30px; */
+  font-size: large;
+  letter-spacing: 3px;
 }

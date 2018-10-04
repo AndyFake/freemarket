@@ -22,7 +22,14 @@ class Gallery extends React.Component{
               <ChevronLeft className='Gallery-Feather'/>
             </div>
           </div>
-          {imageList.length>0 && <img className='Gallery-Image' src={imageList[view].image}/>}
+          {imageList.length>0 && 
+            imageList.map((_,i)=>
+              <img 
+                style={{display:i==view?'inline':'none'}} 
+                className='Gallery-Image' 
+                src={imageList[i].image}/>
+            )
+          }
           <div className='Gallery-Right-Nav' onClick={this.handleClickRight}>
             <div
                 className='Gallery-Right-Nav-Icon'
@@ -34,8 +41,10 @@ class Gallery extends React.Component{
         </div>
         <div>
           <div style={{height:'13px'}}>
-          {[...imageList].map((_,i)=>
-            <div className='Gallery-Select-Bullets' style={{fontSize:i==view?'10px':'8px' ,opacity:i!=view?0.4:1}}>
+          {imageList.map((_,i)=>
+            <div 
+              className='Gallery-Select-Bullets' 
+              style={{fontSize:i==view?'10px':'8px' ,opacity:i!=view?0.4:1}}>
               {' O '}
             </div>
           )}
@@ -44,7 +53,14 @@ class Gallery extends React.Component{
       </div>
     )
   }
-  handleClickLeft=()=> this.setState(s=>({view: s.view==0 ? 0 : s.view-1}))
-  handleClickRight=()=>this.setState(s=>({view: s.view>=this.props.imageList.length-1 ? this.props.imageList.length-1 : s.view+1}))
+  handleClickLeft=()=> 
+    this.setState(s=>({
+      view: s.view==0 ? 0 : s.view-1
+    }))
+  handleClickRight=()=>
+    this.setState(s=>({
+      view: s.view>=this.props.imageList.length-1 ? this.props.imageList.length-1 : s.view+1
+    }))
+
 }
 export default Gallery
