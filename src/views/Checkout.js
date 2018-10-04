@@ -71,9 +71,8 @@ const submit = (data) => {
     .catch(error => alert(error));
 };
 
-const Checkout = 
-  ()=>
-    <div className='checkout-container'>
+const Checkout = () =>
+  <div className='checkout-container'>
     <p>Please enter your shipping info:</p>
     <form name='purchase'>
       {formfields.map((field,index)=>{
