@@ -33,7 +33,11 @@ const Cart = () =>
           <div 
             onClick={(e)=>{
               e.preventDefault()
-              State.modCart(i,item.quantity+1)
+              if(item.stock < item.quantity+1){
+                window.alert('sorry we only have ${item.stock} in stock ')
+              }else{
+                State.modCart(i,item.quantity+1)
+              }
             }}
           >
           <PlusSquare size={29} className='Cart-Feather'/>
