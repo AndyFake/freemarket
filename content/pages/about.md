@@ -1,5 +1,4 @@
 ---
-show: true
 title: About page title
 featuredImage: /images/uploads/tim-marshall-155597.jpg
 subtitle: subtitle
