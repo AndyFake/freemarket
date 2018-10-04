@@ -3,7 +3,7 @@ import Link from './Link'
 import './Menu.css'
 import { Menu,XSquare } from 'react-feather'
 
-const pages = ['store','blog','about','contact']
+// const pages = ['store','blog','about','contact']
 
 class MenuNav extends React.Component{
   constructor(){
@@ -15,6 +15,7 @@ class MenuNav extends React.Component{
   }
   render(){
     const {open,selection} = this.state
+    const {links} = this.props
     return(
       <Fragment>
         <div onClick={(e)=>{e.preventDefault();this.setState(s=>({open:!s.open}))}}>
@@ -23,8 +24,8 @@ class MenuNav extends React.Component{
         </div>
         {open &&
           <div className='Menu-Container'>
-          {pages.map((page,i)=>
-            <Link to={page}>
+          {links.map((page,i)=>
+            <Link to={page=='home'?'/':page}>
               <div 
                 className='Menu-Link' 
                 // className='Menu-Dropdown' 

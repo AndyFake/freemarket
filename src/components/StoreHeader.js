@@ -6,12 +6,11 @@ import {ShoppingCart} from 'react-feather'
 import State from '../views/state'
 import { observer } from 'mobx-react'
 
-const StoreHeader = ({title}) =>
+const StoreHeader = ({title,links}) =>
   <Fragment>
     <div className='Store-Header'>
-      <div className ='Menu-Box'>
-        <MenuNav 
-      />
+      <div className='Menu-Box'>
+        <MenuNav links={links} />
       </div>
       {title}
         <Link to='/cart' className='Cart-Box'>

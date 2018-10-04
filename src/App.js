@@ -8,6 +8,7 @@ import ProductPage from './views/ProductPage'
 import Checkout from './views/Checkout'
 import StoreHeader from './components/StoreHeader'
 
+import Home from './views/Home'
 import About from './views/About'
 import Blog from './views/Blog'
 import SinglePost from './views/SinglePost'
@@ -45,7 +46,15 @@ class App extends Component {
 
   getDocuments = collection => this.state.data[collection] || []
 
+  getPages = () => {
+    const shown = [...this.state.data.pages].filter(page=>page.show)
+    console.log(shown)
+    return shown
+  }
+
   render () {
+    // console.log(this.state.data)
+    // this.getPages()
     const globalSettings = this.getDocument('settings', 'global')
     const {
       siteTitle,
@@ -88,14 +97,23 @@ class App extends Component {
           />
           <StoreHeader 
             title={siteTitle}
+            links={
+              [
+                'store',
+                ...data.pages.filter(p=>p.show).map(p=>p.name)
+              ]
+            }
           />
           <Switch>
             <RouteWithMeta
               path='/'
               exact
-              component={Store}
+              component={this.getDocument('pages','home').show ? Home : Store}
               description={siteDescription}
-              fields={data}
+              fields={this.getDocument('pages','home').show ? 
+                        this.getDocument('pages','home') :
+                        data
+                      }
               title={'Store'}            
             />
             <RouteWithMeta
@@ -122,12 +140,15 @@ class App extends Component {
               fields={this.getDocument('pages', 'home')}
               title={'Checkout'}
             />
+            {this.getDocument('pages', 'about').show&&
             <RouteWithMeta
               path='/about/'
               exact
               component={About}
               fields={this.getDocument('pages', 'about')}
             />
+            }
+            {this.getDocument('pages', 'contact').show&&
             <RouteWithMeta
               path='/contact/'
               exact
@@ -135,6 +156,8 @@ class App extends Component {
               fields={this.getDocument('pages', 'contact')}
               siteTitle={siteTitle}
             />
+            }
+            {this.getDocument('pages', 'blog').show&&
             <RouteWithMeta
               path='/blog/'
               exact
@@ -143,8 +166,9 @@ class App extends Component {
               posts={posts}
               postCategories={postCategories}
             />
-
-            {posts.map((post, index) => {
+            }
+            {this.getDocument('pages', 'blog').show&&
+            posts.map((post, index) => {
               const path = slugify(`/blog/${post.title}`)
               const nextPost = posts[index - 1]
               const prevPost = posts[index + 1]
