@@ -1,5 +1,7 @@
 import React from 'react'
 
+import {TestWidgetControl,TestWidgetPreview} from '../src/widgets/TestWidget'
+
 import '../src/globalStyles.css'
 import data from '../src/data.json'
 import Home from '../src/views/Home'
@@ -44,6 +46,11 @@ CMS.registerPreviewTemplate('posts', ({ entry }) => (
 CMS.registerPreviewTemplate('products', ({ entry }) => (
   <ProductPageTemplate fields={entry.toJS().data} />
 ))
+CMS.registerWidget(
+  "stock",      // Widget name
+  TestWidgetControl, // Editor component
+  TestWidgetPreview  // Preview component (this is optional)
+);
 
 // Return to home when user logging out
 window.netlifyIdentity.on('logout', function () {
