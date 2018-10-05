@@ -17,9 +17,9 @@ class State {
   }
   getTotalWithShipping=()=>{
     const total= this.getTotal()+this.shippingCost.get()
-    return total
+    return total 
   }
-  getCart=()=>this.cart
+  getCart=()=>this.cart.slice()
   setSelection=(x)=>this.selection=x
   setShippingCost=x=>this.shippingCost.set(x)
 }
