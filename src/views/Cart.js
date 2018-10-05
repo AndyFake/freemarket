@@ -73,9 +73,14 @@ const Cart = () =>
           response.json().then(data => {
             const context = JSON.parse(data.context)
             const {url,token} = context.clientContext.identity
-
-
             console.log(url + ' ' + token)
+            fetch(url,{
+              method:"POST",
+              token:token
+            }).then(response => {
+              response.json().then(data => {
+                console.log(JSON.stringify(data))
+              })})
             // console.log(data.contextString)
             // if(data.status=='succeeded'){
             //   alert(`payment was successful`);
