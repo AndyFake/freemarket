@@ -5,6 +5,8 @@ import State from './state'
 import { observer } from 'mobx-react';
 import {PlusSquare, MinusSquare, XSquare} from 'react-feather'
 
+console.log(process.env.GITHUB_USERNAME)
+
 const Cart = () =>
   <div className='Cart-Container'>
     <Link to='/store'><div className='Cart-Back'>continue shopping</div></Link>
