@@ -103,7 +103,7 @@ const stockTest = () => {
 
 const Checkout = () => {
   const stockChanges = State.getCart()
-// console.log('changes-> '+JSON.stringify(stockChanges))
+  console.log('changes-> '+JSON.stringify(stockChanges))
 
   // console.log('state : ' + JSON.stringify(State.getCart()))
   return(
