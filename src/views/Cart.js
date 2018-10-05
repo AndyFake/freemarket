@@ -76,7 +76,9 @@ const Cart = () =>
             console.log(url + ' ' + token)
             fetch(url,{
               method:"POST",
-              token:token
+              headers: {
+                'Authorization': `Bearer ${token}`
+              } 
             }).then(response => {
               response.json().then(data => {
                 console.log(JSON.stringify(data))
