@@ -1,2 +1,2 @@
 productStock: 
-  - productType: testProduct, currentStock: 10
+  - {productType: testProduct, currentStock: 10}
