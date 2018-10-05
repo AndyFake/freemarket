@@ -93,7 +93,7 @@ const submit = (data) => {
     .catch(error => alert(error));
 };
 
-const stockTest = () => {
+const stockTest = (stockChanges) => {
   console.log('clickedWith -> '+JSON.stringify(stockChanges))
   fetch("/.netlify/functions/stock", {
     method: "POST",
@@ -139,7 +139,7 @@ const Checkout = () => {
       <p className="Checkout-Text">{"total with shipping : $" + (State.getTotalWithShipping()).toFixed(2)}</p>
       <p className="Checkout-Text">{"total with taxes    : $" + ((State.getTotalWithShipping())*1.15).toFixed(2)}</p>
     <StripeCheckout token={onToken} stripeKey={PUBLIC_KEY}/>  
-    <div onClick={()=>stockTest()} >stock</div>    
+    <div onClick={()=>stockTest(stockChanges)} >stock</div>    
   </div>
 )}
 export default observer(Checkout)
