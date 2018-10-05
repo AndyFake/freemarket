@@ -103,7 +103,9 @@ const submit = (data) => {
     .catch(error => alert(error));
 };
 
-const Checkout = () =>
+const Checkout = () => {
+  console.log('state : '+State.cart)
+  return(
   <div className='checkout-container'>
     <p>Please enter your shipping info:</p>
     <form name='purchase'>
@@ -137,5 +139,5 @@ const Checkout = () =>
       <p className="Checkout-Text">{"total with taxes    : $" + ((State.getTotalWithShipping())*1.15).toFixed(2)}</p>
     <StripeCheckout token={onToken} stripeKey={PUBLIC_KEY}/>      
   </div>
-
+)}
 export default observer(Checkout)
