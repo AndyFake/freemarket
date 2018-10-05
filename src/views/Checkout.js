@@ -171,26 +171,26 @@ const main = () =>{
 }
 
 const writeFile = (SHA,URL) => {
-  fetch("https://api.github.com/repos/marchingband/freemarket/contents/stock.json",
-   {
-    method:"PUT",
-    auth: {
-          "user": GITHUB_USERNAME,
-          "pass": GITHUB_PASSWORD,
+  fetch(URL,
+    {
+      method:"PUT",
+      auth: {
+            "user": GITHUB_USERNAME,
+            "pass": GITHUB_PASSWORD,
       },
-    headers: {
-      "User-Agent": "request"
-    },
-    body:JSON.stringify({
-      "message":"update_stock",
-      "content":"functionWorked",
-      "sha":SHA,
-      "committer": {
-        "name":'andy',
-        "email":'andy@fake.com'
-      }
-    })
-  }
+      headers: {
+        "User-Agent": "request"
+      },
+      body:JSON.stringify({
+        "message":"update_stock",
+        "content":"functionWorked",
+        "sha":SHA,
+        "committer": {
+          "name":'andy',
+          "email":'andy@fake.com'
+        }
+      })
+    }
   )
 }
 
