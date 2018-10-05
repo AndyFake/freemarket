@@ -78,17 +78,29 @@ function setStock(newStock,sha){
 
 function processChanges(stock,changes){
   var newStock = [...stock]
-  for(let item of Object.keys(changes)){
-    newStock = newStock.map(entry=>{
-      if(entry.productType==item){
-        return {productType:item,currentStock:entry.currentStock+changes[item]}
+  changes.forEach(change=>{
+    newStock=newStock.map(item=>{
+      if(item.productType==change.title){
+        return {
+          productType:item.productStock,
+          currentStock:item.currentStock-change.quantity
+        }
       }else{
         return item
       }
     })
-    // newStock[item]+=changes[item]
-  }
+  })
   return newStock
+  // for(let item of Object.keys(changes)){
+  //   newStock = newStock.map(entry=>{
+  //     if(entry.productType==item){
+  //       return {productType:item,currentStock:entry.currentStock+changes[item]}
+  //     }else{
+  //       return item
+  //     }
+  //   })
+    // newStock[item]+=changes[item]
+  // }
 }
 
 // getStock({"x":1,"y":1,"z":1})
