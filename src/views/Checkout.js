@@ -7,9 +7,11 @@ import Select from '../components/Select.js'
 import State from './state'
 import './Checkout.css'
 
-import {PUBLIC_KEY} from '../PUBLIC_KEY.js'
+import {PUBLIC_KEY,GITHUB_USERNAME} from '../PUBLIC_KEY.js'
 // const PUBLIC_KEY = 1234
 // console.log('public key: ' + PUBLIC_KEY)
+
+console.log(GITHUB_USERNAME)
 
 const uspsShippingCost = 10
 const upsShippingCost  = 15
