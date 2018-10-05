@@ -41,7 +41,7 @@ function getStock(changes){
 
 function setStock(newStock,sha){
 
-  var newJSON = new Buffer(JSON.stringify(newStock)).toString("base64");
+  var newJSON = new Buffer(JSON.stringify({productStock:newStock})).toString("base64");
 
   var options = {
     url: `https://api.github.com/repos/${UN}/freemarket/content/settings/contents/stock.json`,
