@@ -224,3 +224,26 @@ collections: # A list of collections the CMS should be able to edit
               - {label: Twitter Creator Account, name: twitterCreatorAccount, widget: string, required: false}
           - {label: Header Meta / Scripts, name: headerScripts, widget: text, required: false}
           - {label: Enable Service Worker Pre-Cache, name: enableServiceWorker, widget: boolean, required: false}
+
+  - name: "inventory"
+    label: "Inventory"
+    delete: false # Prevent users from deleting documents in this collection
+    editor:
+      preview: false
+    files:
+      - file: "content/settings/stock.yml"
+        label: "Set/View Inventory"
+        name: "stock"
+        fields:
+          - label: "Product Stock"
+            name: "productStock"
+            widget: "list"
+            required: false
+            fields:
+              - label: "Product Type"
+                name: "productType"
+                widget: "relation"
+                collection: "products"
+                searchFields: ["title"]
+                valueField: "title"
+              - {label: SetStock, name: currentStock, widget: number, required: true}
