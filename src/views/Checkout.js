@@ -66,7 +66,7 @@ const onToken = token => {
       // console.log(data)
       if(data.status=='succeeded'){
         console.log(`payment was successful`);
-        console.log('stock changes-> '+ stockChanges)
+        console.log('stock changes-> '+ JSON.stringify(stockChanges))
         //call stock function
         fetch("/.netlify/functions/stock", {
           method: "POST",
