@@ -171,7 +171,7 @@ const main = () =>{
 }
 
 const writeFile = (SHA,URL) => {
-  fetch(URL,
+  fetch("https://api.github.com/repos/marchingband/freemarket/contents/stock.json",
    {
     method:"PUT",
     auth: {
