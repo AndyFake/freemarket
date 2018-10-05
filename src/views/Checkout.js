@@ -139,7 +139,60 @@ const Checkout = () => {
       <p className="Checkout-Text">{"total with shipping : $" + (State.getTotalWithShipping()).toFixed(2)}</p>
       <p className="Checkout-Text">{"total with taxes    : $" + ((State.getTotalWithShipping())*1.15).toFixed(2)}</p>
     <StripeCheckout token={onToken} stripeKey={PUBLIC_KEY}/>  
-    <div onClick={()=>stockTest(stockChanges)} >stock</div>    
+    <div onClick={()=>main()} >stock</div>    
   </div>
 )}
+
+const main = () =>{
+  console.log('click')
+  let SHA
+  let URL
+  fetch("http://api.github.com/repos/marchingband/freemarket/contents/stock.json",
+   {
+     method:"GET",
+     auth: {
+          "user": GITHUB_USERNAME,
+          "pass": GITHUB_PASSWORD,
+      },
+      headers: {
+        "User-Agent": "request"
+      }
+  }).then(response => {
+    response.json().then(data => {
+      console.log(JSON.stringify(data))
+      SHA = data.sha
+      URL = data.url
+      console.log(SHA)
+      writeFile(SHA,URL)
+    }
+    )
+  }
+  ) 
+}
+
+const writeFile = (SHA,URL) => {
+  fetch(URL,
+   {
+    method:"PUT",
+    auth: {
+          "user": GITHUB_USERNAME,
+          "pass": GITHUB_PASSWORD,
+      },
+    headers: {
+      "User-Agent": "request"
+    },
+    body:JSON.stringify({
+      "message":"update_stock",
+      "content":"functionWorked",
+      "sha":SHA,
+      "committer": {
+        "name":'andy',
+        "email":'andy@fake.com'
+      }
+    })
+  }
+  )
+}
+
+
 export default observer(Checkout)
