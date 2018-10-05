@@ -7,16 +7,29 @@ import Select from '../components/Select.js'
 import State from './state'
 import './Checkout.css'
 
-import {PUBLIC_KEY,GITHUB_USERNAME} from '../PUBLIC_KEY.js'
+import {PUBLIC_KEY,GITHUB_USERNAME,GITHUB_PASSWORD} from '../PUBLIC_KEY.js'
 // const PUBLIC_KEY = 1234
 // console.log('public key: ' + PUBLIC_KEY)
 
-console.log(GITHUB_USERNAME)
 
 const uspsShippingCost = 10
 const upsShippingCost  = 15
 const fedexShippingCost= 20
 const formfields = ['Name','Street Address','City', 'State/Province','ZIP code / Postal Code', 'Country']
+
+const stockChanges = state.cart.map(item=>({
+  title:title,
+  quantity:quantity
+}))
+
+
+const editStock=()=>{
+  const changes = state.cart.map(item=>({
+    title:title,
+    quantity:quantity
+  }))
+
+}
 
 const encodeData=token=>{
   const relevantFieldsFromItem = ['title','quantity','price','options']
@@ -52,7 +65,18 @@ const onToken = token => {
     response.json().then(data => {
       // console.log(data)
       if(data.status=='succeeded'){
-        alert(`payment was successful`);
+        console.log(`payment was successful`);
+        //call stock function
+        fetch("/.netlify/functions/stock", {
+          method: "POST",
+          body: JSON.stringify(stockChanges)
+        }).then(response => {
+          response.json().then(data => {
+            console.log('updated stock')
+          });
+        })
+
+        editStock()
         submit(encodeData(token))
       }
     });

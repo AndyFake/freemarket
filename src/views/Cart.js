@@ -5,8 +5,6 @@ import State from './state'
 import { observer } from 'mobx-react';
 import {PlusSquare, MinusSquare, XSquare} from 'react-feather'
 
-console.log(process.env.GITHUB_USERNAME)
-
 const Cart = () =>
   <div className='Cart-Container'>
     <Link to='/store'><div className='Cart-Back'>continue shopping</div></Link>
@@ -65,7 +63,7 @@ const Cart = () =>
         <div className='Cart-Item-Price'>${item.price*item.quantity}</div>
       </div>
     )} 
-    <div 
+    {/* <div 
       className='Cart-Footer-Total'
       onClick={()=>{
         fetch("/.netlify/functions/stock", {
@@ -73,31 +71,12 @@ const Cart = () =>
           body: JSON.stringify({"x":10,"y":100,"z":1000})
         }).then(response => {
           response.json().then(data => {
-            const context = JSON.parse(data.context)
-            const {url,token} = context.clientContext.identity
-            console.log(url + ' ' + token)
-            fetch(url,{
-              method:"GET",
-              headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-              } 
-            }).then(response => {
-              response.json().then(data => {
-                console.log(JSON.stringify(data))
-              })})
-            // console.log(data.contextString)
-            // if(data.status=='succeeded'){
-            //   alert(`payment was successful`);
-            //   submit(encodeData(token))
-            // }
+            console.log('updated stock')
           });
         })
-        console.log('click')
       }}  
     >test me where am i
-    </div>
+    </div> */}
     <div className='Cart-Footer'>
       <div className='Cart-Footer-Total'>
         TOTAL : ${State.getTotal()}

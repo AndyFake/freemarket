@@ -11,19 +11,12 @@ exports.handler = function(event, context, callback) {
     });
   }
   const data = JSON.parse(event.body);
-  const {changes} = data
-  // getStock(data)
-  callback(
-    null,
-    {
-      body: JSON.stringify({context:JSON.stringify(context)})
-    }
-  )
+  getStock(data)
 }
 
 function getStock(changes){
   var getOptions = {
-      url: 'http://api.github.com/repos/marchingband/freemarket/contents/test.json',
+      url: `http://api.github.com/repos/${UN}/freemarket/content/settings/contents/stock.json`,
       auth: {
           "user": UN,
           "pass": SK,
@@ -51,7 +44,7 @@ function setStock(newStock,sha){
   var newJSON = new Buffer(JSON.stringify(newStock)).toString("base64");
 
   var options = {
-    url: 'https://api.github.com/repos/marchingband/freemarket/contents/test.json',
+    url: `https://api.github.com/repos/${UN}/freemarket/content/products/contents/${filename}.md`,
     auth: {
         "user": UN,
         "pass": SK
