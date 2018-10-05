@@ -44,7 +44,7 @@ function setStock(newStock,sha){
   var newJSON = new Buffer(JSON.stringify(newStock)).toString("base64");
 
   var options = {
-    url: `https://api.github.com/repos/${UN}/freemarket/content/products/contents/${filename}.md`,
+    url: `https://api.github.com/repos/${UN}/freemarket/content/settings/contents/stock.json`,
     auth: {
         "user": UN,
         "pass": SK
