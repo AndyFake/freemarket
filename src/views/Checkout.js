@@ -17,19 +17,19 @@ const upsShippingCost  = 15
 const fedexShippingCost= 20
 const formfields = ['Name','Street Address','City', 'State/Province','ZIP code / Postal Code', 'Country']
 
-const stockChanges = state.cart.map(item=>({
-  title:title,
-  quantity:quantity
+const stockChanges = State.cart.map(item=>({
+  title:item.title,
+  quantity:item.quantity
 }))
 
 
-const editStock=()=>{
-  const changes = state.cart.map(item=>({
-    title:title,
-    quantity:quantity
-  }))
+// const editStock=()=>{
+//   const changes = State.cart.map(item=>({
+//     title:title,
+//     quantity:quantity
+//   }))
 
-}
+// }
 
 const encodeData=token=>{
   const relevantFieldsFromItem = ['title','quantity','price','options']
