@@ -34,7 +34,7 @@ const Cart = () =>
             onClick={(e)=>{
               e.preventDefault()
               if(item.stock < item.quantity+1){
-                window.alert('sorry we only have ${item.stock} in stock ')
+                window.alert(`sorry we only have ${item.stock} in stock `)
               }else{
                 State.modCart(i,item.quantity+1)
               }
@@ -69,6 +69,14 @@ const Cart = () =>
         fetch("/.netlify/functions/stock", {
           method: "POST",
           body: JSON.stringify({"x":10,"y":100,"z":1000})
+        }).then(response => {
+          response.json().then(data => {
+            console.log(data)
+            // if(data.status=='succeeded'){
+            //   alert(`payment was successful`);
+            //   submit(encodeData(token))
+            // }
+          });
         })
         console.log('click')
       }}  
