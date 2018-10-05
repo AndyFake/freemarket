@@ -19,6 +19,7 @@ class State {
     const total= this.getTotal()+this.shippingCost.get()
     return total
   }
+  getCart=()=>this.cart
   setSelection=(x)=>this.selection=x
   setShippingCost=x=>this.shippingCost.set(x)
 }

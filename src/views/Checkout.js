@@ -17,10 +17,10 @@ const upsShippingCost  = 15
 const fedexShippingCost= 20
 const formfields = ['Name','Street Address','City', 'State/Province','ZIP code / Postal Code', 'Country']
 
-console.log('state : '+State.cart)
+console.log('state : '+JSON.stringify(State.getCart()))
 
 var stockChanges = {}
-State.cart.forEach(item=>{
+State.getCart().forEach(item=>{
   stockChanges[item.title]=item.quantity
 })
 
