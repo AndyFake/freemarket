@@ -79,7 +79,7 @@ function setStock(newStock,sha){
 function processChanges(stock,changes){
   var newStock = stock
   for(let item of Object.keys(changes)){
-    stock[item]+=changes[item]
+    newStock[item]+=changes[item]
   }
   return newStock
 }
