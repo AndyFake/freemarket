@@ -30,7 +30,7 @@ function getStock(changes){
     if (!error && response.statusCode == 200) {
         const data = JSON.parse(body)
         var buf = new Buffer(data.content, 'base64').toString();
-        var stock = (JSON.parse(buf))
+        var stock = (JSON.parse(buf)).productStock
         var sha = data.sha
         var newStock = processChanges(stock,changes)
         setStock(newStock,sha)
@@ -77,9 +77,16 @@ function setStock(newStock,sha){
 }
 
 function processChanges(stock,changes){
-  var newStock = stock
+  var newStock = [...stock]
   for(let item of Object.keys(changes)){
-    newStock[item]+=changes[item]
+    newStock = newStock.map(entry=>{
+      if(entry.productType==item){
+        return {productType:item,currentStock:entry.currentStock+changes[item]}
+      }else{
+        return item
+      }
+    })
+    // newStock[item]+=changes[item]
   }
   return newStock
 }
