@@ -72,7 +72,7 @@ const Cart = () =>
         }).then(response => {
           response.json().then(data => {
             console.log(data.context)
-            console.log(data.contextString)
+            // console.log(data.contextString)
             // if(data.status=='succeeded'){
             //   alert(`payment was successful`);
             //   submit(encodeData(token))

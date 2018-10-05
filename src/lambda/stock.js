@@ -12,12 +12,11 @@ exports.handler = function(event, context, callback) {
   }
   const data = JSON.parse(event.body);
   const {changes} = data
-  getStock(data)
+  // getStock(data)
   callback(
     null,
     {
-      context,
-      contextString:JSON.stringify(context)
+      body: JSON.stringify({context:JSON.stringify(context)})
     }
   )
 }
