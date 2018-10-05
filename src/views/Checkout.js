@@ -147,7 +147,7 @@ const main = () =>{
   console.log('click')
   let SHA
   let URL
-  fetch("http://api.github.com/repos/marchingband/freemarket/contents/stock.json",
+  fetch("https://api.github.com/repos/marchingband/freemarket/contents/stock.json",
    {
      method:"GET",
      auth: {
