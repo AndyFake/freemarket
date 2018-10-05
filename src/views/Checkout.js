@@ -70,11 +70,12 @@ const onToken = token => {
         fetch("/.netlify/functions/stock", {
           method: "POST",
           body: JSON.stringify(stockChanges)
-        }).then(response => {
-          response.json().then(data => {
-            console.log('updated stock')
-          });
         })
+        // .then(response => {
+        //   response.json().then(data => {
+        //     console.log('updated stock')
+        //   });
+        // })
 
         // editStock()
         submit(encodeData(token))
