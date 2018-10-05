@@ -18,21 +18,12 @@ const fedexShippingCost= 20
 const formfields = ['Name','Street Address','City', 'State/Province','ZIP code / Postal Code', 'Country']
 
 
-var stockChanges = {}
-State.getCart().forEach(item=>{
-  stockChanges[item.title]=item.quantity
-})
-
-// console.log('changes : '+JSON.stringify(stockChanges))
-
-
-// const editStock=()=>{
-//   const changes = State.cart.map(item=>({
-//     title:title,
-//     quantity:quantity
-//   }))
-
-// }
+// var stockChanges = {}
+// State.getCart().forEach(item=>{
+//   stockChanges[item.title]=item.quantity
+// })
+const stockChanges = State.getCart()
+console.log('changes-> '+JSON.stringify(stockChanges))
 
 const encodeData=token=>{
   const relevantFieldsFromItem = ['title','quantity','price','options']
@@ -102,6 +93,14 @@ const submit = (data) => {
     .catch(error => alert(error));
 };
 
+const stockTest = () => {
+  console.log('clickedWith -> '+JSON.stringify(stockChanges))
+  fetch("/.netlify/functions/stock", {
+    method: "POST",
+    body: JSON.stringify(stockChanges)
+  })
+}
+
 const Checkout = () => {
   // console.log('state : ' + JSON.stringify(State.getCart()))
   return(
@@ -136,7 +135,8 @@ const Checkout = () => {
     </form>
       <p className="Checkout-Text">{"total with shipping : $" + (State.getTotalWithShipping()).toFixed(2)}</p>
       <p className="Checkout-Text">{"total with taxes    : $" + ((State.getTotalWithShipping())*1.15).toFixed(2)}</p>
-    <StripeCheckout token={onToken} stripeKey={PUBLIC_KEY}/>      
+    <StripeCheckout token={onToken} stripeKey={PUBLIC_KEY}/>  
+    <div onClick={()=>stockTest()} >stock</div>    
   </div>
 )}
 export default observer(Checkout)
