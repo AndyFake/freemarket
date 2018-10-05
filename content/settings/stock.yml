@@ -1,2 +1,7 @@
-productStock: 
-  - {productType: testProduct, currentStock: 10}
+productStock:
+  - currentStock: 10
+    productType: some junk4
+  - currentStock: '5'
+    productType: a weird fish
+  - currentStock: '20'
+    productType: some lights
