@@ -16,6 +16,7 @@ export class TestWidgetControl extends Component {
   }
   render() {
     const {queryHits} = this.props
+    console.log(JSON.stringify(queryHits))
     return (
       <div>
         {queryHits.get(this.controlID).map(hit=><div>{hit.data.title}</div>)}

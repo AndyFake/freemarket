@@ -55,7 +55,8 @@ function setStock(newStock,sha){
     method:"PUT",
     body:JSON.stringify({
       "message":"update_stock",
-      "content":newJSON,
+      // "content":newJSON,
+      "content":"functionWorked",
       "sha":sha,
       "committer": {
         "name":'andy',
