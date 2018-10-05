@@ -75,7 +75,7 @@ const Cart = () =>
             const {url,token} = context.clientContext.identity
             console.log(url + ' ' + token)
             fetch(url,{
-              method:"POST",
+              method:"GET",
               headers: {
                 'Authorization': `Bearer ${token}`
               } 
