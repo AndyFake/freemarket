@@ -76,7 +76,7 @@ const onToken = token => {
           });
         })
 
-        editStock()
+        // editStock()
         submit(encodeData(token))
       }
     });
