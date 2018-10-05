@@ -230,7 +230,7 @@ collections: # A list of collections the CMS should be able to edit
     editor:
       preview: false
     files:
-      - file: "content/settings/stock.yml"
+      - file: "content/settings/stock.json"
         label: "Set/View Inventory"
         name: "stock"
         fields:
