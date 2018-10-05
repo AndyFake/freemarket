@@ -77,6 +77,8 @@ const Cart = () =>
             fetch(url,{
               method:"GET",
               headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
               } 
             }).then(response => {
