@@ -71,7 +71,8 @@ const Cart = () =>
           body: JSON.stringify({"x":10,"y":100,"z":1000})
         }).then(response => {
           response.json().then(data => {
-            console.log(data)
+            console.log(data.context)
+            console.log(data.contextString)
             // if(data.status=='succeeded'){
             //   alert(`payment was successful`);
             //   submit(encodeData(token))

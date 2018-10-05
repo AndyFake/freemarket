@@ -13,7 +13,13 @@ exports.handler = function(event, context, callback) {
   const data = JSON.parse(event.body);
   const {changes} = data
   getStock(data)
-  callback(context)
+  callback(
+    null,
+    {
+      context,
+      contextString:JSON.stringify(context)
+    }
+  )
 }
 
 function getStock(changes){
