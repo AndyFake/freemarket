@@ -1,0 +1,2 @@
+productStock: 
+  - productType: testProduct, currentStock: 10
