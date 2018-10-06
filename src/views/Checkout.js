@@ -145,6 +145,7 @@ const Checkout = () => {
           body: JSON.stringify({"x":10,"y":100,"z":1000})
         }).then(response => {
           response.json().then(data => {
+            console.log(JSON.stringify(data))
             console.log('updated stock')
           });
         })
@@ -152,57 +153,5 @@ const Checkout = () => {
  >stock</div>    
   </div>
 )}
-
-const main = () =>{
-  console.log('click')
-  let SHA
-  let URL
-  fetch("https://api.github.com/repos/marchingband/freemarket/contents/stock.json",
-   {
-     method:"GET",
-     auth: {
-          "user": GITHUB_USERNAME,
-          "pass": GITHUB_PASSWORD,
-      },
-      headers: {
-        "User-Agent": "request"
-      }
-  }).then(response => {
-    response.json().then(data => {
-      console.log(JSON.stringify(data))
-      SHA = data.sha
-      URL = data.url
-      console.log(SHA)
-      writeFile(SHA,URL)
-    }
-    )
-  }
-  ) 
-}
-
-const writeFile = (SHA,URL) => {
-  fetch("https://api.github.com/repos/marchingband/freemarket/contents/stock.json",
-    {
-      method:"PUT",
-      auth: {
-            "user": GITHUB_USERNAME,
-            "pass": GITHUB_PASSWORD,
-      },
-      headers: {
-        "User-Agent": "request"
-      },
-      body:JSON.stringify({
-        "message":"update_stock",
-        "content":"functionWorked".toString('base64'),
-        "sha":SHA,
-        "committer": {
-          "name":'andy',
-          "email":'andy@fake.com'
-        }
-      })
-    }
-  )
-}
-
 
 export default observer(Checkout)

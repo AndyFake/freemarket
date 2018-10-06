@@ -2,14 +2,17 @@ const UN = process.env.GITHUB_USERNAME
 const SK = process.env.GITHUB_PASSWORD
 var request = require('request');
 
+var originCallback
+
 exports.handler = function(event, context, callback) {
   if(event.httpMethod !== 'POST' || !event.body) {
     callback(null, {
       statusCode,
       headers,
-      body: ''
+      body: 'error no body or not post'
     });
   }
+  originCallback = callback
   const data = JSON.parse(event.body);
   getStock(data)
 }
@@ -34,6 +37,11 @@ function getStock(changes){
         var sha = data.sha
         var newStock = processChanges(stock,changes)
         setStock(newStock,sha)
+        originCallback(null, {
+          statusCode,
+          headers,
+          body: 'got to end of getCallback'
+        })
     }
   }
   request(getOptions, getCallback);
@@ -69,6 +77,11 @@ function setStock(newStock,sha){
     if (!error && response.statusCode == 200) {
         const data = JSON.parse(body)
         console.log(data)
+        originCallback(null, {
+          statusCode,
+          headers,
+          body: 'got to end of callback, no errors'
+        })
     }
     console.log('response-> '+JSON.stringify(response))
     console.log('error-> '+error)
