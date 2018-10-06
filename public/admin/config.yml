@@ -141,28 +141,6 @@ collections: # A list of collections the CMS should be able to edit
     folder: content/products
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     create: true # Allow users to create new documents in this collection
-    files:
-      - file: "content/pages/contact.md"
-        label: "Contact Page"
-        name: "contact-page"
-        fields:
-          - {label: Show, name: show, widget: boolean, default: true}
-          - {label: Title, name: title, widget: string}
-          - {label: Featured Image, name: featuredImage, widget: image}
-          - {label: Subtitle, name: subtitle, widget: markdown}
-          - {label: Body, name: body, widget: markdown}
-          - {label: Address, name: address, widget: text}
-          - {label: Phone, name: phone, widget: string}
-          - {label: Email Address, name: email, widget: string}
-          - label: "Meta"
-            required: false
-            name: "meta"
-            widget: "object"
-            fields:
-              - {label: Title, name: title, widget: string, required: false}
-              - {label: Description, name: description, widget: text, required: false, pattern: [".{,300}", "Must not exceed 300 characters"]}
-              - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
-              - {label: Noindex, name: noindex, widget: boolean, required: false}
     fields: # The fields each document in this collection have
       - {label: Name, name: title, widget: string}
       - label: 'Status'
@@ -268,3 +246,55 @@ collections: # A list of collections the CMS should be able to edit
                 searchFields: ["title"]
                 valueField: "title"
               - {label: SetStock, name: currentStock, widget: number, required: true}
+
+  - name: "inventory"
+    label: "Inventory"
+    delete: false # Prevent users from deleting documents in this collection
+    editor:
+      preview: false
+    files:
+      - file: "content/settings/stock.json"
+        label: "Set/View Inventory"
+        name: "stock"
+        fields:
+          - label: "Product Stock"
+            name: "productStock"
+            widget: "list"
+            required: false
+            fields: # The fields each document in this collection have
+              - {label: Name, name: title, widget: string}
+              - label: 'Status'
+                name: 'status'
+                widget: 'select'
+                options: ["Published", "Featured", "Draft"]
+                default: 'Published'
+              - {label: Date / Order, name: date, widget: date}
+              - {label: Price, name: price, widget: number, required: true}
+              - {label: Primary Image, name: primaryImage, widget: image, required: true}
+              - {label: BriefDescription, name: briefDescription, widget: markdown}
+              - {label: FullDescription, name: longDescription, widget: markdown}
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                required: true
+                fields:
+                  - label: "Image"
+                    name: "image"
+                    widget: "image"
+              - label: "Options"
+                name: "options"
+                widget: "list"
+                required: false
+                fields:
+                  - label: "option"
+                    name: "option"
+                    widget: string
+              - label: "Meta"
+                required: false
+                name: "meta"
+                widget: "object"
+                fields:
+                  - {label: Title, name: title, widget: string, required: false}
+                  - {label: Description, name: description, widget: text, required: false, pattern: [".{,300}", "Must not exceed 300 characters"]}
+                  - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
+                  - {label: Noindex, name: noindex, widget: boolean, required: false}
