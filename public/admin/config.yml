@@ -247,15 +247,15 @@ collections: # A list of collections the CMS should be able to edit
                 valueField: "title"
               - {label: SetStock, name: currentStock, widget: number, required: true}
 
-  - name: "inventory"
-    label: "Inventory"
+  - name: "inventoryTEST"
+    label: "InventoryTEST"
     delete: false # Prevent users from deleting documents in this collection
     editor:
       preview: false
     files:
-      - file: "content/settings/stock.json"
+      - file: "content/settings/stockTEST.json"
         label: "Set/View Inventory"
-        name: "stock"
+        name: "stockTEST"
         fields:
           - label: "Product Stock"
             name: "productStock"
