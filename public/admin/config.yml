@@ -251,7 +251,7 @@ collections: # A list of collections the CMS should be able to edit
     label: "InventoryTEST"
     delete: false # Prevent users from deleting documents in this collection
     editor:
-      preview: false
+      preview: true
     files:
       - file: "content/settings/stockTEST.json"
         label: "Set/View Inventory"
