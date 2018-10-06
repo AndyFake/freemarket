@@ -166,9 +166,12 @@ collections: # A list of collections the CMS should be able to edit
         widget: "list"
         required: false
         fields:
-          - label: "option"
+          - label: "0ption Title"
             name: "option"
             widget: string
+          - label: Extra Cost
+            name: cost
+            widget: number
       - label: "Meta"
         required: false
         name: "meta"
@@ -299,31 +302,33 @@ collections: # A list of collections the CMS should be able to edit
                   - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
                   - {label: Noindex, name: noindex, widget: boolean, required: false}
   - name: shippingClasses
-    label: Shipping
+    label: Shipping Class
     editor:
       preview: true
     folder: contents/shipping
     create: true
     fields:
-      - label: Classes
-        name: classes
+      - label: Class
+        name: class
+        widget: string
+      - label: Carriers
+        name: carriers  
         widget: list
         fields:
-          - label: Carriers
-            name: carriers
+          - label: Carrier
+            name: carrier
+            widget: string
+          - label: Regions
+            name: regions
             widget: list
             fields:
-            - label: Regions
-              name: regions
-              widget: list
-              fields:
-                - label: Region Title
-                  name: region
-                  widget: string
-                - label: Cost
-                  name: cost
-                  widget: number
-                - label: Max Ship Together as One
-                  name: maxPack
-                  widget: number
+              - label: Region Title
+                name: region
+                widget: string
+              - label: Cost
+                name: cost
+                widget: number
+              - label: Max Ship Together as One
+                name: maxPack
+                widget: number
           
