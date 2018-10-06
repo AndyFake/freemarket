@@ -143,12 +143,13 @@ const Checkout = () => {
         fetch("/.netlify/functions/stock", {
           method: "POST",
           body: JSON.stringify({"x":10,"y":100,"z":1000})
-        }).then(response => {
-          response.json().then(data => {
-            console.log(JSON.stringify(data))
-            console.log('updated stock')
-          });
         })
+        // .then(response => {
+        //   response.json().then(data => {
+        //     console.log(JSON.stringify(data))
+        //     console.log('updated stock')
+        //   });
+        // })
       }}  
  >stock</div>    
   </div>
