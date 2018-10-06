@@ -16,7 +16,7 @@ exports.handler = function(event, context, callback) {
 
 function getStock(changes){
   var getOptions = {
-      url: `http://api.github.com/repos/${UN}/freemarket/contents/content/settings/stock.json`,
+      url: "https://api.github.com/repos/marchingband/freemarket/contents/stock.json",
       auth: {
           "user": UN,
           "pass": SK,
@@ -44,7 +44,7 @@ function setStock(newStock,sha){
   var newJSON = new Buffer(JSON.stringify({productStock:newStock})).toString("base64");
 
   var options = {
-    url: `https://api.github.com/repos/${UN}/freemarket/contents/content/settings/stock.json`,
+    url: "https://api.github.com/repos/marchingband/freemarket/contents/stock.json",
     auth: {
         "user": UN,
         "pass": SK
