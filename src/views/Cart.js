@@ -4,6 +4,14 @@ import './Cart.css';
 import State from './state'
 import { observer } from 'mobx-react';
 import {PlusSquare, MinusSquare, XSquare} from 'react-feather'
+import atob from 'atob'
+import {GITHUB_USERNAME} from '../PUBLIC_KEY.js'
+
+const URL = `http://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/content/settings/stock.json`
+
+fetch( URL, { method:"GET" } )
+.then(r => r.json() )
+.then(r => console.log(atob(r.content)) )
 
 const Cart = () =>
   <div className='Cart-Container'>
@@ -63,20 +71,6 @@ const Cart = () =>
         <div className='Cart-Item-Price'>${item.price*item.quantity}</div>
       </div>
     )} 
-    {/* <div 
-      className='Cart-Footer-Total'
-      onClick={()=>{
-        fetch("/.netlify/functions/stock", {
-          method: "POST",
-          body: JSON.stringify({"x":10,"y":100,"z":1000})
-        }).then(response => {
-          response.json().then(data => {
-            console.log('updated stock')
-          });
-        })
-      }}  
-    >test me where am i
-    </div> */}
     <div className='Cart-Footer'>
       <div className='Cart-Footer-Total'>
         TOTAL : ${State.getTotal()}

@@ -112,19 +112,6 @@ const Checkout = () => {
       <p className="Checkout-Text">{"total with shipping : $" + (State.getTotalWithShipping()).toFixed(2)}</p>
       <p className="Checkout-Text">{"total with taxes    : $" + ((State.getTotalWithShipping())*1.15).toFixed(2)}</p>
     <StripeCheckout token={onToken} stripeKey={PUBLIC_KEY}/>  
-    <div onClick={()=>{
-        fetch("/.netlify/functions/stock", {
-          method: "POST",
-          body: JSON.stringify({"x":10,"y":100,"z":1000})
-        })
-        // .then(response => {
-        //   response.json().then(data => {
-        //     console.log(JSON.stringify(data))
-        //     console.log('updated stock')
-        //   });
-        // })
-      }}  
- >stock</div>    
   </div>
 )}
 
