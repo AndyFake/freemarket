@@ -304,8 +304,8 @@ collections: # A list of collections the CMS should be able to edit
   - name: shippingClasses
     label: Shipping Class
     editor:
-      preview: true
-    folder: contents/shipping
+      preview: false
+    folder: content/shipping
     create: true
     fields:
       - label: Class
