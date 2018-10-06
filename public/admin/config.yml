@@ -43,13 +43,19 @@ collections: # A list of collections the CMS should be able to edit
             widget: number
           - label: Calculate Stock for This Option Separately
             name: separateStock
-            widget: bool
+            widget: boolean
           - label: Stock for This Option (if selected above)
             name: stock
             widget: number
       - label: Current Stock
         name: 'stock'
         widget: number
+      - label: Shipping Class
+        name: class
+        widget: relation
+        collection: "shippingClasses"
+        searchFields: ["title"]
+        valueField: "title"
       - label: 'Status'
         name: 'status'
         widget: 'select'
