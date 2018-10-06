@@ -298,3 +298,32 @@ collections: # A list of collections the CMS should be able to edit
                   - {label: Description, name: description, widget: text, required: false, pattern: [".{,300}", "Must not exceed 300 characters"]}
                   - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
                   - {label: Noindex, name: noindex, widget: boolean, required: false}
+  - name: shippingClasses
+    label: Shipping
+    editor:
+      preview: true
+    folder: contents/shipping
+    create: true
+    fields:
+      - label: Classes
+        name: classes
+        widget: list
+        fields:
+          - label: Carriers
+            name: carriers
+            widget: list
+            fields:
+            - label: Regions
+              name: regions
+              widget: list
+              fields:
+                - label: Region Title
+                  name: region
+                  widget: string
+                - label: Cost
+                  name: cost
+                  widget: number
+                - label: Max Ship Together as One
+                  name: maxPack
+                  widget: number
+          
