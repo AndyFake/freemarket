@@ -7,8 +7,8 @@ var originCallback
 exports.handler = function(event, context, callback) {
   if(event.httpMethod !== 'POST' || !event.body) {
     callback(null, {
-      statusCode,
-      headers,
+      // statusCode,
+      // headers,
       body: 'error no body or not post'
     });
   }
@@ -38,8 +38,8 @@ function getStock(changes){
         var newStock = processChanges(stock,changes)
         setStock(newStock,sha)
         originCallback(null, {
-          statusCode,
-          headers,
+          // statusCode,
+          // headers,
           body: 'got to end of getCallback'
         })
     }
@@ -78,8 +78,8 @@ function setStock(newStock,sha){
         const data = JSON.parse(body)
         console.log(data)
         originCallback(null, {
-          statusCode,
-          headers,
+          // statusCode,
+          // headers,
           body: 'got to end of callback, no errors'
         })
     }
