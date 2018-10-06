@@ -1,28 +1,18 @@
 const UN = process.env.GITHUB_USERNAME
-const SK = process.env.GITHUB_PASSWORD
+const UP = process.env.GITHUB_PASSWORD
 var request = require('request');
 
-var originCallback
-
 exports.handler = function(event, context, callback) {
-  if(event.httpMethod !== 'POST' || !event.body) {
-    callback(null, {
-      // statusCode,
-      // headers,
-      body: 'error no body or not post'
-    });
-  }
-  originCallback = callback
-  const data = JSON.parse(event.body);
-  getStock(data)
+  getStock()
 }
 
 function getStock(changes){
+  console.log('running')
   var getOptions = {
-      url: "https://api.github.com/repos/marchingband/freemarket/contents/stock.json",
+      url: `https://api.github.com/repos/${UN}/freemarket/contents/stock.json`,
       auth: {
           "user": UN,
-          "pass": SK,
+          "pass": UP,
       },
       headers: {
         'User-Agent': 'request'
@@ -30,32 +20,26 @@ function getStock(changes){
   };
 
   function getCallback(error, response, body) {
-    if (!error && response.statusCode == 200) {
-        const data = JSON.parse(body)
-        var buf = new Buffer(data.content, 'base64').toString();
-        var stock = (JSON.parse(buf)).productStock
-        var sha = data.sha
-        var newStock = processChanges(stock,changes)
-        setStock(newStock,sha)
-        originCallback(null, {
-          // statusCode,
-          // headers,
-          body: 'got to end of getCallback'
-        })
-    }
+    // console.log("response=> " + JSON.stringify(response))
+    // console.log("body=> ") + body
+    // console.log("error=> " + error)
+    const data = JSON.parse(body)
+    // var buf = new Buffer(data.content, 'base64').toString();
+    var sha = data.sha
+    setStock(sha)
   }
   request(getOptions, getCallback);
 }
 
-function setStock(newStock,sha){
+function setStock(sha){
 
-  var newJSON = new Buffer(JSON.stringify({productStock:newStock})).toString("base64");
+  var newFileCOntent = new Buffer(JSON.stringify({"ok":"true"})).toString("base64");
 
   var options = {
-    url: "https://api.github.com/repos/marchingband/freemarket/contents/stock.json",
+    url: `https://api.github.com/repos/${UN}/freemarket/contents/stock.json`,
     auth: {
         "user": UN,
-        "pass": SK
+        "pass": UP
     },
     headers: {
       'User-Agent': 'request'
@@ -63,8 +47,7 @@ function setStock(newStock,sha){
     method:"PUT",
     body:JSON.stringify({
       "message":"update_stock",
-      // "content":newJSON,
-      "content":"functionWorked",
+      "content":newFileCOntent,
       "sha":sha,
       "committer": {
         "name":'andy',
@@ -74,48 +57,9 @@ function setStock(newStock,sha){
   };
 
   function callback(error, response, body) {
-    if (!error && response.statusCode == 200) {
-        const data = JSON.parse(body)
-        console.log(data)
-        originCallback(null, {
-          // statusCode,
-          // headers,
-          body: 'got to end of callback, no errors'
-        })
-    }
-    console.log('response-> '+JSON.stringify(response))
-    console.log('error-> '+error)
+    // console.log("response=> " + JSON.stringify(response))
+    // console.log("body=> ") + body
+    // console.log("error=> " + error)
   }
-
   request(options, callback);
 }
-
-function processChanges(stock,changes){
-  var newStock = [...stock]
-  changes.forEach(change=>{
-    newStock=newStock.map(item=>{
-      if(item.productType==change.title){
-        return {
-          productType:item.productStock,
-          currentStock:item.currentStock-change.quantity
-        }
-      }else{
-        return item
-      }
-    })
-  })
-  return newStock
-  // for(let item of Object.keys(changes)){
-  //   newStock = newStock.map(entry=>{
-  //     if(entry.productType==item){
-  //       return {productType:item,currentStock:entry.currentStock+changes[item]}
-  //     }else{
-  //       return item
-  //     }
-  //   })
-    // newStock[item]+=changes[item]
-  // }
-}
-
-// getStock({"x":1,"y":1,"z":1})
-
