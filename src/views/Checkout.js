@@ -7,23 +7,12 @@ import Select from '../components/Select.js'
 import State from './state'
 import './Checkout.css'
 
-import {PUBLIC_KEY,GITHUB_USERNAME,GITHUB_PASSWORD} from '../PUBLIC_KEY.js'
-// const PUBLIC_KEY = 1234
-// console.log('public key: ' + PUBLIC_KEY)
-
+import {PUBLIC_KEY} from '../PUBLIC_KEY.js'
 
 const uspsShippingCost = 10
 const upsShippingCost  = 15
 const fedexShippingCost= 20
 const formfields = ['Name','Street Address','City', 'State/Province','ZIP code / Postal Code', 'Country']
-
-
-// var stockChanges = {}
-// State.getCart().forEach(item=>{
-//   stockChanges[item.title]=item.quantity
-// })
-const stockChanges = State.getCart()
-console.log('changes-> '+JSON.stringify(stockChanges))
 
 const encodeData=token=>{
   const relevantFieldsFromItem = ['title','quantity','price','options']
@@ -51,29 +40,21 @@ const onToken = token => {
     amount : 111,
     idempotency_key:uuid(),
   }
-//  console.log(token)
   fetch("/.netlify/functions/purchase", {
     method: "POST",
     body: JSON.stringify(data)
   }).then(response => {
     response.json().then(data => {
-      // console.log(data)
       if(data.status=='succeeded'){
         console.log(`payment was successful`);
         console.log('stock changes-> '+ JSON.stringify(stockChanges))
         //call stock function
         fetch("/.netlify/functions/stock", {
           method: "POST",
-          body: JSON.stringify(stockChanges)
+          body: JSON.stringify(State.getCart())
         })
-        // .then(response => {
-        //   response.json().then(data => {
-        //     console.log('updated stock')
-        //   });
-        // })
-
-        // editStock()
-        submit(encodeData(token))
+        console.log(State.getCart())
+        // submit(encodeData(token))
       }
     });
   });
@@ -93,13 +74,6 @@ const submit = (data) => {
     .catch(error => alert(error));
 };
 
-const stockTest = (stockChanges) => {
-  console.log('clickedWith -> '+JSON.stringify(stockChanges))
-  fetch("/.netlify/functions/stock", {
-    method: "POST",
-    body: JSON.stringify(stockChanges)
-  })
-}
 
 const Checkout = () => {
   const stockChanges = State.getCart()

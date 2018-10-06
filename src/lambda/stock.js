@@ -1,15 +1,34 @@
 const UN = process.env.GITHUB_USERNAME
 const UP = process.env.GITHUB_PASSWORD
+
 var request = require('request');
 
+function calculateNewStock(stock,changes){
+  var newStock = [...stock.productStock]
+  for(let change of changes){
+    newStock=newStock.map(stock=>{
+      if(stock.productType==change.title){
+        return {
+          productType:stock.productType,
+          currentStock:stock.currentStock-change.quantity
+          }
+      }else{
+        return stock
+      }
+    })
+  }
+  return newStock
+}
+
 exports.handler = function(event, context, callback) {
-  getStock()
+  var changes = JSON.parse(event.body)
+  getStock(changes)
 }
 
 function getStock(changes){
   console.log('running')
   var getOptions = {
-      url: `https://api.github.com/repos/${UN}/freemarket/contents/stock.json`,
+      url: `https://api.github.com/repos/${UN}/freemarket/contents/content/settings/stock.json`,
       auth: {
           "user": UN,
           "pass": UP,
@@ -20,23 +39,22 @@ function getStock(changes){
   };
 
   function getCallback(error, response, body) {
-    // console.log("response=> " + JSON.stringify(response))
-    // console.log("body=> ") + body
-    // console.log("error=> " + error)
     const data = JSON.parse(body)
-    // var buf = new Buffer(data.content, 'base64').toString();
     var sha = data.sha
-    setStock(sha)
+    var buf = new Buffer(data.content, 'base64').toString();
+    var stock = JSON.parse(buf)
+    var newStock = calculateNewStock(stock,changes)
+    setStock(sha,newStock)
   }
   request(getOptions, getCallback);
 }
 
-function setStock(sha){
+function setStock(sha,newStock){
 
-  var newFileCOntent = new Buffer(JSON.stringify({"ok":"true"})).toString("base64");
+  var newFileContent = new Buffer(JSON.stringify({productStock:newStock})).toString("base64");
 
   var options = {
-    url: `https://api.github.com/repos/${UN}/freemarket/contents/stock.json`,
+    url: `https://api.github.com/repos/${UN}/freemarket/contents/content/settings/stock.json`,
     auth: {
         "user": UN,
         "pass": UP
@@ -47,7 +65,7 @@ function setStock(sha){
     method:"PUT",
     body:JSON.stringify({
       "message":"update_stock",
-      "content":newFileCOntent,
+      "content":newFileContent,
       "sha":sha,
       "committer": {
         "name":'andy',
