@@ -27,7 +27,9 @@ import { documentHasTerm, getCollectionTerms } from './util/collection'
 console.log(data)
 
 const stock = data.settings.filter(x=>x.name=='stock')[0].productStock
-const getStock = title => stock.filter(x=>x.productType==title)[0].currentStock
+const getStock = title => stock.filter(x=>x.productType==title).length>0 ?
+                          stock.filter(x=>x.productType==title)[0].currentStock :
+                          0
 data.products.forEach((p,i)=>{
   const stock = getStock(p.title)
   data.products[i].stock=stock
