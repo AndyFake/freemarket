@@ -46,9 +46,7 @@ export class TestWidgetControl extends Component {
     const {stock} = this.state
     return(
       <div>
-        {stock.map(p=>{
-          <div>{p.title + " : " + p.stock}</div>
-        })}
+        {stock.map(p=><div>{p.title + " : " + p.stock}</div>)}
       </div>
     )
   }
