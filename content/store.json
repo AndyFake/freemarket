@@ -28,6 +28,29 @@
       ],
       "stock": "20",
       "date": "2018-10-06"
+    },
+    {
+      "longDescription": "test description here",
+      "briefDescription": "jhdskjhg",
+      "price": "25",
+      "date": "2018-10-06",
+      "stock": "37",
+      "class": "small",
+      "title": "product two",
+      "images": [
+        {
+          "image": "/images/uploads/card-og.png"
+        }
+      ],
+      "primaryImage": "/images/uploads/card-og.png",
+      "options": [
+        {
+          "option": "first option"
+        },
+        {
+          "option": "second option"
+        }
+      ]
     }
   ]
 }
