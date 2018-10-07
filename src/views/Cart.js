@@ -7,7 +7,7 @@ import {PlusSquare, MinusSquare, XSquare} from 'react-feather'
 import atob from 'atob'
 import {GITHUB_USERNAME} from '../PUBLIC_KEY.js'
 
-const URL = `http://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/content/settings/stock.json`
+const URL = `https://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/content/settings/stock.json`
 
 fetch( URL, { method:"GET" } )
 .then(r => r.json() )
