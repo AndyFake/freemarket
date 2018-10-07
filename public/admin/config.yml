@@ -15,68 +15,68 @@ collections: # A list of collections the CMS should be able to edit
     create: true
     delete: true
     files:
-      file: content/store.json
-      label: Products
-      name: products
-      fields:
-        - label: Product
-          name: products
-          widget: list
-          -fields:
-            - {label: Name, name: title, widget: string}
-            - {label: Price, name: price, widget: number, required: true}
-            - {label: BriefDescription, name: briefDescription, widget: markdown}
-            - {label: Primary Image, name: primaryImage, widget: image, required: true}
-            - {label: FullDescription, name: longDescription, widget: markdown}
-            - label: "Images"
-              name: "images"
-              widget: "list"
-              required: true
-              fields:
-                - label: "Image"
-                  name: "image"
-                  widget: "image"
-            - label: "Options"
-              name: "options"
-              widget: "list"
-              required: false
-              fields:
-                - label: "0ption Title"
-                  name: "option"
-                  widget: string
-                - label: Extra Cost
-                  name: cost
-                  widget: number
-                - label: Calculate Stock for This Option Separately
-                  name: separateStock
-                  widget: boolean
-                - label: Stock for This Option (if selected above)
-                  name: stock
-                  widget: number
-            - label: Current Stock
-              name: 'stock'
-              widget: number
-            - label: Shipping Class
-              name: class
-              widget: relation
-              collection: shippingClasses
-              searchFields: ["title"]
-              valueField: "title"
-            - label: 'Status'
-              name: 'status'
-              widget: 'select'
-              options: ["Published", "Featured", "Draft"]
-              default: 'Published'
-            - {label: Date / Order, name: date, widget: date}
-            - label: "Meta"
-              required: false
-              name: "meta"
-              widget: "object"
-              fields:
-                - {label: Title, name: title, widget: string, required: false}
-                - {label: Description, name: description, widget: text, required: false, pattern: [".{,300}", "Must not exceed 300 characters"]}
-                - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
-                - {label: Noindex, name: noindex, widget: boolean, required: false}
+      - file: content/store.json
+        label: Products
+        name: products
+        fields:
+          - label: Product
+            name: products
+            widget: list
+            -fields:
+              - {label: Name, name: title, widget: string}
+              - {label: Price, name: price, widget: number, required: true}
+              - {label: BriefDescription, name: briefDescription, widget: markdown}
+              - {label: Primary Image, name: primaryImage, widget: image, required: true}
+              - {label: FullDescription, name: longDescription, widget: markdown}
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                required: true
+                fields:
+                  - label: "Image"
+                    name: "image"
+                    widget: "image"
+              - label: "Options"
+                name: "options"
+                widget: "list"
+                required: false
+                fields:
+                  - label: "0ption Title"
+                    name: "option"
+                    widget: string
+                  - label: Extra Cost
+                    name: cost
+                    widget: number
+                  - label: Calculate Stock for This Option Separately
+                    name: separateStock
+                    widget: boolean
+                  - label: Stock for This Option (if selected above)
+                    name: stock
+                    widget: number
+              - label: Current Stock
+                name: 'stock'
+                widget: number
+              - label: Shipping Class
+                name: class
+                widget: relation
+                collection: shippingClasses
+                searchFields: ["title"]
+                valueField: "title"
+              - label: 'Status'
+                name: 'status'
+                widget: 'select'
+                options: ["Published", "Featured", "Draft"]
+                default: 'Published'
+              - {label: Date / Order, name: date, widget: date}
+              - label: "Meta"
+                required: false
+                name: "meta"
+                widget: "object"
+                fields:
+                  - {label: Title, name: title, widget: string, required: false}
+                  - {label: Description, name: description, widget: text, required: false, pattern: [".{,300}", "Must not exceed 300 characters"]}
+                  - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
+                  - {label: Noindex, name: noindex, widget: boolean, required: false}
 
 
 
