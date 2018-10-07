@@ -12,8 +12,8 @@ collections: # A list of collections the CMS should be able to edit
     label: Store
     editor:
       preview: true
-    create: true
-    delete: true
+    create: false
+    delete: false
     files:
       - file: content/store.json
         label: Products
