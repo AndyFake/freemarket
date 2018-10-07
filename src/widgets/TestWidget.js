@@ -15,7 +15,7 @@ export class TestWidgetControl extends Component {
     .then(r => r.json() )
     .then(r =>{
       console.log('fetched')
-      this.setState({data:done})
+      this.setState({data:'done'})
   })
     // .then(r => console.log(atob(r.content)) )
   }
