@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 // import uuid from 'uuid/v4';
 // import styled from "styled-components";
+const URL = `http://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/content/settings/stock.json`
 
 // This is the editing component
 export class TestWidgetControl extends Component {
@@ -16,6 +17,8 @@ export class TestWidgetControl extends Component {
     .then(r =>{
       console.log('fetched')
       this.setState({data:'done'})
+      const store = atob(r.content)
+
   })
     // .then(r => console.log(atob(r.content)) )
   }
