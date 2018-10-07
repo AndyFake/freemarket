@@ -1,0 +1,56 @@
+{
+  "products": [
+    {
+      "title": "product one",
+      "price": "10",
+      "briefDescription": "test",
+      "longDescription": "test\n\n**test**",
+      "images": [
+        {
+          "image": "/images/uploads/isabella juskova.jpg"
+        },
+        {
+          "image": "/images/uploads/card-og.png"
+        }
+      ],
+      "options": [
+        {
+          "option": "option one",
+          "cost": "0",
+          "stock": "5"
+        },
+        {
+          "option": "option two",
+          "cost": "5",
+          "separateStock": true,
+          "stock": "40"
+        }
+      ],
+      "stock": "20",
+      "date": "2018-10-06"
+    },
+    {
+      "longDescription": "test description here",
+      "briefDescription": "jhdskjhg",
+      "price": "25",
+      "date": "2018-10-06",
+      "stock": "37",
+      "class": "small",
+      "title": "product two",
+      "images": [
+        {
+          "image": "/images/uploads/card-og.png"
+        }
+      ],
+      "primaryImage": "/images/uploads/card-og.png",
+      "options": [
+        {
+          "option": "first option"
+        },
+        {
+          "option": "second option"
+        }
+      ]
+    }
+  ]
+}
