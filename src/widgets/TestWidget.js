@@ -23,22 +23,33 @@ export class TestWidgetControl extends Component {
         this.setState({data:'done'})
         console.log(atob(r.content))
         var stock = []
-        JSON.parse(atob(r.content)).products.forEach(p=>{
-          p.options.forEach(o=>{
-            if(o.separateStock){
-              stock.push({title: p.title + ':' + o.option, stock: o.stock})
-            }
-          })
-          stock.push({title:p.title,stock:p.stock})
-        })
+        for(let p of JSON.parse(atob(r.content)).products){
+          stock.push(stock.push({title:p.title,stock:p.stock}))
+          for(let o of p.options){
+            o.separateStock && stock.push({title: p.title + ':' + o.option, stock: o.stock})
+          }
+        }
+        // JSON.parse(atob(r.content)).products.forEach(p=>{
+        //   p.options.forEach(o=>{
+        //     if(o.separateStock){
+        //       stock.push({title: p.title + ':' + o.option, stock: o.stock})
+        //     }
+        //   })
+        //   stock.push({title:p.title,stock:p.stock})
+        // })
         this.setState({stock})
         console.log(stock)
       })
     }
   }
   render(){
+    const {stock} = this.state
     return(
-      <div>{'this is the content'+this.state.data}</div>
+      <div>
+        {p.map(p=>{
+          <div>{p.title + " : " + p.stock}</div>
+        })}
+      </div>
     )
   }
 }
