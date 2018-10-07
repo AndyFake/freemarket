@@ -15,30 +15,17 @@ export class TestWidgetControl extends Component {
   }
   componentDidMount(){
     if(this.state.data=='not done'){
-      console.log('start fetch')
       fetch( URL, { method:"GET" } )
       .then(r => r.json() )
       .then(r =>{
-        console.log('fetched')
-        this.setState({data:'done'})
-        console.log(atob(r.content))
         var stock = []
-        for(var {products:p} of JSON.parse(atob(r.content))){
+        for(var p of JSON.parse(atob(r.content)).products){
           stock.push({title:p.title,stock:p.stock})
           for(var {options:o} of p){
             o.separateStock && stock.push({title: p.title + ':' + o.option, stock: o.stock})
           }
         }
-        // JSON.parse(atob(r.content)).products.forEach(p=>{
-        //   p.options.forEach(o=>{
-        //     if(o.separateStock){
-        //       stock.push({title: p.title + ':' + o.option, stock: o.stock})
-        //     }
-        //   })
-        //   stock.push({title:p.title,stock:p.stock})
-        // })
-        this.setState({stock})
-        console.log(stock)
+        this.setState({stock,data:'done'})
       })
     }
   }
