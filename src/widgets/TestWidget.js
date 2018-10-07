@@ -24,7 +24,7 @@ export class TestWidgetControl extends Component {
         console.log(atob(r.content))
         var stock = []
         for(let p of JSON.parse(atob(r.content)).products){
-          stock.push(stock.push({title:p.option,stock:p.stock}))
+          stock.push({title:p.title,stock:p.stock})
           for(let o of p.options){
             o.separateStock && stock.push({title: p.title + ':' + o.option, stock: o.stock})
           }
