@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 // import uuid from 'uuid/v4';
 // import styled from "styled-components";
-const URL = `http://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/content/settings/stock.json`
+const URL = `http://api.github.com/repos/marchingband/freemarket/contents/content/settings/stock.json`
 
 // This is the editing component
 export class TestWidgetControl extends Component {
