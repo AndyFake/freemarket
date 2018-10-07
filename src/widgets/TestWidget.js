@@ -8,19 +8,33 @@ const URL = `https://api.github.com/repos/marchingband/freemarket/contents/conte
 export class TestWidgetControl extends Component {
   constructor(){
     super()
-    this.state={data:'not done'}
+    this.state={
+      data:'not done',
+      stock:[]
+    }
   }
   componentDidMount(){
-    console.log('start fetch')
-    fetch( URL, { method:"GET" } )
-    .then(r => r.json() )
-    .then(r =>{
-      console.log('fetched')
-      this.setState({data:'done'})
-      console.log(atob(r.content))
-
-  })
-    // .then(r => console.log(atob(r.content)) )
+    if(this.state.data=='not done'){
+      console.log('start fetch')
+      fetch( URL, { method:"GET" } )
+      .then(r => r.json() )
+      .then(r =>{
+        console.log('fetched')
+        this.setState({data:'done'})
+        console.log(atob(r.content))
+        var stock = []
+        JSON.parse(atob(r.content)).products.forEach(p=>{
+          p.options.forEach(o=>{
+            if(o.separateStock){
+              stock.push({title: p.title + ':' + o.option, stock: o.stock})
+            }
+          })
+          stock.push({title:p.title,stock:p.stock})
+        })
+        this.setState({stock})
+        console.log
+      })
+    }
   }
   render(){
     return(
