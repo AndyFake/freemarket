@@ -7,7 +7,7 @@ import State from './state'
 // import {ShoppingCart} from 'react-feather'
 
 export default ({fields}) => { 
-  const products = fields
+  const {products} = fields
   return(
     <div>
       {products.map(({title,primaryImage})=>

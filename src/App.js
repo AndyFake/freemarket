@@ -26,14 +26,14 @@ import { documentHasTerm, getCollectionTerms } from './util/collection'
 
 console.log(data)
 
-const stock = data.settings.filter(x=>x.name=='stock')[0].productStock
-const getStock = title => stock.filter(x=>x.productType==title).length>0 ?
-                          stock.filter(x=>x.productType==title)[0].currentStock :
-                          0
-data.products.forEach((p,i)=>{
-  const stock = getStock(p.title)
-  data.products[i].stock=stock
-})
+// const stock = data.settings.filter(x=>x.name=='stock')[0].productStock
+// const getStock = title => stock.filter(x=>x.productType==title).length>0 ?
+//                           stock.filter(x=>x.productType==title)[0].currentStock :
+//                           0
+// data.products.forEach((p,i)=>{
+//   const stock = getStock(p.title)
+//   data.products[i].stock=stock
+// })
 
 const RouteWithMeta = ({ component: Component, ...props }) => (
   <Route
@@ -124,7 +124,7 @@ class App extends Component {
               description={siteDescription}
               fields={storeIsHome ? 
                         this.getDocument('pages','home') :
-                        this.getDocuments('products')
+                        this.getDocuments('store')[0]
                       }
               title={storeIsHome?'Home':'Store'}            
             />
@@ -133,7 +133,7 @@ class App extends Component {
               exact
               component={Store}
               description={siteDescription}
-              fields={this.getDocuments('products')}
+              fields={this.getDocuments('store')[0]}
               title={'Store'}
             />
             <RouteWithMeta
@@ -195,7 +195,7 @@ class App extends Component {
               )
             })}
 
-            {data.products.map(product => {
+            {data.store[0].products.map(product => {
               const path = slugify(`/${product.title}`)
               return (
                 <RouteWithMeta

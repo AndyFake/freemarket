@@ -20,6 +20,7 @@ const getSmallImages = (images) => {
 }
 
 export default ({ fields }) => {
+  console.log(fields)
   const { title, price, longDescription, images, options } = fields
   State.setSelection('')
   return (

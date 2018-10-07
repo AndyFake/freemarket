@@ -7,7 +7,7 @@ class State {
   shippingCost = observable.box(0)
   setField =(field,val)=>this.fields[field]=val
   getField = field => this.fields[field]
-  ATC = (item,options='')=> this.cart.push({...item,quantity:1,options})
+  ATC = (item,selected='')=> this.cart.push({...item,quantity:1,selected})
   RFC = i=> this.cart.replace(this.cart.slice(0,i).concat(this.cart.slice(i+1)))
   modCart=(index,q)=>this.cart[index].quantity=q
   getTotal=()=>{

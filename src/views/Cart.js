@@ -9,11 +9,23 @@ import {GITHUB_USERNAME} from '../PUBLIC_KEY.js'
 
 const URL = `https://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/content/settings/stock.json`
 
-fetch( URL, { method:"GET" } )
-.then(r => r.json() )
-.then(r => console.log(atob(r.content)) )
+// fetch( URL, { method:"GET" } )
+// .then(r => r.json() )
+// .then(r => console.log(atob(r.content)) )
 
-const Cart = () =>
+
+const getStock=item=>{
+  if(item.selected!='' && item.options.filter(o=>o.option==item.selected)[0].separateStock){
+    return item.options.filter(o=>o.option==item.selected)[0].stock
+  }
+  return item.stock
+}
+
+const Cart = () =>{
+  
+console.log('cart : ' + JSON.stringify(State.getCart()))
+
+return(
   <div className='Cart-Container'>
     <Link to='/store'><div className='Cart-Back'>continue shopping</div></Link>
     {State.cart.length<=0 && 
@@ -33,7 +45,7 @@ const Cart = () =>
           <div className='Cart-Item-Name-Text'>{item.title}</div>
           {item.options.length>0 && 
             <div className='Cart-Item-Name-Text' style={{color:'grey'}}>
-              {item.options}
+              {item.selected}
             </div>
           }
         </div>
@@ -41,8 +53,8 @@ const Cart = () =>
           <div 
             onClick={(e)=>{
               e.preventDefault()
-              if(item.stock < item.quantity+1){
-                window.alert(`sorry we only have ${item.stock} in stock `)
+              if(getStock(item) < item.quantity+1){
+                window.alert(`sorry we only have ${getStock(item)} in stock `)
               }else{
                 State.modCart(i,item.quantity+1)
               }
@@ -55,7 +67,13 @@ const Cart = () =>
               ref={el=>this[i]=el}
               style={{width:`${String(item.quantity).length*8+5}px`,minWidth:'33px', textAlign:'center',height:'25px',margin:'3px',padding:'0px'}}
               value={item.quantity?item.quantity:''}
-              onChange={e=>State.modCart(i,parseInt(e.target.value)||0)}
+              onChange={e=>{
+                if(getStock(item) < parseInt(e.target.value)||0){
+                  window.alert(`sorry we only have ${getStock(item)} in stock `)
+                }else{
+                  State.modCart(i,parseInt(e.target.value)||0)
+                }
+              }}
               onKeyPress={e=>e.key==='Enter'&&this[i].blur()}
             />
           </div>
@@ -82,5 +100,5 @@ const Cart = () =>
       </Link>
     </div>
   </div>
-
+)}
 export default observer(Cart)

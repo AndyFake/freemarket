@@ -15,7 +15,7 @@ collections: # A list of collections the CMS should be able to edit
     create: false
     delete: false
     files:
-      - file: content/store.json
+      - file: content/store/store.json
         label: Products
         name: products
         fields:
