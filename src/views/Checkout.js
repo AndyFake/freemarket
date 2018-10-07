@@ -5,6 +5,7 @@ import uuid from 'uuid/v4'
 import StripeCheckout from "react-stripe-checkout"
 import Select from '../components/Select.js'
 import State from './state'
+import data from '../data.json'
 import './Checkout.css'
 
 import {PUBLIC_KEY} from '../PUBLIC_KEY.js'
@@ -77,6 +78,18 @@ const submit = (data) => {
 const Checkout = () => {
   const stockChanges = State.getCart()
   console.log('changes-> '+JSON.stringify(stockChanges))
+  console.log('data' + JSON.stringify(data))
+
+  var regions = []
+  State.getCart().forEach(item=>{
+    const shippingClass = data.shipping.filter(c=>c.title==item.class)[0]
+    shippingClass.carriers.forEach(carrier=>{
+      carrier.regions.forEach(region=>{
+        regions.push(region.region)
+      })
+    })
+  })
+  console.log(regions)
 
   // console.log('state : ' + JSON.stringify(State.getCart()))
   return(
@@ -97,13 +110,21 @@ const Checkout = () => {
       )})}
       <div className='checkout-shipping-dropdown'>
       <Select 
+        title='Please Select Region :'
+        options={regions}
+        onChange={(e)=>{
+          State.setRegion(e.value);
+          encodeData()
+        }}
+      />
+      <Select 
         title='Please Select Shipping :'
         options={[{label:`USPS ($ ${uspsShippingCost})`  ,value:uspsShippingCost},
                   {label:`UPS ($ ${upsShippingCost})`    ,value:upsShippingCost},
                   {label:`FEDEX ($ ${fedexShippingCost})`,value:fedexShippingCost}
                 ]}
         onChange={(e)=>{
-          State.setShippingCost(e.value);
+          State.setCarrier(e.value);
           encodeData()
         }}
       />
