@@ -32,7 +32,7 @@ export class TestWidgetControl extends Component {
           stock.push({title:p.title,stock:p.stock})
         })
         this.setState({stock})
-        console.log
+        console.log(stock)
       })
     }
   }
