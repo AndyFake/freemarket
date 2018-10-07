@@ -23,9 +23,9 @@ export class TestWidgetControl extends Component {
         this.setState({data:'done'})
         console.log(atob(r.content))
         var stock = []
-        for(let p of JSON.parse(atob(r.content)).products){
+        for(var {products:p} of JSON.parse(atob(r.content))){
           stock.push({title:p.title,stock:p.stock})
-          for(let o of p.options){
+          for(var {options:o} of p){
             o.separateStock && stock.push({title: p.title + ':' + o.option, stock: o.stock})
           }
         }
