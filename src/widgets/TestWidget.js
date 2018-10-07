@@ -17,7 +17,7 @@ export class TestWidgetControl extends Component {
     .then(r =>{
       console.log('fetched')
       this.setState({data:'done'})
-      const store = atob(r.content)
+      console.log(atob(r.content))
 
   })
     // .then(r => console.log(atob(r.content)) )
