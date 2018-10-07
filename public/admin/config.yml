@@ -22,7 +22,7 @@ collections: # A list of collections the CMS should be able to edit
           - label: Product
             name: products
             widget: list
-            -fields:
+            fields:
               - {label: Name, name: title, widget: string}
               - {label: Price, name: price, widget: number, required: true}
               - {label: BriefDescription, name: briefDescription, widget: markdown}
