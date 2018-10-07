@@ -10,6 +10,7 @@ export class TestWidgetControl extends Component {
     this.state={data:'not done'}
   }
   componentDidMount(){
+    console.log('start fetch')
     fetch( URL, { method:"GET" } )
     .then(r => r.json() )
     .then(r =>{
@@ -20,7 +21,7 @@ export class TestWidgetControl extends Component {
   }
   render(){
     return(
-      <div>{this.state.data}</div>
+      <div>{'this is the content'+this.state.data}</div>
     )
   }
 }
