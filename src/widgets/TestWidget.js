@@ -19,7 +19,8 @@ export class TestWidgetControl extends Component {
       .then(r => r.json() )
       .then(r =>{
         var stock = []
-        for(var p of JSON.parse(atob(r.content)).products){
+        var products = JSON.parse(atob(r.content)).products
+        for(var p of products){
           stock.push({title:p.title,stock:p.stock})
           for(var {options:o} of p){
             o.separateStock && stock.push({title: p.title + ':' + o.option, stock: o.stock})
