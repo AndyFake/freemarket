@@ -97,6 +97,9 @@ collections: # A list of collections the CMS should be able to edit
       - label: "Plain Test Widget"
         name: "plaintest"
         widget: "test"
+      - label: "RelationSelect"
+        name: "relationSelect"
+        widget: "relationSelect"
       - {label: Name, name: title, widget: "string"}
       - {label: Price, name: price, widget: number, required: true}
       - {label: BriefDescription, name: briefDescription, widget: markdown}

@@ -1,5 +1,8 @@
 import React from 'react'
 
+
+import {RelationSelectControl} from '../src/widgets/RelationSelect.js'
+
 import {TestWidgetControl,TestWidgetPreview} from '../src/widgets/TestWidget.js'
 import {MRelationControl, MRelationPreview} from '../src/widgets/MRelation.js'
 import {SlidesControl,SlidesPreview} from './testWidget.js'
@@ -53,6 +56,12 @@ CMS.registerPreviewTemplate('products', ({ entry }) => (
 CMS.registerPreviewTemplate('productStock', ({ entry }) => (
   <ProductPageTemplate fields={entry.toJS().data} />
 ))
+
+var selectWidget = CMS.getWidget("select").control
+CMS.registerWidget(
+  'relationSelect',
+  RelationSelectControl(selectWidget), )
+
 CMS.registerWidget(
   'test',
   SlidesControl,
