@@ -32,6 +32,9 @@ export function RelationSelectControl(SelectWidget){
     render(){
       var _props = {...this.props}
       _props.field.options=['test','test2']
+      _props.field.default='test'
+      _props.value='test'
+      console.log(_props)
       return(
         <div>
           <SelectWidget {..._props} />
