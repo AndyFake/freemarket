@@ -44,6 +44,7 @@ export function RelationSelectControl(SelectWidget){
         {label:'one',value:'one'},
         {label:'two',value:'two'}
       ]
+      // const test = this.props.field.getAsset()
       return(
         <div>
           {/* <SelectWidget {..._props} /> */}
