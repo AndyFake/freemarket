@@ -37,6 +37,8 @@ export function RelationSelectControl(SelectWidget){
       // _props.field.options=['test','test2']
       // _props.field.default='test'
       // _props.value='test'
+      const query = this.props.query
+      console.log(query)
       console.log(this.props)
       // console.log(_props.field.get('options'))
       const {forID,value,classNameWrapper,setActiveStyle,setInactiveStyle} = this.props
