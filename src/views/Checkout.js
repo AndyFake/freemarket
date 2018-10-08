@@ -50,7 +50,7 @@ const onToken = token => {
           method: "POST",
           body: JSON.stringify(State.getCart())
         })
-        console.log(State.getCart())
+        // console.log(State.getCart())
         // submit(encodeData(token))
       }
     });
@@ -85,7 +85,7 @@ const getRegions = () =>{
 }
 
 const getCarriers = region => {
-  console.log('region: ' + region)
+  // console.log('region: ' + region)
   var carriers = {}
   State.getCart().forEach(item=>{
     const shippingClass = data.shipping.filter(c=>c.title==item.class)[0]

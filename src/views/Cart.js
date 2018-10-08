@@ -23,7 +23,7 @@ const getStock=item=>{
 
 const Cart = () =>{
   
-console.log('cart : ' + JSON.stringify(State.getCart()))
+// console.log('cart : ' + JSON.stringify(State.getCart()))
 
 return(
   <div className='Cart-Container'>

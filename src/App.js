@@ -24,7 +24,7 @@ import data from './data.json'
 import { slugify } from './util/url'
 import { documentHasTerm, getCollectionTerms } from './util/collection'
 
-console.log(data)
+// console.log(data)
 
 // const stock = data.settings.filter(x=>x.name=='stock')[0].productStock
 // const getStock = title => stock.filter(x=>x.productType==title).length>0 ?
@@ -59,7 +59,7 @@ class App extends Component {
 
   getPages = () => {
     const shown = [...this.state.data.pages].filter(page=>page.show)
-    console.log(shown)
+    // console.log(shown)
     return shown
   }
 
