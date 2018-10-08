@@ -28,6 +28,11 @@ export class TestWidgetControl extends Component {
         this.setState({stock,data:'done'})
       })
     }
+    fetch("/.netlify/functions/stock", {
+      method: "POST",
+      body: JSON.stringify([{title:'a weird fish',quantity:1}])
+    })
+
   }
   render(){
     const {stock} = this.state

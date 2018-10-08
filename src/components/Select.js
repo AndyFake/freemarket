@@ -3,9 +3,16 @@ import './Select.css'
 import {ChevronLeft} from 'react-feather'
 
 class Select extends React.Component{
-  constructor(){
-    super()
-    this.state={open:false,selection:null}
+  constructor(props){
+    super(props)
+    this.state={open:false,selection:null,options:props.options}
+  }
+  componentWillReceiveProps(props){
+    if(props.options && !this.state.open){
+      if(this.state.options[0]!=props.options[0]) {
+        this.setState({selection:null})
+      }
+    }
   }
   render(){
     const {options=[],onChange=()=>{},title=''} = this.props

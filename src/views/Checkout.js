@@ -10,9 +10,6 @@ import './Checkout.css'
 
 import {PUBLIC_KEY} from '../PUBLIC_KEY.js'
 
-const uspsShippingCost = 10
-const upsShippingCost  = 15
-const fedexShippingCost= 20
 const formfields = ['Name','Street Address','City', 'State/Province','ZIP code / Postal Code', 'Country']
 
 const encodeData=token=>{
@@ -74,24 +71,68 @@ const submit = (data) => {
     .catch(error => alert(error));
 };
 
-
-const Checkout = () => {
-  const stockChanges = State.getCart()
-  console.log('changes-> '+JSON.stringify(stockChanges))
-  console.log('data' + JSON.stringify(data))
-
-  var regions = []
+const getRegions = () =>{
+  var regions = new Set()
   State.getCart().forEach(item=>{
     const shippingClass = data.shipping.filter(c=>c.title==item.class)[0]
     shippingClass.carriers.forEach(carrier=>{
       carrier.regions.forEach(region=>{
-        regions.push(region.region)
+        regions.add(region.region)
       })
     })
   })
-  console.log(regions)
+  return Array.from(regions)
+}
 
-  // console.log('state : ' + JSON.stringify(State.getCart()))
+const getCarriers = region => {
+  console.log('region: ' + region)
+  var carriers = {}
+  State.getCart().forEach(item=>{
+    const shippingClass = data.shipping.filter(c=>c.title==item.class)[0]
+    shippingClass.carriers.forEach(carrier=>{
+      if(carrier.regions.filter(r=>r.region==State.getRegion()).length>0){
+        carriers[carrier.carrier] = carrier.regions.filter(r=>r.region==State.getRegion())[0].cost
+      }
+    })
+  })
+  return Object.keys(carriers)
+}
+
+const getHighestShippingCost = () =>{
+  var highestShippingCost = 0
+  if(State.getCart().length<1   ){return 0}
+  if(State.getCarrier() == ' ' ){return 0}
+  if(State.getRegion()   == ' ' ){return 0}
+  State.getCart().forEach(item=>{
+    const shippingClass = data.shipping.filter(s=>s.title==item.class)[0]
+    const carrier = shippingClass.carriers.filter(c=>c.carrier==State.getCarrier())[0]
+    const region = carrier.regions.filter(r=>r.region==State.getRegion())[0]
+    const cost = region ? region.cost : 0
+    if(cost>highestShippingCost){
+      highestShippingCost=parseFloat(cost)
+    }
+  })
+  return highestShippingCost
+}
+
+const getTotalWithShipping=()=>{
+  const shippingCost = getHighestShippingCost()
+  var cartTotal = 0
+  State.getCart().forEach(item=>{
+    var price = parseFloat(item.price)
+    if(item.selected!=''){
+      const opt = item.options.filter(o=>o.option==item.selected)[0]
+      if(opt.cost){
+        price += parseFloat(opt.cost)
+      }
+    }
+    cartTotal += (price * parseFloat(item.quantity))
+  })
+  return shippingCost + cartTotal
+}
+
+
+const Checkout = () => {
   return(
   <div className='checkout-container'>
     <p>Please enter your shipping info:</p>
@@ -111,27 +152,28 @@ const Checkout = () => {
       <div className='checkout-shipping-dropdown'>
       <Select 
         title='Please Select Region :'
-        options={regions}
+        options={getRegions()}
         onChange={(e)=>{
-          State.setRegion(e.value);
-          encodeData()
+          State.setRegion(e);
+          State.setCarriers(getCarriers(e))
+          State.setCarrier(' ')
+          // encodeData()
         }}
       />
+      </div>
+      <div className='checkout-shipping-dropdown'>
       <Select 
         title='Please Select Shipping :'
-        options={[{label:`USPS ($ ${uspsShippingCost})`  ,value:uspsShippingCost},
-                  {label:`UPS ($ ${upsShippingCost})`    ,value:upsShippingCost},
-                  {label:`FEDEX ($ ${fedexShippingCost})`,value:fedexShippingCost}
-                ]}
+        options={State.getCarriers()}
         onChange={(e)=>{
-          State.setCarrier(e.value);
+          State.setCarrier(e);
           encodeData()
         }}
       />
       </div>
     </form>
-      <p className="Checkout-Text">{"total with shipping : $" + (State.getTotalWithShipping()).toFixed(2)}</p>
-      <p className="Checkout-Text">{"total with taxes    : $" + ((State.getTotalWithShipping())*1.15).toFixed(2)}</p>
+      <p className="Checkout-Text">{"total with shipping : $" + (getTotalWithShipping()).toFixed(2)}</p>
+      <p className="Checkout-Text">{"total with taxes    : $" + ((getTotalWithShipping())*1.15).toFixed(2)}</p>
     <StripeCheckout token={onToken} stripeKey={PUBLIC_KEY}/>  
   </div>
 )}

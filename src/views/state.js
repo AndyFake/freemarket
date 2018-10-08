@@ -4,9 +4,10 @@ class State {
   cart = observable([])
   selection = observable.box(' ')
   fields = observable({})
-  carrier = observable.box(0)
-  region = observable.box(0)
+  carrier = observable.box(' ')
+  region = observable.box(' ')
   shippingCost = observable.box(0)
+  carriers = observable([])
   
   setField =(field,val)=>this.fields[field]=val
   getField = field => this.fields[field]
@@ -23,8 +24,14 @@ class State {
     return total 
   }
   getCart=()=>this.cart.slice()
+  setRegions=(x)=>this.regions.replace(x)
+  getRegions=()=>this.regions.slice()
+  setCarriers=x=>this.carriers.replace(x)
+  getCarriers=()=>this.carriers.slice()
   setSelection=(x)=>this.selection=x
   setCarrier=x=>this.carrier.set(x)
+  getCarrier=()=>this.carrier.get()
   setRegion=x=>this.region.set(x)
+  getRegion=x=>this.region.get()
 }
 export default State = new State()
