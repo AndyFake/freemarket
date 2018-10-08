@@ -58,7 +58,7 @@ CMS.registerWidget(
   TestWidgetPreview  // Preview component (this is optional)
 );
 CMS.registerWidget(
-  "MRelation",      // Widget name
+  "mrelation",      // Widget name
   MRelationControl, // Editor component
   MRelationPreview  // Preview component (this is optional)
 );
