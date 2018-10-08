@@ -1,6 +1,8 @@
 import React from 'react'
 
 import {TestWidgetControl,TestWidgetPreview} from '../src/widgets/TestWidget'
+import {MRelationControl, MRelationPreview} from '../src/widgets/MRelation'
+
 
 import '../src/globalStyles.css'
 import data from '../src/data.json'
@@ -10,6 +12,7 @@ import Contact from '../src/views/Contact'
 import Blog from '../src/views/Blog'
 import SinglePost from '../src/views/SinglePost'
 import ProductPageTemplate from '../src/views/ProductPageTemplate'
+
 
 console.log('React version', React.version)
 
@@ -53,6 +56,11 @@ CMS.registerWidget(
   "stock",      // Widget name
   TestWidgetControl, // Editor component
   TestWidgetPreview  // Preview component (this is optional)
+);
+CMS.registerWidget(
+  "MRelation",      // Widget name
+  MRelationControl, // Editor component
+  MRelationPreview  // Preview component (this is optional)
 );
 
 // Return to home when user logging out

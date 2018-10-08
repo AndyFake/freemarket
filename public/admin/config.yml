@@ -62,6 +62,12 @@ collections: # A list of collections the CMS should be able to edit
                 collection: shippingClasses
                 searchFields: ["title"]
                 valueField: "title"
+              - label:  M Shipping Class
+                name: Mclass
+                widget: MRelation
+                collection: shippingClasses
+                searchFields: ["title"]
+                valueField: "title"
               - label: 'Status'
                 name: 'status'
                 widget: 'select'
