@@ -1,7 +1,7 @@
 import React from 'react'
 
-import {TestWidgetControl,TestWidgetPreview} from '../src/widgets/TestWidget'
-import {MRelationControl, MRelationPreview} from '../src/widgets/MRelation'
+import {TestWidgetControl,TestWidgetPreview} from '../src/widgets/TestWidget.js'
+import {MRelationControl, MRelationPreview} from '../src/widgets/MRelation.js'
 
 
 import '../src/globalStyles.css'
@@ -53,15 +53,15 @@ CMS.registerPreviewTemplate('productStock', ({ entry }) => (
   <ProductPageTemplate fields={entry.toJS().data} />
 ))
 CMS.registerWidget(
-  "test",      // Widget name
+  "stock",      // Widget name
   TestWidgetControl, // Editor component
   TestWidgetPreview  // Preview component (this is optional)
 );
-CMS.registerWidget(
-  "mrelation",      // Widget name
-  MRelationControl, // Editor component
-  MRelationPreview  // Preview component (this is optional)
-);
+// CMS.registerWidget(
+//   "mrelation",      // Widget name
+//   MRelationControl, // Editor component
+//   MRelationPreview  // Preview component (this is optional)
+// );
 
 // Return to home when user logging out
 window.netlifyIdentity.on('logout', function () {
