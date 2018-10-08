@@ -100,6 +100,8 @@ collections: # A list of collections the CMS should be able to edit
       - label: "RelationSelect"
         name: "relationSelect"
         widget: "relationSelect"
+        options: ["Published", "Featured", "Draft"]
+        default: 'Published'
       - {label: Name, name: title, widget: "string"}
       - {label: Price, name: price, widget: number, required: true}
       - {label: BriefDescription, name: briefDescription, widget: markdown}
