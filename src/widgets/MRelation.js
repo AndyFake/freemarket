@@ -1,64 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { injectGlobal } from 'react-emotion';
-import Autosuggest from 'react-autosuggest';
 import uuid from 'uuid/v4';
-import { List } from 'immutable';
-import { debounce } from 'lodash';
-import { Loader, components, WidgetPreviewContainer } from 'netlify-cms-ui-default';
-
-injectGlobal`
-  .react-autosuggest__container {
-    position: relative;
-  }
-  .react-autosuggest__suggestions-container {
-    display: none;
-  }
-  .react-autosuggest__container--open .react-autosuggest__suggestions-container {
-    ${components.dropdownList}
-    position: absolute;
-    display: block;
-    top: 51px;
-    width: 100%;
-    z-index: 2;
-  }
-  .react-autosuggest__suggestion {
-    ${components.dropdownItem}
-  }
-  .react-autosuggest__suggestions-list {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
-  .react-autosuggest__suggestion {
-    cursor: pointer;
-    padding: 10px 20px;
-  }
-  .react-autosuggest__suggestion--focused {
-    background-color: #ddd;
-  }
-`;
 
 export class MRelationControl extends React.Component {
-  static propTypes = {
-    onChange: PropTypes.func.isRequired,
-    forID: PropTypes.string.isRequired,
-    value: PropTypes.node,
-    field: PropTypes.node,
-    isFetching: PropTypes.bool,
-    fetchID: PropTypes.string,
-    query: PropTypes.func.isRequired,
-    clearSearch: PropTypes.func.isRequired,
-    queryHits: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-    classNameWrapper: PropTypes.string.isRequired,
-    setActiveStyle: PropTypes.func.isRequired,
-    setInactiveStyle: PropTypes.func.isRequired,
-  };
-
-  static defaultProps = {
-    value: '',
-  };
-
   constructor(props, ctx) {
     super(props, ctx);
     this.controlID = uuid();
@@ -127,7 +70,7 @@ export class MRelationControl extends React.Component {
   renderSuggestion = suggestion => {
     const { field } = this.props;
     const valueField = field.get('displayFields') || field.get('valueField');
-    if (List.isList(valueField)) {
+    if (valueField instanceof Array) {
       return (
         <span>
           {valueField.toJS().map(key => (
