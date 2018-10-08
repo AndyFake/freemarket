@@ -4,6 +4,7 @@ export function RelationSelectControl(SelectWidget){
   class RelationSelectControl extends React.Component{
     constructor(props){
       super(props)
+      console.log(JSON.stringify(props))
     }
     render(){
       return(
