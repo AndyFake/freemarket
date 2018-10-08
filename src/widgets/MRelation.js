@@ -127,6 +127,6 @@ export class MRelationControl extends React.Component {
 
 export const MRelationPreview = ({ value }) => <WidgetPreviewContainer>{value}</WidgetPreviewContainer>;
 
-RelationPreview.propTypes = {
+MRelationPreview.propTypes = {
   value: PropTypes.node,
 };
