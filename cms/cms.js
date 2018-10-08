@@ -53,7 +53,7 @@ CMS.registerPreviewTemplate('productStock', ({ entry }) => (
   <ProductPageTemplate fields={entry.toJS().data} />
 ))
 CMS.registerWidget(
-  "stock",      // Widget name
+  "test",      // Widget name
   TestWidgetControl, // Editor component
   TestWidgetPreview  // Preview component (this is optional)
 );
