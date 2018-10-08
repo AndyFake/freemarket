@@ -2,6 +2,7 @@ import React from 'react'
 
 import {TestWidgetControl,TestWidgetPreview} from '../src/widgets/TestWidget.js'
 import {MRelationControl, MRelationPreview} from '../src/widgets/MRelation.js'
+import {SlidesControl,SlidesPreview} from './testWidget.js'
 
 
 import '../src/globalStyles.css'
@@ -53,10 +54,15 @@ CMS.registerPreviewTemplate('productStock', ({ entry }) => (
   <ProductPageTemplate fields={entry.toJS().data} />
 ))
 CMS.registerWidget(
-  "stock",      // Widget name
-  TestWidgetControl, // Editor component
-  TestWidgetPreview  // Preview component (this is optional)
-);
+  'test',
+  SlidesControl,
+  SlidesPreview
+)
+// CMS.registerWidget(
+//   "stock",      // Widget name
+//   TestWidgetControl, // Editor component
+//   TestWidgetPreview  // Preview component (this is optional)
+// );
 // CMS.registerWidget(
 //   "mrelation",      // Widget name
 //   MRelationControl, // Editor component
