@@ -12,6 +12,9 @@ export function RelationSelectControl(SelectWidget){
         data:[]
       }
     }
+    handleChange = e => {
+      this.props.onChange(e.target.value);
+    };
     // componentDidMount(){
     //   if(this.state.loading=='not done'){
     //     fetch( URL, { method:"GET" } )
@@ -30,14 +33,34 @@ export function RelationSelectControl(SelectWidget){
     //   }
     // }
     render(){
-      var _props = {...this.props}
-      _props.field.options=['test','test2']
-      _props.field.default='test'
-      _props.value='test'
-      console.log(_props)
+      // var _props = {...this.props}
+      // _props.field.options=['test','test2']
+      // _props.field.default='test'
+      // _props.value='test'
+      // console.log(_props)
+      // console.log(_props.field.get('options'))
+      const {forID,value,classNameWrapper,setActiveStyle,setInactiveStyle} = this.props
+      const options = [
+        {label:'one',value:'one'},
+        {label:'two',value:'two'}
+      ]
       return(
         <div>
-          <SelectWidget {..._props} />
+          {/* <SelectWidget {..._props} /> */}
+          <select
+            id={forID}
+            value={value || ''}
+            onChange={this.handleChange}
+            className={classNameWrapper}
+            onFocus={setActiveStyle}
+            onBlur={setInactiveStyle}
+          >
+            {options.map((option, idx) => (
+              <option key={idx} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
         </div>
 
       )
