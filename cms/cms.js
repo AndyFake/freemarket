@@ -2,7 +2,7 @@ import React from 'react'
 
 import {TestWidgetControl,TestWidgetPreview} from '../src/widgets/TestWidget.js'
 import {MRelationControl, MRelationPreview} from '../src/widgets/MRelation.js'
-import {SlidesControl,SlidesPreview} from './testWidget.js'
+import SlidesControl from './testWidget.js'
 
 
 import '../src/globalStyles.css'
@@ -56,7 +56,7 @@ CMS.registerPreviewTemplate('productStock', ({ entry }) => (
 CMS.registerWidget(
   'test',
   SlidesControl,
-  SlidesPreview
+  // SlidesPreview
 )
 // CMS.registerWidget(
 //   "stock",      // Widget name
