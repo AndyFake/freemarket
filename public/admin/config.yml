@@ -86,6 +86,8 @@ collections: # A list of collections the CMS should be able to edit
   - name: test
     label: Test
     folder: content/test
+    extension: json
+    format: json
     create: true
     fields:
       - {label: Name, name: title, widget: "string"}
