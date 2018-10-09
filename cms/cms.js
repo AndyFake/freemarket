@@ -59,7 +59,7 @@ CMS.registerPreviewTemplate('productStock', ({ entry }) => (
 var relationWidget = CMS.getWidget("relation").control
 var selectWidget = CMS.getWidget("select").control
 CMS.registerWidget(
-  'relationSelect',
+  'relation',
   RelationSelectControl(relationWidget), )
 
 CMS.registerWidget(

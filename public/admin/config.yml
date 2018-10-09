@@ -111,7 +111,7 @@ collections: # A list of collections the CMS should be able to edit
         widget: "test"
       - label: "RelationSelect"
         name: "relationSelect"
-        widget: "relationSelect"
+        widget: "relation"
         options: ["Published", "Featured", "Draft"]
         default: 'Published'
         collection: shippingClasses
