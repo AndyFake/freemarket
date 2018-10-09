@@ -42,6 +42,9 @@ export function RelationSelectControl(RelationWidget){
       // this.relation.props.query(this.controlID, 'shippingClasses', ['title'], 'sma')
     }
     render(){
+      console.log('ref=>')
+      console.log(this.relation)
+
       // var _props = {...this.props}
       // _props.field.options=['test','test2']
       // _props.field.default='test'
@@ -51,7 +54,7 @@ export function RelationSelectControl(RelationWidget){
       // console.log(this.props)
       console.log('querryHits=> ')
       if(this.relation){
-        console.log(this.relation.props.queryHits)
+        console.log(this.relation.stateProps.queryHits)
       }
       // console.log(_props.field.get('options'))
       const {forID,value,classNameWrapper,setActiveStyle,setInactiveStyle} = this.props
