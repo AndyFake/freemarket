@@ -7,13 +7,12 @@ export function RelationSelectControl(RelationWidget){
   class RelationSelectControl extends React.Component{
     constructor(props, ctx){
       super(props, ctx)
-      this.ctx=ctx
       console.log(JSON.stringify(props))
       this.controlID = uuid()
-      this.state={
-        loading:'not done',
-        data:[]
-      }
+      // this.state={
+      //   loading:'not done',
+      //   data:[]
+      // }
     }
     handleChange = e => {
       this.props.onChange(e.target.value);
@@ -62,11 +61,11 @@ export function RelationSelectControl(RelationWidget){
         console.log(this.relation.stateProps.queryHits)
       }
       // console.log(_props.field.get('options'))
-      const {forID,value,classNameWrapper,setActiveStyle,setInactiveStyle} = this.props
-      const options = [
-        {label:'one',value:'one'},
-        {label:'two',value:'two'}
-      ]
+      // const {forID,value,classNameWrapper,setActiveStyle,setInactiveStyle} = this.props
+      // const options = [
+      //   {label:'one',value:'one'},
+      //   {label:'two',value:'two'}
+      // ]
       
       // const test = this.props.field.getAsset()
       return(
