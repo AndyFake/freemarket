@@ -46,11 +46,12 @@ export function RelationSelectControl(SelectWidget,RelationWidget){
         {label:'one',value:'one'},
         {label:'two',value:'two'}
       ]
+      
       // const test = this.props.field.getAsset()
       return(
         <div>
           {/* <SelectWidget {..._props} /> */}
-          <RelationWidget {..._props} />
+          <RelationWidget {...this.props} ref={i=>this.relation=i} />
           <select
             id={forID}
             value={value || ''}
