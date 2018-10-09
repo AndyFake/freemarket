@@ -93,6 +93,5 @@ export class RelationSelectControl extends React.Component{
 
       )
     }
-  }
-  return RelationSelectControl
 }
+// return RelationSelectControl

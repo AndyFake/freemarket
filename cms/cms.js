@@ -83,8 +83,8 @@ CMS.registerWidget(
     // )
 
 CMS.registerWidget(
-  'relation',
-  RelationSelectControl(relationWidget), )
+  'myrelation',
+  RelationSelectControl, )
 
 CMS.registerWidget(
   'test',
