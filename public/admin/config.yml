@@ -114,6 +114,10 @@ collections: # A list of collections the CMS should be able to edit
         widget: "relationSelect"
         options: ["Published", "Featured", "Draft"]
         default: 'Published'
+        collection: shippingClasses
+        searchFields: ["title"]
+        valueField: "title"
+
       - {label: Name, name: title, widget: "string"}
       - {label: Price, name: price, widget: number, required: true}
       - {label: BriefDescription, name: briefDescription, widget: markdown}

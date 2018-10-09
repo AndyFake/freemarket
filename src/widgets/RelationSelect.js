@@ -2,7 +2,7 @@ import React from 'react'
 
 const URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/store/store.json`
 
-export function RelationSelectControl(SelectWidget){
+export function RelationSelectControl(SelectWidget,RelationWidget){
   class RelationSelectControl extends React.Component{
     constructor(props){
       super(props)
@@ -50,6 +50,7 @@ export function RelationSelectControl(SelectWidget){
       return(
         <div>
           {/* <SelectWidget {..._props} /> */}
+          <RelationWidget {..._props} />
           <select
             id={forID}
             value={value || ''}
