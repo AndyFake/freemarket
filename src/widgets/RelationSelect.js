@@ -32,6 +32,9 @@ export function RelationSelectControl(RelationWidget){
     //     })
     //   }
     // }
+    componentDidMount(){
+      this.relation.props.query()
+    }
     render(){
       // var _props = {...this.props}
       // _props.field.options=['test','test2']
@@ -43,6 +46,7 @@ export function RelationSelectControl(RelationWidget){
       console.log('q=> ')
       if(this.relation){
         console.log(this.relation.props.query)
+        console.log(this.props.query)
       }
       // console.log(_props.field.get('options'))
       const {forID,value,classNameWrapper,setActiveStyle,setInactiveStyle} = this.props
