@@ -3,11 +3,11 @@ import uuid from 'uuid/v4';
 
 const URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/store/store.json`
 
-export function RelationSelectControl(RelationWidget){
-  class RelationSelectControl extends React.Component{
+// export function RelationSelectControl(RelationWidget){
+export class RelationSelectControl extends React.Component{
     constructor(props, ctx){
       super(props, ctx)
-      console.log(JSON.stringify(props))
+      // console.log(JSON.stringify(props))
       this.controlID = uuid()
       // this.state={
       //   loading:'not done',
@@ -44,8 +44,8 @@ export function RelationSelectControl(RelationWidget){
     }
 
     render(){
-      console.log('ref=>')
-      console.log(this.relation)
+      // console.log('ref=>')
+      // console.log(this.relation)
       console.log('own props=>')
       console.log(this.props)
       console.log('own ctx=>')
@@ -74,7 +74,7 @@ export function RelationSelectControl(RelationWidget){
       return(
         <div>
           {/* <SelectWidget {..._props} /> */}
-          <RelationWidget {...this.props} ref={i=>this.relation=i} />
+          {/* <RelationWidget {...this.props} ref={i=>this.relation=i} /> */}
           {/* <select
             id={forID}
             value={value || ''}
