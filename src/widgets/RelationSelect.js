@@ -34,21 +34,21 @@ export class RelationSelectControl extends React.Component{
     //     })
     //   }
     // }
-    componentDidMount() {
+    // componentDidMount() {
       // const { value, field } = this.props;
       // if (value) {
       //   const collection = field.get('collection');
       //   const searchFields = field.get('searchFields').toJS();
       //   this.props.query(this.controlID, collection, searchFields, value);
       // }
-    }
+    // }
 
     render(){
       // console.log('ref=>')
       // console.log(this.relation)
       console.log('own props=>')
       console.log(this.props)
-      console.log('own ctx=>')
+      console.log('self=>')
       console.log(this)
 
 
@@ -72,7 +72,7 @@ export class RelationSelectControl extends React.Component{
       
       // const test = this.props.field.getAsset()
       return(
-        <div>
+        <div>searching for query
           {/* <SelectWidget {..._props} /> */}
           {/* <RelationWidget {...this.props} ref={i=>this.relation=i} /> */}
           {/* <select

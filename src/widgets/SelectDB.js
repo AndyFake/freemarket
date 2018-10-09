@@ -2,7 +2,7 @@ import React from 'react'
 
 const URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/store/store.json`
 
-// path = 'shipping/classes.json' || 'shipping/carriers.json' || 'shipping/destinations.json'
+// path = 'shipping/classes.json' || 'shipping/carriers.json' || 'shipping/regions.json'
 
 export function SelectDB(data,path){
   class SelectDB extends React.Component{
