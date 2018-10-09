@@ -6,7 +6,7 @@ import {MRelationControl, MRelationPreview} from '../src/widgets/MRelation.js'
 import {SlidesControl,SlidesPreview} from './testWidget.js'
 
 import {InventoryControl} from '../src/widgets/InventoryControl.js'
-import {SelectDB} from '.../src/widgets/SelectDB.js'
+import {SelectDB} from '../src/widgets/SelectDB.js'
 
 import '../src/globalStyles.css'
 import data from '../src/data.json'
