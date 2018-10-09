@@ -1,4 +1,5 @@
 import React from 'react'
+import uuid from 'uuid/v4';
 
 const URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/store/store.json`
 
@@ -7,6 +8,7 @@ export function RelationSelectControl(RelationWidget){
     constructor(props){
       super(props)
       console.log(JSON.stringify(props))
+      this.controlID = uuid()
       this.state={
         loading:'not done',
         data:[]
@@ -37,6 +39,7 @@ export function RelationSelectControl(RelationWidget){
       console.log(this.relation)
       console.log('relation.props.query=>')
       console.log(this.relation.props.query)
+      this.relation.props.query(this.controlID, 'shippingClasses', ['title'], 'sma')
     }
     render(){
       // var _props = {...this.props}
