@@ -34,13 +34,15 @@ export function RelationSelectControl(RelationWidget){
     //     })
     //   }
     // }
-    componentDidMount(){
-      console.log('ref=>')
-      console.log(this.relation)
-      // console.log('relation.props.query=>')
-      // console.log(this.relation.props.query)
-      // this.relation.props.query(this.controlID, 'shippingClasses', ['title'], 'sma')
+    componentDidMount() {
+      const { value, field } = this.props;
+      if (value) {
+        const collection = field.get('collection');
+        const searchFields = field.get('searchFields').toJS();
+        this.props.query(this.controlID, collection, searchFields, value);
+      }
     }
+
     render(){
       console.log('ref=>')
       console.log(this.relation)
@@ -49,6 +51,7 @@ export function RelationSelectControl(RelationWidget){
       console.log('own ctx=>')
       console.log(this)
 
+
       // var _props = {...this.props}
       // _props.field.options=['test','test2']
       // _props.field.default='test'
@@ -56,10 +59,10 @@ export function RelationSelectControl(RelationWidget){
       // const query = this.props.query
       // console.log(query)
       // console.log(this.props)
-      console.log('querryHits=> ')
-      if(this.relation){
-        console.log(this.relation.stateProps.queryHits)
-      }
+      // console.log('querryHits=> ')
+      // if(this.relation){
+      //   console.log(this.relation.stateProps.queryHits)
+      // }
       // console.log(_props.field.get('options'))
       // const {forID,value,classNameWrapper,setActiveStyle,setInactiveStyle} = this.props
       // const options = [
