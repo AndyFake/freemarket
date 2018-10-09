@@ -37,9 +37,9 @@ export function RelationSelectControl(RelationWidget){
     componentDidMount(){
       console.log('ref=>')
       console.log(this.relation)
-      console.log('relation.props.query=>')
-      console.log(this.relation.props.query)
-      this.relation.props.query(this.controlID, 'shippingClasses', ['title'], 'sma')
+      // console.log('relation.props.query=>')
+      // console.log(this.relation.props.query)
+      // this.relation.props.query(this.controlID, 'shippingClasses', ['title'], 'sma')
     }
     render(){
       // var _props = {...this.props}
@@ -48,7 +48,7 @@ export function RelationSelectControl(RelationWidget){
       // _props.value='test'
       // const query = this.props.query
       // console.log(query)
-      console.log(this.props)
+      // console.log(this.props)
       console.log('querryHits=> ')
       if(this.relation){
         console.log(this.relation.props.queryHits)
