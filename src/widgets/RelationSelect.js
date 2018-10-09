@@ -48,7 +48,7 @@ export function RelationSelectControl(RelationWidget){
       console.log('own props=>')
       console.log(this.props)
       console.log('own ctx=>')
-      console.log(this.ctx)
+      console.log(this)
 
       // var _props = {...this.props}
       // _props.field.options=['test','test2']
