@@ -33,7 +33,10 @@ export function RelationSelectControl(RelationWidget){
     //   }
     // }
     componentDidMount(){
-      this.relation.props.query()
+      console.log('ref=>')
+      console.log(this.relation)
+      console.log('relation.props.query=>')
+      console.log(this.relation.props.query)
     }
     render(){
       // var _props = {...this.props}
