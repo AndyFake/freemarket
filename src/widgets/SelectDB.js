@@ -2,10 +2,10 @@ import React from 'react'
 
 const URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/store/store.json`
 
-// path = 'shipping/classes.json' || 'products.json'
+// path = 'shipping/classes.json' || 'shipping/carriers.json' || 'shipping/destinations.json'
 
 export function SelectDB(data,path){
-  return class SelectDB extends React.Component{
+  class SelectDB extends React.Component{
     constructor(props){
       super(props)
       this.state={
@@ -47,4 +47,5 @@ export function SelectDB(data,path){
       )
     }
   }
+  return SelectDB
 }

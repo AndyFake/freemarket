@@ -1,13 +1,12 @@
 import React from 'react'
 
-
 import {RelationSelectControl} from '../src/widgets/RelationSelect.js'
-import  {SelectDB} from '.../src/widgets/SelectDB.js'
-
 import {TestWidgetControl,TestWidgetPreview} from '../src/widgets/TestWidget.js'
 import {MRelationControl, MRelationPreview} from '../src/widgets/MRelation.js'
 import {SlidesControl,SlidesPreview} from './testWidget.js'
 
+import {InventoryControl} from '../src/widgets/InventoryControl.js'
+import {SelectDB} from '.../src/widgets/SelectDB.js'
 
 import '../src/globalStyles.css'
 import data from '../src/data.json'
@@ -61,18 +60,27 @@ var relationWidget = CMS.getWidget("relation").control
 var selectWidget = CMS.getWidget("select").control
 
 CMS.registerWidget(
-  selectClass,
-  SelectDB(data,'class')
+  'selectClass',
+  SelectDB(data,'shipping/classes.json')
 )
 CMS.registerWidget(
-  selectRegion,
-  SelectDB(data,'region')
+  'selectRegion',
+  SelectDB(data,'shipping/regions.json')
 )
 CMS.registerWidget(
-  selectCarrier,
-  SelectDB(data,'carrier')
-)
-
+  'selectCarrier',
+  SelectDB(data,'shipping/regions.json')
+  )
+CMS.registerWidget(
+  'inventory',
+  InventoryControl(data)
+  )
+    
+    
+    // CMS.registerWidget(
+    //   'selectProducts',
+    //   SelectFile
+    // )
 
 CMS.registerWidget(
   'relation',

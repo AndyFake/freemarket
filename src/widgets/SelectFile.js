@@ -2,10 +2,10 @@ import React from 'react'
 
 const URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/store/store.json`
 
-// file = 'carriers' || 'destinations'
+// file = products
 
 export function SelectFile(data,file){
-  return class SelectFile extends React.Component{
+  class SelectFile extends React.Component{
 
     handleChange = e => {
       this.props.onChange(e.target.value);
@@ -37,4 +37,5 @@ export function SelectFile(data,file){
       )
     }
   }
+  return SelectFile
 }
