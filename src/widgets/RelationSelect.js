@@ -35,12 +35,12 @@ export function RelationSelectControl(RelationWidget){
     //   }
     // }
     componentDidMount() {
-      const { value, field } = this.props;
-      if (value) {
-        const collection = field.get('collection');
-        const searchFields = field.get('searchFields').toJS();
-        this.props.query(this.controlID, collection, searchFields, value);
-      }
+      // const { value, field } = this.props;
+      // if (value) {
+      //   const collection = field.get('collection');
+      //   const searchFields = field.get('searchFields').toJS();
+      //   this.props.query(this.controlID, collection, searchFields, value);
+      // }
     }
 
     render(){
