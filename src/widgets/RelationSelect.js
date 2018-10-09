@@ -5,8 +5,9 @@ const URL = `https://api.github.com/repos/marchingband/freemarket/contents/conte
 
 // export function RelationSelectControl(RelationWidget){
 export class RelationSelectControl extends React.Component{
-    constructor(props, ctx){
-      super(props, ctx)
+  // not sure about this ctx
+    constructor(props){
+      super(props)
       // console.log(JSON.stringify(props))
       this.controlID = uuid()
       // this.state={
