@@ -46,10 +46,9 @@ export function RelationSelectControl(RelationWidget){
       // const query = this.props.query
       // console.log(query)
       console.log(this.props)
-      console.log('q=> ')
+      console.log('querryHits=> ')
       if(this.relation){
-        console.log(this.relation.props.query)
-        console.log(this.props.query)
+        console.log(this.relation.props.queryHits)
       }
       // console.log(_props.field.get('options'))
       const {forID,value,classNameWrapper,setActiveStyle,setInactiveStyle} = this.props
