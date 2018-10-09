@@ -4,6 +4,8 @@ import React, { Component } from "react";
 // This is the editing component
 export class SlidesControl extends Component {
   render() {
+    console.log('collection=> ')
+    console.log(this.props.field.get('collection'))
     return <div></div>;
   }
 }

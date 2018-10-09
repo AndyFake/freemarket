@@ -2,6 +2,7 @@ import React from 'react'
 
 
 import {RelationSelectControl} from '../src/widgets/RelationSelect.js'
+import  {SelectDB} from '.../src/widgets/SelectDB.js'
 
 import {TestWidgetControl,TestWidgetPreview} from '../src/widgets/TestWidget.js'
 import {MRelationControl, MRelationPreview} from '../src/widgets/MRelation.js'
@@ -58,6 +59,21 @@ CMS.registerPreviewTemplate('productStock', ({ entry }) => (
 ))
 var relationWidget = CMS.getWidget("relation").control
 var selectWidget = CMS.getWidget("select").control
+
+CMS.registerWidget(
+  selectClass,
+  SelectDB(data,'class')
+)
+CMS.registerWidget(
+  selectRegion,
+  SelectDB(data,'region')
+)
+CMS.registerWidget(
+  selectCarrier,
+  SelectDB(data,'carrier')
+)
+
+
 CMS.registerWidget(
   'relation',
   RelationSelectControl(relationWidget), )
