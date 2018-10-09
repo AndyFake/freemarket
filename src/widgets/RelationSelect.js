@@ -2,7 +2,7 @@ import React from 'react'
 
 const URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/store/store.json`
 
-export function RelationSelectControl(SelectWidget,RelationWidget){
+export function RelationSelectControl(RelationWidget){
   class RelationSelectControl extends React.Component{
     constructor(props){
       super(props)
@@ -40,6 +40,8 @@ export function RelationSelectControl(SelectWidget,RelationWidget){
       const query = this.props.query
       console.log(query)
       console.log(this.props)
+      console.log('q=> ')
+      console.log(this.relation.props.query)
       // console.log(_props.field.get('options'))
       const {forID,value,classNameWrapper,setActiveStyle,setInactiveStyle} = this.props
       const options = [
@@ -52,7 +54,7 @@ export function RelationSelectControl(SelectWidget,RelationWidget){
         <div>
           {/* <SelectWidget {..._props} /> */}
           <RelationWidget {...this.props} ref={i=>this.relation=i} />
-          <select
+          {/* <select
             id={forID}
             value={value || ''}
             onChange={this.handleChange}
@@ -65,7 +67,7 @@ export function RelationSelectControl(SelectWidget,RelationWidget){
                 {option.label}
               </option>
             ))}
-          </select>
+          </select> */}
         </div>
 
       )
