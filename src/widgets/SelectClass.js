@@ -33,7 +33,7 @@ export class SelectClass extends React.Component{
       )
     }
   }
-s
+
 //   }
 //   return SelectFile
 // }
