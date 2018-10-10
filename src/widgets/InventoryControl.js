@@ -50,16 +50,15 @@ export function InventoryControl(data){
       const test = this.props.field.get('inventory')
       console.log("inventory=>")
       console.log(test)
+
+      const inventory = this.getStockDisplayObject()
+      console.log(inventory)
+      this.setState({inventory})
     }
 
-    handleChange = ({title,value}) => {
-      var {inventory} = this.state
-      inventory[title] = value
-      this.props.onChange(inventory);
-      this.setState(inventory)
-    };
-    
-    render(){
+    getStockDisplayObject=()=>{
+      var display = []
+      const stock = this.props.field.get('inventory')
       const products = []
       data.products
       .filter(p=>p.trackInventory)
@@ -71,6 +70,40 @@ export function InventoryControl(data){
           })
         }
       })
+      products.forEach(title=>{
+        const value = stock[title] ? stock[title] : 0
+        display.push({title,value})
+      })
+      return display
+    }
+    
+    
+
+    handleChange = ({title,value}) => {
+      var {inventory} = this.state
+      inventory[title] = value
+      this.props.onChange(inventory);
+      this.setState(inventory)
+    };
+    
+    render(){
+      // var display = []
+      // const stock = this.props.field.get('inventory')
+      // const products = []
+      // data.products
+      // .filter(p=>p.trackInventory)
+      // .forEach(p=>{
+      //   if(p.options.length<1){products.push(p.title)}
+      //   if(p.options.length>0){
+      //     p.options.forEach(o=>{
+      //       products.push(''+p.title+'('+o.title+')')
+      //     })
+      //   }
+      // })
+      // products.forEach(title=>{
+      //   const quantity = stock[title] ? stock[title] : 0
+      //   display[title] = quantity
+      // })
       return(
         <div>
           {this.state.inventory.map((item,i)=>
