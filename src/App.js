@@ -124,7 +124,7 @@ class App extends Component {
               description={siteDescription}
               fields={storeIsHome ? 
                         this.getDocument('pages','home') :
-                        this.getDocuments('store')[0]
+                        this.getDocuments('products')
                       }
               title={storeIsHome?'Home':'Store'}            
             />
@@ -133,7 +133,7 @@ class App extends Component {
               exact
               component={Store}
               description={siteDescription}
-              fields={this.getDocuments('store')[0]}
+              fields={this.getDocuments('products')}
               title={'Store'}
             />
             <RouteWithMeta
@@ -150,7 +150,7 @@ class App extends Component {
               description={siteDescription}
               title={'Checkout'}
             />
-            {this.getDocument('pages', 'about').show&&
+            {this.getDocument('pages', 'about').show &&
             <RouteWithMeta
               path='/about/'
               exact
@@ -158,7 +158,7 @@ class App extends Component {
               fields={this.getDocument('pages', 'about')}
             />
             }
-            {this.getDocument('pages', 'contact').show&&
+            {this.getDocument('pages', 'contact').show &&
             <RouteWithMeta
               path='/contact/'
               exact
@@ -167,7 +167,7 @@ class App extends Component {
               siteTitle={siteTitle}
             />
             }
-            {this.getDocument('pages', 'blog').show&&
+            {this.getDocument('pages', 'blog').show &&
             <RouteWithMeta
               path='/blog/'
               exact
@@ -177,7 +177,7 @@ class App extends Component {
               postCategories={postCategories}
             />
             }
-            {this.getDocument('pages', 'blog').show&&
+            {this.getDocument('pages', 'blog').show &&
             posts.map((post, index) => {
               const path = slugify(`/blog/${post.title}`)
               const nextPost = posts[index - 1]
@@ -195,7 +195,7 @@ class App extends Component {
               )
             })}
 
-            {data.store[0].products.map(product => {
+            {data.products.map(product => {
               const path = slugify(`/${product.title}`)
               return (
                 <RouteWithMeta
@@ -204,7 +204,7 @@ class App extends Component {
                   exact
                   component={ProductPage}
                   fields={product}
-                  title={product.productName}
+                  title={product.title}
                 />
               )
             })}
