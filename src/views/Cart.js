@@ -13,9 +13,9 @@ const URL = `https://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents
 // .then(r => r.json() )
 // .then(r => console.log(atob(r.content)) )
 
-
+//this is broken
 const getStock=item=>{
-  if(item.selected!='' && item.options.filter(o=>o.option==item.selected)[0].separateStock){
+  if(item.selected!='' && item.options.filter(o=>o.title==item.selected)[0].separateStock){
     return item.options.filter(o=>o.title==item.selected)[0].stock
   }
   return item.stock
@@ -68,11 +68,13 @@ return(
               style={{width:`${String(item.quantity).length*8+5}px`,minWidth:'33px', textAlign:'center',height:'25px',margin:'3px',padding:'0px'}}
               value={item.quantity?item.quantity:''}
               onChange={e=>{
-                if(getStock(item) < parseInt(e.target.value)||0){
-                  window.alert(`sorry we only have ${getStock(item)} in stock `)
-                }else{
-                  State.modCart(i,parseInt(e.target.value)||0)
-                }
+                // stock check is broken
+                // if(getStock(item) < parseInt(e.target.value)||0){
+                //   window.alert(`sorry we only have ${getStock(item)} in stock `)
+                // }else{
+                //   State.modCart(i,parseInt(e.target.value)||0)
+                // }
+                State.modCart(i,parseInt(e.target.value)||0)
               }}
               onKeyPress={e=>e.key==='Enter'&&this[i].blur()}
             />
