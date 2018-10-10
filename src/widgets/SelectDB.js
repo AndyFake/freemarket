@@ -18,9 +18,10 @@ export function SelectDB(data,path,filename){
       this.props.onChange(e.target.value);
     };
     componentDidMount(){
+      // fetch("https://api.github.com/repos/marchingband/freemarket/contents/content/regionsAndCarriers/carriers.json",{ method:"GET" })
       fetch(`${BASE_URL}${path}/${filename}.json`,{ method:"GET" })
       .then(f=>f.json())
-      .then(f=>{
+      .then(r=>{
         var items = JSON.parse(atob(r.content))
         var options = items[objectName].map(x=>x.title)
         this.setState({options})
