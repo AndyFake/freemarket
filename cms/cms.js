@@ -5,8 +5,9 @@ import React from 'react'
 // import {MRelationControl, MRelationPreview} from '../src/widgets/MRelation.js'
 // import {SlidesControl,SlidesPreview} from './testWidget.js'
 
-import {InventoryControl} from '../src/widgets/InventoryControl.js'
+// import {InventoryControl} from '../src/widgets/InventoryControl.js'
 import {SelectDB} from '../src/widgets/SelectDB.js'
+import {SelectDBPreview} from '../src/widgets/SelectDBPreview.js'
 
 import '../src/globalStyles.css'
 import data from '../src/data.json'
@@ -16,6 +17,7 @@ import Contact from '../src/views/Contact'
 import Blog from '../src/views/Blog'
 import SinglePost from '../src/views/SinglePost'
 import ProductPageTemplate from '../src/views/ProductPageTemplate'
+import { SelectDBPreview } from '../src/widgets/SelectDBPreview.js';
 
 
 console.log('React version', React.version)
@@ -60,24 +62,26 @@ CMS.registerPreviewTemplate('productStock', ({ entry }) => (
 // var selectWidget = CMS.getWidget("select").control
 
 CMS.registerWidget('selectClassData',
-  SelectFile(data,'shipping','classes','title')
+  SelectFile(data,'shippingClasses','title')
 )
-CMS.registerWidget(
-  'selectClass',
-  SelectDB(data,'shipping/classes.json','classes')
-)
+// CMS.registerWidget(
+//   'selectClass',
+//   SelectDB(data,'shipping/classes.json','classes')
+// )
 CMS.registerWidget(
   'selectRegion',
-  SelectDB(data,'shipping/regions.json','regions')
+  SelectDB(data,'shipping/regions.json','regions'),
+  SelectDBPreview
 )
 CMS.registerWidget(
   'selectCarrier',
-  SelectDB(data,'shipping/carriers.json','carriers')
+  SelectDB(data,'shipping/carriers.json','carriers'),
+  SelectDBPreview
   )
-CMS.registerWidget(
-  'inventory',
-  InventoryControl(data)
-  )
+// CMS.registerWidget(
+//   'inventory',
+//   InventoryControl(data)
+//   )
     
     
     // CMS.registerWidget(
