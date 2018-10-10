@@ -53,11 +53,13 @@ return(
           <div 
             onClick={(e)=>{
               e.preventDefault()
-              if(getStock(item) < item.quantity+1){
-                window.alert(`sorry we only have ${getStock(item)} in stock `)
-              }else{
-                State.modCart(i,item.quantity+1)
-              }
+              // getStock() is broken
+              // if(getStock(item) < item.quantity+1){
+              //   window.alert(`sorry we only have ${getStock(item)} in stock `)
+              // }else{
+              //   State.modCart(i,item.quantity+1)
+              // }
+              State.modCart(i,item.quantity+1)
             }}
           >
           <PlusSquare size={29} className='Cart-Feather'/>
@@ -68,7 +70,7 @@ return(
               style={{width:`${String(item.quantity).length*8+5}px`,minWidth:'33px', textAlign:'center',height:'25px',margin:'3px',padding:'0px'}}
               value={item.quantity?item.quantity:''}
               onChange={e=>{
-                // stock check is broken
+                // getStock() is broken
                 // if(getStock(item) < parseInt(e.target.value)||0){
                 //   window.alert(`sorry we only have ${getStock(item)} in stock `)
                 // }else{

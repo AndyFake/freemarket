@@ -36,7 +36,7 @@ export default ({ fields }) => {
             <Select
               title='Please Select :'
               options={[...options.map(o=>({label:o.title,value:o.title}))]}
-              onChange={(selection)=>{State.setSelection(selection.title?selection.title:selection)}}
+              onChange={(selection)=>{State.setSelection(selection.label?selection.label:selection)}}
             />
           }
           <Link to='/cart'>
