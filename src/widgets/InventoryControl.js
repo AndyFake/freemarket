@@ -44,9 +44,12 @@ export function InventoryControl(data){
         inventory:[]
       }
     }
-    
+
     componentDidMount(){
       console.log(this.props)
+      const test = this.props.field.get('inventory')
+      console.log("inventory=>")
+      console.log(test)
     }
 
     handleChange = ({title,value}) => {
@@ -57,6 +60,17 @@ export function InventoryControl(data){
     };
     
     render(){
+      const products = []
+      data.products
+      .filter(p=>p.trackInventory)
+      .forEach(p=>{
+        if(p.options.length<1){products.push(p.title)}
+        if(p.options.length>0){
+          p.options.forEach(o=>{
+            products.push(''+p.title+'('+o.title+')')
+          })
+        }
+      })
       return(
         <div>
           {this.state.inventory.map((item,i)=>
