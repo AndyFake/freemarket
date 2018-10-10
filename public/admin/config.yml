@@ -19,8 +19,6 @@ collections: # A list of collections the CMS should be able to edit
 
   - name: products
     label: Product
-    extension: json
-    format: json
     editor:
       preview: true
     folder: content/products
