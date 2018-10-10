@@ -1,0 +1,22 @@
+{
+  "longDescription": "tshirt",
+  "briefDescription": "tshirt",
+  "price": "10",
+  "date": "2018-10-10T19:19:15.054Z",
+  "trackInventory": true,
+  "status": "Published",
+  "class": "small",
+  "title": "t-shirt",
+  "images": [
+    {
+      "image": "/images/uploads/card-og.png"
+    }
+  ],
+  "primaryImage": "/images/uploads/card-og.png",
+  "options": [
+    {
+      "title": "red",
+      "cost": "-3"
+    }
+  ]
+}
