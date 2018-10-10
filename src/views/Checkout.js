@@ -152,10 +152,10 @@ const Checkout = () => {
       <div className='checkout-shipping-dropdown'>
       <Select 
         title='Please Select Region :'
-        options={getRegions()}
+        options={getRegions().map(r=>({label:r,value:r}))}
         onChange={(e)=>{
-          State.setRegion(e);
-          State.setCarriers(getCarriers(e))
+          State.setRegion(e.label);
+          State.setCarriers(getCarriers(e.label))
           State.setCarrier(' ')
           // encodeData()
         }}
@@ -164,9 +164,9 @@ const Checkout = () => {
       <div className='checkout-shipping-dropdown'>
       <Select 
         title='Please Select Shipping :'
-        options={State.getCarriers()}
+        options={State.getCarriers().map(c=>({label:c,value:c}))}
         onChange={(e)=>{
-          State.setCarrier(e);
+          State.setCarrier(e.label);
           encodeData()
         }}
       />
