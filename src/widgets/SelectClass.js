@@ -16,6 +16,7 @@ export class SelectClass extends React.Component{
       return(
         <div>
           <select
+            {...this.props}
             id={forID}
             value={value || ''}
             onChange={this.handleChange}
