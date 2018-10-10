@@ -18,12 +18,16 @@ const InventoryLine = ({
       <input
         id={forID}
         value={item.value}
-        onChange={(e)=>handleChange(
-          {
-            title:item.title,
-            value:e.target.value
-          }
-        )}
+        onChange={(e)=>{
+          console.log('onChange child=>')
+          console.log(item.title + '  ' + e.target.value)
+          handleChange(
+            {
+              title:item.title,
+              value:e.target.value
+            }
+          )
+        }}
         className={classNameWrapper}
         onFocus={setActiveStyle}
         onBlur={setInactiveStyle}
@@ -62,9 +66,9 @@ export function InventoryControl(data){
       // .filter(p=>p.trackInventory)
       .forEach(p=>{
         if(p.options.length<1){products.push(p.title)}
-        if(p.options.length>0){
-          //here
-          const onlyTrackOptions = p.options
+        //if every option tracks its own stock, dont include the parent category
+        if(!(p.options.length>0 && p.options.every(o=>o.separateStock))){
+          products.push(p.title)
         }
         if(p.options.length>0){
           p.options.forEach(o=>{
@@ -88,6 +92,11 @@ export function InventoryControl(data){
       inventory[title] = value
       this.props.onChange(inventory);
       this.setState({inventory})
+      console.log('onChange in Parent=>')
+      console.log(title + '  ' + value)
+      console.log('new Inventory=>')
+      console.log(inventory)
+
     };
     
     render(){
