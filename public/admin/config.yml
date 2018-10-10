@@ -19,6 +19,8 @@ collections: # A list of collections the CMS should be able to edit
 
   - name: products
     label: Product
+    extension: json
+    format: json
     editor:
       preview: true
     folder: content/products
@@ -43,8 +45,8 @@ collections: # A list of collections the CMS should be able to edit
         widget: "list"
         required: false
         fields:
-          - label: "0ption Title"
-            name: "option"
+          - label: "Option Title"
+            name: title
             widget: string
           - label: Extra Cost
             name: cost
@@ -79,12 +81,20 @@ collections: # A list of collections the CMS should be able to edit
         label: Carriers
         name: carriers
         fields:
-          - {label: Carrier, name: title, widget: string}
+          - label: Carriers
+            name: carriers
+            widget: list
+            fields:
+              - {label: Carrier, name: title, widget: string}
       - file: content/regionsAndCarriers/regions.json
         label: Regions
         name: regions
         fields:
-          - {label: Region, name: title, widget: string}    
+          - label: Regions
+            name: regions
+            widget : list
+            fields:
+              - {label: Region, name: title, widget: string}    
   - name: shippingClasses
     label: Shipping Class
     editor:
@@ -282,77 +292,3 @@ collections: # A list of collections the CMS should be able to edit
           - {label: Header Meta / Scripts, name: headerScripts, widget: text, required: false}
           - {label: Enable Service Worker Pre-Cache, name: enableServiceWorker, widget: boolean, required: false}
 
-  - name: "inventory"
-    label: "Inventory"
-    delete: false # Prevent users from deleting documents in this collection
-    editor:
-      preview: false
-    files:
-      - file: "content/settings/stock.json"
-        label: "Set/View Inventory"
-        name: "stock"
-        fields:
-          - label: "Product Stock"
-            name: "productStock"
-            widget: "list"
-            required: false
-            fields:
-              - label: "Product Type"
-                name: "productType"
-                widget: "relation"
-                collection: "products"
-                searchFields: ["title"]
-                valueField: "title"
-              - {label: SetStock, name: currentStock, widget: number, required: true}
-
-  - name: "inventoryTEST"
-    label: "InventoryTEST"
-    delete: false # Prevent users from deleting documents in this collection
-    editor:
-      preview: true
-    files:
-      - file: "content/settings/stockTEST.json"
-        label: "Set/View Inventory"
-        name: "stockTEST"
-        fields:
-          - label: "Product Stock"
-            name: "productStock"
-            widget: "list"
-            required: false
-            fields: # The fields each document in this collection have
-              - {label: Name, name: title, widget: string}
-              - label: 'Status'
-                name: 'status'
-                widget: 'select'
-                options: ["Published", "Featured", "Draft"]
-                default: 'Published'
-              - {label: Date / Order, name: date, widget: date}
-              - {label: Price, name: price, widget: number, required: true}
-              - {label: Primary Image, name: primaryImage, widget: image, required: true}
-              - {label: BriefDescription, name: briefDescription, widget: markdown}
-              - {label: FullDescription, name: longDescription, widget: markdown}
-              - label: "Images"
-                name: "images"
-                widget: "list"
-                required: true
-                fields:
-                  - label: "Image"
-                    name: "image"
-                    widget: "image"
-              - label: "Options"
-                name: "options"
-                widget: "list"
-                required: false
-                fields:
-                  - label: "option"
-                    name: "option"
-                    widget: string
-              - label: "Meta"
-                required: false
-                name: "meta"
-                widget: "object"
-                fields:
-                  - {label: Title, name: title, widget: string, required: false}
-                  - {label: Description, name: description, widget: text, required: false, pattern: [".{,300}", "Must not exceed 300 characters"]}
-                  - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
-                  - {label: Noindex, name: noindex, widget: boolean, required: false}
