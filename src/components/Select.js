@@ -38,7 +38,7 @@ class Select extends React.Component{
                   onChange(options[i])
                 }}
                   >
-                  <p className='Select-Text'>{option.label || option}</p>
+                  <p className='Select-Text'>{option.label?option.label:option}</p>
               </div>
             )
           })
