@@ -35,7 +35,7 @@ export default ({ fields }) => {
           {options &&
             <Select
               title='Please Select :'
-              options={[...options.map(o=>({label:o.option,value:o.option}))]}
+              options={[...options.map(o=>({label:o.title,value:o.title}))]}
               onChange={(selection)=>{State.setSelection(selection)}}
             />
           }
