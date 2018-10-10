@@ -45,7 +45,7 @@ return(
           <div className='Cart-Item-Name-Text'>{item.title}</div>
           {item.options.length>0 && 
             <div className='Cart-Item-Name-Text' style={{color:'grey'}}>
-              {item.selected.title ? item.selected.title : item.selected}
+              {item.options[item.selected].title ? item.options[item.selected].title : item.options[item.selected]}
             </div>
           }
         </div>
