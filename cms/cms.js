@@ -77,12 +77,12 @@ CMS.registerWidget(
 // )
 CMS.registerWidget(
   'selectRegion',
-  SelectDB(data,'shipping/regions.json','regions'),
+  SelectDB(data,'regionsAndCarriers','regions'),
   SelectDBPreview
 )
 CMS.registerWidget(
   'selectCarrier',
-  SelectDB(data,'shipping','carriers'),
+  SelectDB(data,'regionsAndCarriers','carriers'),
   SelectDBPreview
   )
 // CMS.registerWidget(

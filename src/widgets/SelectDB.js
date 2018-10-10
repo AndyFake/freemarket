@@ -10,7 +10,8 @@ export function SelectDB(data,path,filename){
     constructor(props){
       super(props)
       this.state={
-        options:data[path].map(x=>x.title)
+        options:[]
+        // options:data[path][0].map(x=>x.title)
       }
     }
     handleChange = e => {
