@@ -75,9 +75,9 @@ const getRegions = () =>{
   var regions = new Set()
   State.getCart().forEach(item=>{
     const shippingClass = data.shipping.filter(c=>c.title==item.class)[0]
-    shippingClass.carriers.forEach(carrier=>{
+    shippingClass && shippingClass.carriers.forEach(carrier=>{
       carrier.regions.forEach(region=>{
-        regions.add(region.region)
+        regions.add(region.title)
       })
     })
   })
