@@ -1,7 +1,7 @@
 import React from 'react'
 
 const URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/store/store.json`
-const BASE_URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/`
+const BASE_URL = `https://api.github.com/repos/marchingband/freemarket/contents/content`
 
 // path = 'shipping/classes.json' || 'shipping/carriers.json' || 'shipping/regions.json'
 
@@ -19,11 +19,11 @@ export function SelectDB(data,path,filename){
     };
     componentDidMount(){
       // fetch("https://api.github.com/repos/marchingband/freemarket/contents/content/regionsAndCarriers/carriers.json",{ method:"GET" })
-      fetch(`${BASE_URL}${path}/${filename}.json`,{ method:"GET" })
-      .then(f=>f.json())
+      fetch(`${BASE_URL}/${path}/${filename}.json`,{ method:"GET" })
+      .then(r=>r.json())
       .then(r=>{
         var items = JSON.parse(atob(r.content))
-        var options = items[objectName].map(x=>x.title)
+        var options = items[filename].map(x=>x.title)
         this.setState({options})
       })
     }
