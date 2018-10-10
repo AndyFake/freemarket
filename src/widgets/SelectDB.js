@@ -23,7 +23,7 @@ export function SelectDB(data,path,filename){
       .then(r=>r.json())
       .then(r=>{
         var data = JSON.parse(atob(r.content))
-        var options = data[filename].map(x=>x.title)
+        var options = data[filename] ? data[filename].map(x=>x.title) : []
         this.setState({options})
       })
     }

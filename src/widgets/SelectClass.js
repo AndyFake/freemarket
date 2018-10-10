@@ -51,7 +51,7 @@ export function SelectClass(data){
       //     return Map.isMap(option) ? option.toJS() : option;
       //   }),
       // ];
-      const options = data.shipping.length>0 ? data.shipping.map(x=>x.title) : []
+      const options = data.shipping ? data.shipping.map(x=>x.title) : []
       // const options = data.shipping.map(x=>x.title)
       return (
         <select
@@ -62,6 +62,7 @@ export function SelectClass(data){
           onFocus={setActiveStyle}
           onBlur={setInactiveStyle}
         >
+          <option value={""} disabled={true} selected={true} hidden={true}>Please Choose...</option>
           {options.map((option, idx) => (
             <option key={idx} value={option}>
               {option}
