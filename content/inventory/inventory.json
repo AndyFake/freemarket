@@ -1,4 +1,6 @@
 {
-  "t-shirt":10,
-  "postcard":20
+  "inventory": {
+    "t-shirt":10,
+    "postcard":20
+    }
 }
