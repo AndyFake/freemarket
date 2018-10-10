@@ -16,7 +16,7 @@ const URL = `https://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents
 
 const getStock=item=>{
   if(item.selected!='' && item.options.filter(o=>o.option==item.selected)[0].separateStock){
-    return item.options.filter(o=>o.option==item.selected)[0].stock
+    return item.options.filter(o=>o.title==item.selected)[0].stock
   }
   return item.stock
 }
@@ -45,7 +45,7 @@ return(
           <div className='Cart-Item-Name-Text'>{item.title}</div>
           {item.options.length>0 && 
             <div className='Cart-Item-Name-Text' style={{color:'grey'}}>
-              {item.selected}
+              {item.selected.title ? item.selected.title : item.selected}
             </div>
           }
         </div>
