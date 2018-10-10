@@ -15,7 +15,8 @@ export class SelectClass extends React.Component{
       const options = this.props.data.shipping.map(x=>x.title)
       return(
         <div>
-          <Select
+          <Select 
+            {...this.props}
             id={forID}
             value={value || ''}
             onChange={this.handleChange}
