@@ -10,7 +10,7 @@ const InventoryLine = ({
   setActiveStyle,
   setInactiveStyle,
   item,
-  onChange }) =>
+  handleChange }) =>
     <div>
       <div>
         {item.title}
@@ -18,7 +18,7 @@ const InventoryLine = ({
       <input
         id={forID}
         value={item.value}
-        onChange={(e)=>onChange(
+        onChange={(e)=>handleChange(
           {
             title:item.title,
             value:e.target.value
@@ -63,8 +63,14 @@ export function InventoryControl(data){
       .forEach(p=>{
         if(p.options.length<1){products.push(p.title)}
         if(p.options.length>0){
+          //here
+          const onlyTrackOptions = p.options
+        }
+        if(p.options.length>0){
           p.options.forEach(o=>{
-            products.push(''+p.title+'('+o.title+')')
+            if(o.separateStock){
+              products.push(''+p.title+'('+o.title+')')
+            }
           })
         }
       })
@@ -81,14 +87,14 @@ export function InventoryControl(data){
       var {inventory} = this.state
       inventory[title] = value
       this.props.onChange(inventory);
-      this.setState(inventory)
+      this.setState({inventory})
     };
     
     render(){
       return(
         <div>
           {this.state.inventory.map((item,i)=>
-            <InventoryLine {...this.props} key={i} item={item} onChange={this.handleChange} />
+            <InventoryLine {...this.props} key={i} item={item} handleChange={this.handleChange} />
           )}
         </div>
       )
