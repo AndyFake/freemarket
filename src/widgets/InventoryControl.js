@@ -17,7 +17,7 @@ const InventoryLine = ({
       </div>
       <input
         id={forID}
-        value={item.quantity}
+        value={item.value}
         onChange={(e)=>onChange(
           {
             title:item.title,
@@ -35,12 +35,6 @@ export function InventoryControl(data){
     constructor(props){
       super(props)
       this.state={
-      //   inventory : data.products.map(p=>({
-      //     title:p.title,
-      //     // not sure about this
-      //     quantity:props.value.inventory[title] || 0
-      //   }))
-      // }
         inventory:[]
       }
     }
@@ -87,23 +81,6 @@ export function InventoryControl(data){
     };
     
     render(){
-      // var display = []
-      // const stock = this.props.field.get('inventory')
-      // const products = []
-      // data.products
-      // .filter(p=>p.trackInventory)
-      // .forEach(p=>{
-      //   if(p.options.length<1){products.push(p.title)}
-      //   if(p.options.length>0){
-      //     p.options.forEach(o=>{
-      //       products.push(''+p.title+'('+o.title+')')
-      //     })
-      //   }
-      // })
-      // products.forEach(title=>{
-      //   const quantity = stock[title] ? stock[title] : 0
-      //   display[title] = quantity
-      // })
       return(
         <div>
           {this.state.inventory.map((item,i)=>
