@@ -56,7 +56,7 @@ export function InventoryControl(data){
 
     getStockDisplayObject=()=>{
       var display = []
-      const stock = this.props.field.get('inventory')
+      const stock = this.props.value
       const products = []
       data.products
       // .filter(p=>p.trackInventory)
