@@ -17,7 +17,6 @@ import Contact from '../src/views/Contact'
 import Blog from '../src/views/Blog'
 import SinglePost from '../src/views/SinglePost'
 import ProductPageTemplate from '../src/views/ProductPageTemplate'
-import { SelectDBPreview } from '../src/widgets/SelectDBPreview.js';
 
 
 console.log('React version', React.version)
