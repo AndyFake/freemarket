@@ -63,7 +63,7 @@ export function InventoryControl(data){
       const stock = this.props.value
       const products = []
       //check that there are products, to avoid error 'forEach of undefined'
-      if(data.products.length>0){
+      if(data.products){
         data.products
         // .filter(p=>p.trackInventory)
         .forEach(p=>{
