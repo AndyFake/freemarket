@@ -13,12 +13,10 @@ export class SelectClass extends React.Component{
     render(){
       const {Select} = this.props
       const _props = this.props
-      _props.options = this.props.data.shipping.map(x=>x.title)
+      _props.options = this.props.data.shipping.map(x=>({label:x.title,value:x.title}))
       return(
         <div>
-          <Select 
-            {..._props}
-          >
+          <Select {..._props}>
             {/* {options.map((option, idx) => (
               <option key={idx} value={option}>
                 {option}
