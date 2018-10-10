@@ -11,18 +11,24 @@ export class SelectClass extends React.Component{
     };
     
     render(){
-      const {Select} = this.props
-      const _props = this.props
-      _props.options = this.props.data.shipping.map(x=>({label:x.title,value:x.title}))
+      const {forID,value,classNameWrapper,setActiveStyle,setInactiveStyle} = this.props
+      const options = this.props.data.shipping.map(x=>x.title)
       return(
         <div>
-          <Select {..._props}>
-            {/* {options.map((option, idx) => (
+          <select
+            id={forID}
+            value={value || ''}
+            onChange={this.handleChange}
+            className={classNameWrapper}
+            onFocus={setActiveStyle}
+            onBlur={setInactiveStyle}
+          >
+            {options.map((option, idx) => (
               <option key={idx} value={option}>
                 {option}
               </option>
-            ))} */}
-          </Select>
+            ))}
+          </select>
         </div>
       )
     }
