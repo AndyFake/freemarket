@@ -51,7 +51,7 @@ export function SelectClass(data){
       //     return Map.isMap(option) ? option.toJS() : option;
       //   }),
       // ];
-      const options = this.props.data.shipping.map(x=>x.title)
+      const options = data.shipping.map(x=>x.title)
       return (
         <select
           id={forID}
