@@ -16,6 +16,7 @@ const InventoryLine = ({
         {item.title}
       </div>
       <input
+        type="text"
         id={forID}
         value={item.value}
         onChange={(e)=>{
@@ -89,7 +90,8 @@ export function InventoryControl(data){
 
     handleChange = ({title,value}) => {
       var {inventory} = this.state
-      inventory[title] = value
+      const f = inventory.filter(i=>i.title==title)[0]
+      f.value = value
       this.props.onChange(inventory);
       this.setState({inventory})
       console.log('onChange in Parent=>')
