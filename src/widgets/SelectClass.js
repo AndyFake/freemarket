@@ -11,11 +11,11 @@ export class SelectClass extends React.Component{
     };
     
     render(){
-      const {forID,value,classNameWrapper,setActiveStyle,setInactiveStyle} = this.props
+      const {Select,forID,value,classNameWrapper,setActiveStyle,setInactiveStyle} = this.props
       const options = this.props.data.shipping.map(x=>x.title)
       return(
         <div>
-          <select
+          <Select
             id={forID}
             value={value || ''}
             onChange={this.handleChange}
@@ -28,7 +28,7 @@ export class SelectClass extends React.Component{
                 {option}
               </option>
             ))}
-          </select>
+          </Select>
         </div>
       )
     }

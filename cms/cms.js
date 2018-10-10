@@ -59,11 +59,13 @@ CMS.registerPreviewTemplate('productStock', ({ entry }) => (
   <ProductPageTemplate fields={entry.toJS().data} />
 ))
 // var relationWidget = CMS.getWidget("relation").control
-// var selectWidget = CMS.getWidget("select").control
+var selectWidget = CMS.getWidget("select").control
+
+
 
 CMS.registerWidget(
   'selectClassData',() => (
-  <SelectClass data={data}/>
+  <SelectClass data={data} Select={selectWidget}/>
 ))
 // CMS.registerWidget(
 //   'selectClass',
