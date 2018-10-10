@@ -62,9 +62,9 @@ CMS.registerPreviewTemplate('productStock', ({ entry }) => (
 // var selectWidget = CMS.getWidget("select").control
 
 CMS.registerWidget(
-  'selectClassData',
+  'selectClassData',() => (
   <SelectClass data={data}/>
-)
+))
 // CMS.registerWidget(
 //   'selectClass',
 //   SelectDB(data,'shipping/classes.json','classes')
