@@ -54,7 +54,7 @@ export function InventoryControl(data){
       return(
         <div>
           {this.state.inventory.map((item,i)=>
-            <InventoryLine {...this.state} key={i} item={item} onChange={this.handleChange} />
+            <InventoryLine {...this.props} key={i} item={item} onChange={this.handleChange} />
           )}
         </div>
       )

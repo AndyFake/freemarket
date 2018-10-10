@@ -8,6 +8,7 @@ import React from 'react'
 // import {InventoryControl} from '../src/widgets/InventoryControl.js'
 import {SelectDB} from '../src/widgets/SelectDB.js'
 import {SelectDBPreview} from '../src/widgets/SelectDBPreview.js'
+import {SelectClass} from '../src/widgets/SelectClass.js'
 
 import '../src/globalStyles.css'
 import data from '../src/data.json'
@@ -60,8 +61,9 @@ CMS.registerPreviewTemplate('productStock', ({ entry }) => (
 // var relationWidget = CMS.getWidget("relation").control
 // var selectWidget = CMS.getWidget("select").control
 
-CMS.registerWidget('selectClassData',
-  SelectFile(data,'shippingClasses','title')
+CMS.registerWidget(
+  'selectClassData',
+  SelectClass
 )
 // CMS.registerWidget(
 //   'selectClass',
