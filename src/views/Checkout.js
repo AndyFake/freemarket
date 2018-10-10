@@ -45,7 +45,8 @@ const onToken = token => {
     response.json().then(data => {
       if(data.status=='succeeded'){
         console.log(`payment was successful`);
-        //call stock function
+        // call stock function
+        // this is now broken from the overhail
         fetch("/.netlify/functions/stock", {
           method: "POST",
           body: JSON.stringify(State.getCart())

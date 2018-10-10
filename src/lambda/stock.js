@@ -28,6 +28,7 @@ exports.handler = function(event, context, callback) {
 function getStock(changes){
   console.log('running')
   var getOptions = {
+    //this address is wrong now
       url: `https://api.github.com/repos/${UN}/freemarket/contents/content/settings/stock.json`,
       auth: {
           "user": UN,

@@ -32,7 +32,7 @@ export default ({ fields }) => {
             <div className="Product-name">{title || ''}</div>
             <div className="Product-price">${price}</div>
           </div>
-          {options &&
+          {options.length>0 &&
             <Select
               title='Please Select :'
               options={[...options.map(o=>({label:o.title,value:o.title}))]}
