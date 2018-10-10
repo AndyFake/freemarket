@@ -35,12 +35,18 @@ export function InventoryControl(data){
     constructor(props){
       super(props)
       this.state={
-        inventory : data.products.map(p=>({
-          title:p.title,
-          // not sure about this
-          quantity:props.value.inventory[title] || 0
-        }))
+      //   inventory : data.products.map(p=>({
+      //     title:p.title,
+      //     // not sure about this
+      //     quantity:props.value.inventory[title] || 0
+      //   }))
+      // }
+        inventory:[]
       }
+    }
+    
+    componentDidMount(){
+      console.log(this.props)
     }
 
     handleChange = ({title,value}) => {

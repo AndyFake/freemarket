@@ -266,7 +266,17 @@ collections: # A list of collections the CMS should be able to edit
           - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
           - {label: Noindex, name: noindex, widget: boolean, required: false}
 
-
+  - name: "inventory"
+    label: "Inventory"
+    editor:
+      preview: false
+    files:
+      - file: "content/inventory/inventory.json"
+        label: "view/change inventory"
+        name: "inventory"
+        fields:
+          - {label: Inventory, name: inventory, widget: inventory}
+  
   - name: "settings"
     label: "Settings"
     delete: false # Prevent users from deleting documents in this collection

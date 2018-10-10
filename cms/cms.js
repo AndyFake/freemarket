@@ -85,10 +85,10 @@ CMS.registerWidget(
   SelectDB(data,'regionsAndCarriers','carriers'),
   SelectDBPreview
   )
-// CMS.registerWidget(
-//   'inventory',
-//   InventoryControl(data)
-//   )
+CMS.registerWidget(
+  'inventory',
+  InventoryControl(data)
+  )
     
     
     // CMS.registerWidget(
