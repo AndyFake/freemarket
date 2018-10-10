@@ -6,8 +6,8 @@ import StoreHeader from '../components/StoreHeader'
 import State from './state'
 // import {ShoppingCart} from 'react-feather'
 
-export default ({fields}) => { 
-  const {products=[]} = fields
+export default ({data}) => { 
+  const {products=[]} = data
   return(
     <div>
       {products.map(({title,primaryImage})=>

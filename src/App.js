@@ -120,20 +120,17 @@ class App extends Component {
             <RouteWithMeta
               path='/'
               exact
-              component={storeIsHome ? Home : Store}
+              component={Store}
               description={siteDescription}
-              fields={storeIsHome ? 
-                        this.getDocument('pages','home') :
-                        this.getDocuments('products')
-                      }
-              title={storeIsHome?'Home':'Store'}            
+              data={data}
+              title={'Store'}            
             />
             <RouteWithMeta
               path='/store/'
               exact
               component={Store}
               description={siteDescription}
-              fields={this.getDocuments('products')}
+              data={data}
               title={'Store'}
             />
             <RouteWithMeta
@@ -195,7 +192,7 @@ class App extends Component {
               )
             })}
 
-            {data.products.map(product => {
+            {data.products && data.products.map(product => {
               const path = slugify(`/${product.title}`)
               return (
                 <RouteWithMeta
