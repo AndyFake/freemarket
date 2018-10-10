@@ -1,0 +1,17 @@
+{
+  "longDescription": "machine",
+  "briefDescription": "machine",
+  "price": "295",
+  "date": "2018-10-10T19:22:35.283Z",
+  "trackInventory": true,
+  "status": "Published",
+  "class": "small",
+  "title": "washing machine",
+  "images": [
+    {
+      "image": "/images/uploads/card-og.png"
+    }
+  ],
+  "primaryImage": "/images/uploads/card-og.png",
+  "options": []
+}
