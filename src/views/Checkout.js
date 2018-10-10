@@ -89,9 +89,9 @@ const getCarriers = region => {
   var carriers = {}
   State.getCart().forEach(item=>{
     const shippingClass = data.shipping.filter(c=>c.title==item.class)[0]
-    shippingClass.carriers.forEach(carrier=>{
-      if(carrier.regions.filter(r=>r.region==State.getRegion()).length>0){
-        carriers[carrier.carrier] = carrier.regions.filter(r=>r.region==State.getRegion())[0].cost
+    shippingClass && shippingClass.carriers.forEach(carrier=>{
+      if(carrier.regions.filter(r=>r.title==State.getRegion()).length>0){
+        carriers[carrier.title] = carrier.regions.filter(r=>r.title==State.getRegion())[0].cost
       }
     })
   })
@@ -104,9 +104,9 @@ const getHighestShippingCost = () =>{
   if(State.getCarrier() == ' ' ){return 0}
   if(State.getRegion()   == ' ' ){return 0}
   State.getCart().forEach(item=>{
-    const shippingClass = data.shipping.filter(s=>s.title==item.class)[0]
-    const carrier = shippingClass.carriers.filter(c=>c.carrier==State.getCarrier())[0]
-    const region = carrier.regions.filter(r=>r.region==State.getRegion())[0]
+    const shippingClass = data.shipping.filter(c=>c.title==item.class)[0]
+    const carrier = shippingClass.carriers.filter(c=>c.title==State.getCarrier())[0]
+    const region = carrier.regions.filter(r=>r.title==State.getRegion())[0]
     const cost = region ? region.cost : 0
     if(cost>highestShippingCost){
       highestShippingCost=parseFloat(cost)
@@ -121,7 +121,7 @@ const getTotalWithShipping=()=>{
   State.getCart().forEach(item=>{
     var price = parseFloat(item.price)
     if(item.selected!=''){
-      const opt = item.options.filter(o=>o.option==item.selected)[0]
+      const opt = item.options.filter(o=>o.title==item.selected)[0]
       if(opt.cost){
         price += parseFloat(opt.cost)
       }
