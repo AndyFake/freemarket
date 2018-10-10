@@ -8,8 +8,9 @@ class Select extends React.Component{
     this.state={open:false,selection:null,options:props.options}
   }
   componentWillReceiveProps(props){
+    //if props change while the tray is closed
     if(props.options && !this.state.open){
-      if(this.state.options[0]!=props.options[0]) {
+      if(this.state.options[0].title!=props.options[0].title) {
         this.setState({selection:null})
       }
     }
