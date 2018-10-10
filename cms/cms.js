@@ -64,8 +64,8 @@ var selectWidget = CMS.getWidget("select").control
 
 
 CMS.registerWidget(
-  'selectClassData',() => (
-  <SelectClass data={data} Select={selectWidget}/>
+  'selectClassData', (props) => (
+  <SelectClass {...props} data={data} Select={selectWidget}/>
 ))
 // CMS.registerWidget(
 //   'selectClass',
