@@ -1,1 +1,10 @@
-{}
+{
+  "regions": [
+    {
+      "title": "Canada"
+    },
+    {
+      "title": "USA"
+    }
+  ]
+}
