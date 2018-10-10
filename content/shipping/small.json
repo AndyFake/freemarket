@@ -1,0 +1,15 @@
+{
+  "title": "small",
+  "carriers": [
+    {
+      "title": "UPS",
+      "regions": [
+        {
+          "title": "Canada",
+          "cost": "10",
+          "maxPack": "1"
+        }
+      ]
+    }
+  ]
+}
