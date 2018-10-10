@@ -77,6 +77,8 @@ collections: # A list of collections the CMS should be able to edit
     label: Regions/Carriers
     extension: json
     format: json
+    create: false
+    delete: false
     editor:
       preview: false
     files:
@@ -100,6 +102,8 @@ collections: # A list of collections the CMS should be able to edit
               - {label: Region, name: title, widget: string}    
   - name: shippingClasses
     label: Shipping Class
+    extension: json
+    format: json
     editor:
       preview: false
     folder: content/shipping

@@ -22,8 +22,8 @@ export function SelectDB(data,path,filename){
       fetch(`${BASE_URL}/${path}/${filename}.json`,{ method:"GET" })
       .then(r=>r.json())
       .then(r=>{
-        var items = JSON.parse(atob(r.content))
-        var options = items[filename].map(x=>x.title)
+        var data = JSON.parse(atob(r.content))
+        var options = data[filename].map(x=>x.title)
         this.setState({options})
       })
     }
@@ -40,6 +40,7 @@ export function SelectDB(data,path,filename){
             onFocus={setActiveStyle}
             onBlur={setInactiveStyle}
           >
+            <option value={""} disabled={true} selected={true} hidden={true}>Please Choose...</option>
             {this.state.options.map((option, idx) => (
               <option key={idx} value={option}>
                 {option}
