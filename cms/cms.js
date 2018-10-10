@@ -1,9 +1,9 @@
 import React from 'react'
 
-import {RelationSelectControl} from '../src/widgets/RelationSelect.js'
-import {TestWidgetControl,TestWidgetPreview} from '../src/widgets/TestWidget.js'
-import {MRelationControl, MRelationPreview} from '../src/widgets/MRelation.js'
-import {SlidesControl,SlidesPreview} from './testWidget.js'
+// import {RelationSelectControl} from '../src/widgets/RelationSelect.js'
+// import {TestWidgetControl,TestWidgetPreview} from '../src/widgets/TestWidget.js'
+// import {MRelationControl, MRelationPreview} from '../src/widgets/MRelation.js'
+// import {SlidesControl,SlidesPreview} from './testWidget.js'
 
 import {InventoryControl} from '../src/widgets/InventoryControl.js'
 import {SelectDB} from '../src/widgets/SelectDB.js'
@@ -56,20 +56,23 @@ CMS.registerPreviewTemplate('products', ({ entry }) => (
 CMS.registerPreviewTemplate('productStock', ({ entry }) => (
   <ProductPageTemplate fields={entry.toJS().data} />
 ))
-var relationWidget = CMS.getWidget("relation").control
-var selectWidget = CMS.getWidget("select").control
+// var relationWidget = CMS.getWidget("relation").control
+// var selectWidget = CMS.getWidget("select").control
 
+CMS.registerWidget('selectClassData',
+  SelectFile(data,'shipping','classes','title')
+)
 CMS.registerWidget(
   'selectClass',
-  SelectDB(data,'shipping/classes.json')
+  SelectDB(data,'shipping/classes.json','classes')
 )
 CMS.registerWidget(
   'selectRegion',
-  SelectDB(data,'shipping/regions.json')
+  SelectDB(data,'shipping/regions.json','regions')
 )
 CMS.registerWidget(
   'selectCarrier',
-  SelectDB(data,'shipping/regions.json')
+  SelectDB(data,'shipping/carriers.json','carriers')
   )
 CMS.registerWidget(
   'inventory',
@@ -82,25 +85,25 @@ CMS.registerWidget(
     //   SelectFile
     // )
 
-CMS.registerWidget(
-  'myrelation',
-  RelationSelectControl, )
+// CMS.registerWidget(
+//   'myrelation',
+//   RelationSelectControl, )
 
-CMS.registerWidget(
-  'test',
-  SlidesControl,
-  SlidesPreview
-)
-CMS.registerWidget(
-  "stock",      // Widget name
-  TestWidgetControl, // Editor component
-  TestWidgetPreview  // Preview component (this is optional)
-);
-CMS.registerWidget(
-  "mrelation",      // Widget name
-  MRelationControl, // Editor component
-  MRelationPreview  // Preview component (this is optional)
-);
+// CMS.registerWidget(
+//   'test',
+//   SlidesControl,
+//   SlidesPreview
+// )
+// CMS.registerWidget(
+//   "stock",      // Widget name
+//   TestWidgetControl, // Editor component
+//   TestWidgetPreview  // Preview component (this is optional)
+// );
+// CMS.registerWidget(
+//   "mrelation",      // Widget name
+//   MRelationControl, // Editor component
+//   MRelationPreview  // Preview component (this is optional)
+// );
 
 // Return to home when user logging out
 window.netlifyIdentity.on('logout', function () {

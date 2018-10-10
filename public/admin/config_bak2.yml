@@ -8,6 +8,81 @@ media_folder: "public/images/uploads" # Media files will be stored in the repo u
 public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
 
 collections: # A list of collections the CMS should be able to edit
+  - name: store
+    label: Store
+    editor:
+      preview: true
+    create: false
+    delete: false
+    files:
+      - file: content/store/store.json
+        label: Products
+        name: products
+        fields:
+          - label: Product
+            name: products
+            widget: list
+            fields:
+              - {label: Name, name: title, widget: string}
+              - {label: Price, name: price, widget: number, required: true}
+              - {label: BriefDescription, name: briefDescription, widget: markdown}
+              - {label: Primary Image, name: primaryImage, widget: image, required: true}
+              - {label: FullDescription, name: longDescription, widget: markdown}
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                required: true
+                fields:
+                  - label: "Image"
+                    name: "image"
+                    widget: "image"
+              - label: "Options"
+                name: "options"
+                widget: "list"
+                required: false
+                fields:
+                  - label: "0ption Title"
+                    name: "option"
+                    widget: string
+                  - label: Extra Cost
+                    name: cost
+                    widget: number
+                  - label: Calculate Stock for This Option Separately
+                    name: separateStock
+                    widget: boolean
+                  - label: Stock for This Option (if selected above)
+                    name: stock
+                    widget: number
+              - label: Current Stock
+                name: 'stock'
+                widget: number
+              - label: Shipping Class
+                name: class
+                widget: relation
+                collection: shippingClasses
+                searchFields: ["title"]
+                valueField: "title"
+              - label:  M Shipping Class
+                name: Mclass
+                widget: mrelation
+                collection: shippingClasses
+                searchFields: ["title"]
+                valueField: "title"
+              - label: 'Status'
+                name: 'status'
+                widget: 'select'
+                options: ["Published", "Featured", "Draft"]
+                default: 'Published'
+              - {label: Date / Order, name: date, widget: date}
+              - label: "Meta"
+                required: false
+                name: "meta"
+                widget: "object"
+                fields:
+                  - {label: Title, name: title, widget: string, required: false}
+                  - {label: Description, name: description, widget: text, required: false, pattern: [".{,300}", "Must not exceed 300 characters"]}
+                  - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
+                  - {label: Noindex, name: noindex, widget: boolean, required: false}
   - name: test
     label: Test
     folder: content/test
@@ -16,6 +91,9 @@ collections: # A list of collections the CMS should be able to edit
     create: true
     fields:
       - {label: Name, name: title, widget: "string"}
+      - label: Test Select
+        name: testSelect
+        widget: relationSelect
 
   - name: products
     label: Product
@@ -25,6 +103,21 @@ collections: # A list of collections the CMS should be able to edit
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
+      - label: "Test Widget"
+        name: "test"
+        widget: "stock"
+      - label: "Plain Test Widget"
+        name: "plaintest"
+        widget: "test"
+      - label: "RelationSelect"
+        name: "relationSelect"
+        widget: "myrelation"
+        options: ["Published", "Featured", "Draft"]
+        default: 'Published'
+        collection: shippingClasses
+        searchFields: ["title"]
+        valueField: "title"
+
       - {label: Name, name: title, widget: "string"}
       - {label: Price, name: price, widget: number, required: true}
       - {label: BriefDescription, name: briefDescription, widget: markdown}
@@ -52,9 +145,18 @@ collections: # A list of collections the CMS should be able to edit
           - label: Calculate Stock for This Option Separately
             name: separateStock
             widget: boolean
+          - label: Stock for This Option (if selected above)
+            name: stock
+            widget: number
+      - label: Current Stock
+        name: 'stock'
+        widget: number
       - label: Shipping Class
         name: class
-        widget: selectClassData
+        widget: relation
+        collection: shippingClasses
+        searchFields: ["title"]
+        valueField: "title"
       - label: 'Status'
         name: 'status'
         widget: 'select'
@@ -70,21 +172,7 @@ collections: # A list of collections the CMS should be able to edit
           - {label: Description, name: description, widget: text, required: false, pattern: [".{,300}", "Must not exceed 300 characters"]}
           - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
           - {label: Noindex, name: noindex, widget: boolean, required: false}
-  - name: regionsAndCarriers
-    label: Regions/Carriers
-    editor:
-      preview: false
-    files:
-      - file: content/regionsAndCarriers/carriers.json
-        label: Carriers
-        name: carriers
-        fields:
-          - {label: Carrier, name: title, widget: string}
-      - file: content/regionsAndCarriers/regions.json
-        label: Regions
-        name: regions
-        fields:
-          - {label: Region, name: title, widget: string}    
+
   - name: shippingClasses
     label: Shipping Class
     editor:
@@ -98,15 +186,15 @@ collections: # A list of collections the CMS should be able to edit
         widget: list
         fields:
           - label: Carrier
-            name: title
-            widget: selectCarrier
+            name: carrier
+            widget: string
           - label: Regions
             name: regions
             widget: list
             fields:
-              - label: Region
-                name: title
-                widget: selectRegion
+              - label: Region Title
+                name: region
+                widget: string
               - label: Cost
                 name: cost
                 widget: number
@@ -115,7 +203,7 @@ collections: # A list of collections the CMS should be able to edit
                 widget: number
           
   - name: "pages"
-    label: Contact, About, Blog
+    label: Contact, About, Blog, Home
     create: false
     delete: false # Prevent users from deleting documents in this collection
     editor:

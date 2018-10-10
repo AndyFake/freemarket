@@ -4,7 +4,7 @@ const URL = `https://api.github.com/repos/marchingband/freemarket/contents/conte
 
 // file = products
 
-export function SelectFile(data,file){
+export function SelectFile(data,collection,param){
   class SelectFile extends React.Component{
 
     handleChange = e => {
@@ -12,11 +12,8 @@ export function SelectFile(data,file){
     };
     
     render(){
-      const {field,forID,value,classNameWrapper,setActiveStyle,setInactiveStyle} = this.props
-      const options = {
-        'region'  : field.collection.shipping.regions.map(c=>c.title),
-        'carrier' : field.collection.shipping.carriers.map(c=>c.title),
-      }
+      const {forID,value,classNameWrapper,setActiveStyle,setInactiveStyle} = this.props
+      const options = data[collection].map(x=>x[param])
       return(
         <div>
           <select
@@ -27,7 +24,7 @@ export function SelectFile(data,file){
             onFocus={setActiveStyle}
             onBlur={setInactiveStyle}
           >
-            {options[file].map((option, idx) => (
+            {options.map((option, idx) => (
               <option key={idx} value={option}>
                 {option}
               </option>

@@ -1,26 +1,27 @@
 import React from 'react'
 
 const URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/store/store.json`
+const BASE_URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/`
 
 // path = 'shipping/classes.json' || 'shipping/carriers.json' || 'shipping/regions.json'
 
-export function SelectDB(data,path){
+export function SelectDB(data,path,objectName){
   class SelectDB extends React.Component{
     constructor(props){
       super(props)
       this.state={
-        options:data.collections[path].map(x=>x.title)
+        options:data[path].map(x=>x.title)
       }
     }
     handleChange = e => {
       this.props.onChange(e.target.value);
     };
     componentDidMount(){
-      fetch(getURL(path),{})
+      fetch(`${BASE_URL}${path}`,{ method:"GET" })
       .then(f=>f.json())
       .then(f=>{
-        var items = JSON.parse(atob(r.content))[path]
-        var options = items.map(x=>x.title)
+        var items = JSON.parse(atob(r.content))
+        var options = items[objectName].map(x=>x.title)
         this.setState({options})
       })
     }
