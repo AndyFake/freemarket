@@ -78,7 +78,7 @@ CMS.registerWidget(
 )
 CMS.registerWidget(
   'selectCarrier',
-  SelectDB(data,'shipping/carriers.json','carriers'),
+  SelectDB(data,'shipping','carriers'),
   SelectDBPreview
   )
 // CMS.registerWidget(

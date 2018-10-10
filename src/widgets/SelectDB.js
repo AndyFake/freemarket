@@ -5,7 +5,7 @@ const BASE_URL = `https://api.github.com/repos/marchingband/freemarket/contents/
 
 // path = 'shipping/classes.json' || 'shipping/carriers.json' || 'shipping/regions.json'
 
-export function SelectDB(data,path,objectName){
+export function SelectDB(data,path,filename){
   class SelectDB extends React.Component{
     constructor(props){
       super(props)
@@ -17,7 +17,7 @@ export function SelectDB(data,path,objectName){
       this.props.onChange(e.target.value);
     };
     componentDidMount(){
-      fetch(`${BASE_URL}${path}`,{ method:"GET" })
+      fetch(`${BASE_URL}${path}/${filename}.json`,{ method:"GET" })
       .then(f=>f.json())
       .then(f=>{
         var items = JSON.parse(atob(r.content))
