@@ -6,14 +6,13 @@ const URL = `https://api.github.com/repos/marchingband/freemarket/contents/conte
 
 // export function SelectFile(data,collection,param){
 export class SelectClass extends React.Component{
-
     handleChange = e => {
       this.props.onChange(e.target.value);
     };
     
     render(){
       const {forID,value,classNameWrapper,setActiveStyle,setInactiveStyle} = this.props
-      const options = data.shipping.map(x=>x.title)
+      const options = this.props.data.shipping.map(x=>x.title)
       return(
         <div>
           <select
@@ -33,7 +32,8 @@ export class SelectClass extends React.Component{
         </div>
       )
     }
-}
+  }
+s
 //   }
 //   return SelectFile
 // }

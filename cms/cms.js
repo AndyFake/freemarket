@@ -63,7 +63,7 @@ CMS.registerPreviewTemplate('productStock', ({ entry }) => (
 
 CMS.registerWidget(
   'selectClassData',
-  SelectClass
+  <SelectClass data={data}/>
 )
 // CMS.registerWidget(
 //   'selectClass',
