@@ -42,7 +42,11 @@ export function InventoryControl(data){
     componentDidMount(){
       console.log(this.props)
       console.log("value=>")
-      console.log(this.props.value)
+      console.log(JSON.stringify(this.props.value))
+      Object.keys(this.props.value).forEach(k=>{
+        console.log(k)
+        console.log(this.props.value[k])
+      })
 
       console.log('building inventory=>')
       const inventory = this.getStockDisplayObject()
@@ -55,7 +59,7 @@ export function InventoryControl(data){
       const stock = this.props.field.get('inventory')
       const products = []
       data.products
-      .filter(p=>p.trackInventory)
+      // .filter(p=>p.trackInventory)
       .forEach(p=>{
         if(p.options.length<1){products.push(p.title)}
         if(p.options.length>0){
