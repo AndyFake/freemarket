@@ -1,6 +1,8 @@
 {
-  "inventory": {
-    "t-shirt":10,
-    "postcard":20
+  "inventory": [
+    {
+      "title": "t-shirt",
+      "value": "100"
     }
+  ]
 }
