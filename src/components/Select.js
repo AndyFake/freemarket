@@ -9,11 +9,11 @@ class Select extends React.Component{
   }
   componentWillReceiveProps(props){
     //if props change while the tray is closed
-    if(props.options && !this.state.open){
-      if(this.state.options[0].label!=props.options[0].label) {
-        this.setState({selection:null})
-      }
-    }
+    // if(props.options && !this.state.open){
+    //   if(this.state.options[0].label!=props.options[0].label) {
+    //     this.setState({selection:null})
+    //   }
+    // }
   }
   render(){
     const {options=[],onChange=()=>{},title=''} = this.props
