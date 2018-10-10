@@ -41,10 +41,10 @@ export function InventoryControl(data){
 
     componentDidMount(){
       console.log(this.props)
-      const test = this.props.field.get('inventory')
-      console.log("inventory=>")
-      console.log(test)
+      console.log("value=>")
+      console.log(this.props.value)
 
+      console.log('building inventory=>')
       const inventory = this.getStockDisplayObject()
       console.log(inventory)
       this.setState({inventory})
