@@ -9,10 +9,16 @@
   "title": "HP-01 Percussion Pad",
   "images": [
     {
-      "image": "/images/uploads/card-og.png"
+      "image": "/images/uploads/hp1b.jpg"
+    },
+    {
+      "image": "/images/uploads/hp1c.jpg"
+    },
+    {
+      "image": "/images/uploads/family.jpg"
     }
   ],
-  "primaryImage": "/images/uploads/card-og.png",
+  "primaryImage": "/images/uploads/hp1d.jpg",
   "options": [
     {
       "title": "Natural Finish",
