@@ -1,0 +1,26 @@
+{
+  "longDescription": "full",
+  "briefDescription": "brieg",
+  "price": "60",
+  "date": "2018-10-11T22:46:57.944Z",
+  "trackInventory": false,
+  "status": "Published",
+  "class": "med",
+  "title": "DP-01 Percussion Pad",
+  "images": [
+    {
+      "image": "/images/uploads/dp1.jpg"
+    }
+  ],
+  "primaryImage": "/images/uploads/dp1.jpg",
+  "options": [
+    {
+      "title": "Natural Finish",
+      "cost": "0"
+    },
+    {
+      "title": "Black Finish",
+      "cost": "0"
+    }
+  ]
+}
