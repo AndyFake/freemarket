@@ -1,7 +1,9 @@
 import React from 'react'
+import {GITHUB_USERNAME} from '../PUBLIC_KEY.js'
+
 
 // const URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/store/store.json`
-const BASE_URL = `https://api.github.com/repos/marchingband/freemarket/contents/content`
+const BASE_URL = `https://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/content`
 
 // path = 'shipping/classes.json' || 'shipping/carriers.json' || 'shipping/regions.json'
 

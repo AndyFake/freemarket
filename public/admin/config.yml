@@ -8,15 +8,6 @@ media_folder: "public/images/uploads" # Media files will be stored in the repo u
 public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
 
 collections: # A list of collections the CMS should be able to edit
-  - name: test
-    label: Test
-    folder: content/test
-    extension: json
-    format: json
-    create: true
-    fields:
-      - {label: Name, name: title, widget: "string"}
-
   - name: products
     label: Product
     extension: json
@@ -130,7 +121,16 @@ collections: # A list of collections the CMS should be able to edit
               - label: Max Ship Together as One
                 name: maxPack
                 widget: number
-          
+  - name: "inventory"
+    label: "Inventory"
+    editor:
+      preview: false
+    files:
+      - file: "content/inventory/inventory.json"
+        label: "view/change inventory"
+        name: "inventory"
+        fields:
+          - {label: Inventory, name: inventory, widget: inventory}
   - name: "pages"
     label: Contact, About, Blog
     create: false
@@ -274,17 +274,6 @@ collections: # A list of collections the CMS should be able to edit
           - {label: Description, name: description, widget: text, required: false, pattern: [".{,300}", "Must not exceed 300 characters"]}
           - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
           - {label: Noindex, name: noindex, widget: boolean, required: false}
-
-  - name: "inventory"
-    label: "Inventory"
-    editor:
-      preview: false
-    files:
-      - file: "content/inventory/inventory.json"
-        label: "view/change inventory"
-        name: "inventory"
-        fields:
-          - {label: Inventory, name: inventory, widget: inventory}
   
   - name: "settings"
     label: "Settings"

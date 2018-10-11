@@ -1,7 +1,9 @@
 import React from 'react'
+import {GITHUB_USERNAME} from '../PUBLIC_KEY.js'
+
 
 // const URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/store/store.json`
-const BASE_URL = `https://api.github.com/repos/marchingband/freemarket/contents/content`
+const BASE_URL = `https://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/content`
 
 // file = products
 
@@ -40,11 +42,11 @@ export function SelectClass(data){
 
     componentDidMount(){
       try{
-        fetch('https://api.github.com/repos/marchingband/freemarket/contents/content/shipping',{ method:"GET" })
+        fetch(BASE_URL+"/shipping",{ method:"GET" })
         .then(r=>r.json()).then(r=>r.map(f=>f.path))
         .then(paths=>Promise.all(
           paths.filter(p=>p!="content/shipping/.init.txt").map(path=>
-            fetch('https://api.github.com/repos/marchingband/freemarket/contents/'+path,{ method:"GET" })
+            fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/`+path,{ method:"GET" })
             .then(r=>r.json()).then(r=>JSON.parse(atob(r.content)))
           )
         ))
