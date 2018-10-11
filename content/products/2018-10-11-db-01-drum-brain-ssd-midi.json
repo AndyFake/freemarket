@@ -1,0 +1,19 @@
+{
+  "longDescription": "full",
+  "briefDescription": "brief",
+  "price": "199",
+  "date": "2018-10-11T22:53:52.619Z",
+  "trackInventory": false,
+  "status": "Published",
+  "class": "small",
+  "title": "DB-01 Drum Brain SSD/MIDI",
+  "images": [
+    {
+      "image": "/images/uploads/dp1b.jpg"
+    },
+    {
+      "image": "/images/uploads/dp1a.jpg"
+    }
+  ],
+  "primaryImage": "/images/uploads/dp1b.jpg"
+}
