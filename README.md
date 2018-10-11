@@ -1,10 +1,10 @@
-# Netlify CMS + React Starter
+# Netlify E-COMMERCE STORE
 
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![dependencies](https://david-dm.org/jinksi/netlify-cms-react-starter.svg?style=flat-square)](https://david-dm.org/jinksi/netlify-cms-react-starter)
 
-A starter project for creating lightning-fast, offline-first websites with [Netlify CMS](https://netlifycms.org) and React.
+A starter project for creating lightning-fast, offline-first webstore with [Netlify CMS](https://netlifycms.org) and React.
 
 * **[Create React App](https://github.com/facebookincubator/create-react-app)**
 * **[React Router](https://github.com/ReactTraining/react-router)** for routing
@@ -16,7 +16,7 @@ I aim to include commonly used components and best-practices e.g. forms, setting
 
 ## Get going
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Jinksi/netlify-cms-react-starter&stack=cms)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/marchingband/freemarket)
 
 1.  Hit the **Deploy to Netlify** button. This will:
 
@@ -25,13 +25,10 @@ I aim to include commonly used components and best-practices e.g. forms, setting
 
 1.  Once your Netlify project has been created, check a couple of settings:
 
+* Set you **Site Name**
 * Enable **Identity**
-* Change **Registration Preferences** to **Invite Only**
 * Enable **Git Gateway**
-
-1.  Invite users (probably yourself) to enable admin access
-
-* Open the **Identity** tab and hit **Invite Users**
+* Enter your **Github** name/password and **Stripe Tokens** under **Build Environment Variables**
 
 ## Show me the CMS!
 
@@ -65,5 +62,5 @@ Find out more in the [Netlify CMS Docs](https://www.netlifycms.org/docs/#configu
 
 [Netlify CMS Docs](https://www.netlifycms.org/docs/)  
 [Netlify CMS Repo](https://github.com/netlify/netlify-cms)  
-[Hyperstatic](https://github.com/Jinksi/hyperstatic) – the same starter project minus Netlify CMS  
+[Hyperstatic](https://github.com/Jinksi/hyperstatic) – the same CMS starter project minus Netlify CMS / STORE
 [Gatsby + Netlify CMS Starter](https://github.com/AustinGreen/gatsby-starter-netlify-cms)
