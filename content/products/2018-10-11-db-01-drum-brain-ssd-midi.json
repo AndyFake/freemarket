@@ -6,7 +6,7 @@
   "trackInventory": false,
   "status": "Published",
   "class": "small",
-  "title": "DB-01 Drum Brain SSD/MIDI",
+  "title": "DB-01 Drum Brain SSD",
   "images": [
     {
       "image": "/images/uploads/dp1b.jpg"
@@ -15,5 +15,15 @@
       "image": "/images/uploads/dp1a.jpg"
     }
   ],
-  "primaryImage": "/images/uploads/dp1b.jpg"
+  "primaryImage": "/images/uploads/dp1b.jpg",
+  "options": [
+    {
+      "title": "+ 128MB SSD",
+      "cost": "20"
+    },
+    {
+      "title": " + 256MB SSD",
+      "cost": "50"
+    }
+  ]
 }
