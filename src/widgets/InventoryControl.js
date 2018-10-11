@@ -33,7 +33,7 @@ export function InventoryControl(data){
             .then(r=>r.json()).then(r=>JSON.parse(atob(r.content)))
           )
         ))
-        .then(r=>this.setState({options:this.getLines(r)}))
+        .then(r=>this.setState({inventory:this.getLines(r)}))
       }catch(e){console.log(e)}
     }
 
