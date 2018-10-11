@@ -1,11 +1,7 @@
 import React from 'react'
 import {GITHUB_USERNAME} from '../PUBLIC_KEY.js'
 
-
-// const URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/store/store.json`
-const BASE_URL = `https://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/content`
-
-// path = 'shipping/classes.json' || 'shipping/carriers.json' || 'shipping/regions.json'
+const BASE_URL = `https://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents`
 
 export function SelectDB(data,path,filename){
   class SelectDB extends React.Component{
@@ -21,7 +17,7 @@ export function SelectDB(data,path,filename){
     };
     componentDidMount(){
       // fetch("https://api.github.com/repos/marchingband/freemarket/contents/content/regionsAndCarriers/carriers.json",{ method:"GET" })
-      fetch(`${BASE_URL}/${path}/${filename}.json`,{ method:"GET" })
+      fetch(`${BASE_URL}/content/${path}/${filename}.json`,{ method:"GET" })
       .then(r=>r.json())
       .then(r=>{
         var data = JSON.parse(atob(r.content))
