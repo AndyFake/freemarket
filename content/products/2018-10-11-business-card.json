@@ -1,0 +1,16 @@
+{
+  "longDescription": "jdhkb",
+  "briefDescription": "lkjdharg",
+  "price": "2",
+  "date": "2018-10-11T21:18:28.435Z",
+  "trackInventory": true,
+  "status": "Published",
+  "class": "large",
+  "title": "business card",
+  "images": [
+    {
+      "image": "/images/uploads/isabella juskova.jpg"
+    }
+  ],
+  "primaryImage": "/images/uploads/card-og.png"
+}
