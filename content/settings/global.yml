@@ -1,11 +1,12 @@
-siteTitle: Fish Store
-siteUrl: 'https://netlify-cms-react-starter.netlify.com'
+siteTitle: HoHumDrums
+siteUrl: 'https://hohumdrums.netlify.com'
 siteDescription: >-
-  A starter project for creating lightning-fast, offline-first websites with
-  Netlify CMS and React.
+  Hand-made Percussion Pads for Musicians, Artists, Producer, and Students who
+  want Midi, USB-Midi, or 16bit Stereo Audio from a well-crafted instrument.
+  Made in B.C., Canada.
 socialMediaCard:
-  image: /images/uploads/card-og.png
-  twitterCreatorAccount: '@Jinksi'
+  image: ''
+  twitterCreatorAccount: ''
   twitterSiteAccount: ''
 headerScripts: <!-- Add your analytics scripts / verification meta here -->
 enableServiceWorker: false
