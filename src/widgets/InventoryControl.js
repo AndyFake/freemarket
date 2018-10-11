@@ -28,7 +28,7 @@ export function InventoryControl(data){
         fetch(BASE_URL+"/products",{ method:"GET" })
         .then(r=>r.json()).then(r=>r.map(f=>f.path))
         .then(paths=>Promise.all(
-          paths.map(path=>
+          paths.filter(p=>p!='.init').map(path=>
             fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/`+path,{ method:"GET" })
             .then(r=>r.json()).then(r=>JSON.parse(atob(r.content)))
           )
