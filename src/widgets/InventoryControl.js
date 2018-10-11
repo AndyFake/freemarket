@@ -17,16 +17,6 @@ const InventoryLine = ({ forID,classNameWrapper,setActiveStyle,setInactiveStyle,
       />
     </div>
 
-fetch("https://api.github.com/repos/marchingband/freemarket/contents/content/products",{ method:"GET" })
-.then(r=>r.json()).then(r=>r.map(f=>f.path))
-.then(paths=>Promise.all(
-  paths.filter(p=>p!='.init').map(path=>
-    fetch(`https://api.github.com/repos/marchingband/freemarket/contents/products`+path,{ method:"GET" })
-    .then(r=>r.json()).then(r=>JSON.parse(atob(r.content)))
-  )
-))
-.then(r=>console.log(r))
-
 export function InventoryControl(data){
   class InventoryControl extends React.Component{
     constructor(props){
