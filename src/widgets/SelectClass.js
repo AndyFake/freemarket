@@ -85,7 +85,7 @@ export function SelectClass(data){
           onBlur={setInactiveStyle}
         >
           <option value={""} disabled={true} selected={true} hidden={true}>Please Choose...</option>
-          {options.map((option, idx) => (
+          {this.state.options.map((option, idx) => (
             <option key={idx} value={option}>
               {option}
             </option>
