@@ -10,6 +10,9 @@
   "images": [
     {
       "image": "/images/uploads/card-og.png"
+    },
+    {
+      "image": "/images/uploads/isabella juskova.jpg"
     }
   ],
   "primaryImage": "/images/uploads/card-og.png",
@@ -17,6 +20,10 @@
     {
       "title": "red",
       "cost": "-3"
+    },
+    {
+      "title": "brown",
+      "cost": "0"
     }
   ]
 }
