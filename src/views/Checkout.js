@@ -9,7 +9,6 @@ import data from '../data.json'
 import './Checkout.css'
 
 import {PUBLIC_KEY} from '../PUBLIC_KEY.js'
-import { AlertCircle } from 'react-feather';
 
 const formfields = ['Name','Street Address','City', 'State/Province','ZIP code / Postal Code', 'Country']
 
@@ -33,6 +32,7 @@ ${cartInfo}
 stripe payment meta-data:
 ${tokenString}`
 }
+
 const onToken = token => {
   const data = {
     token:token,
@@ -179,10 +179,10 @@ const Checkout = () => {
     <div className="Checkout-Stripe-Container">
       <div 
         className='Checkout-Stripe-Blocker'
-        style={{display:State.getCarrier()==' ' ? 'absolute' : 'none'}}
+        style={{display: State.getCarrier()==' ' ?'absolute' :'none'}}
         onClick={(e)=>{
           e.preventDefault()
-          alert('please select shipping')
+          alert('Please Select Shipping')
         }}
       />
       <StripeCheckout token={onToken} stripeKey={PUBLIC_KEY}/>  
