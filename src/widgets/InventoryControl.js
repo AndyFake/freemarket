@@ -1,7 +1,7 @@
 import React from 'react'
 import {GITHUB_USERNAME} from '../PUBLIC_KEY.js'
 
-const BASE_URL = `https://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/content`
+const BASE_URL = `https://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/`
 
 const InventoryLine = ({ forID,classNameWrapper,setActiveStyle,setInactiveStyle,item,handleChange }) =>
     <div>
@@ -25,11 +25,11 @@ export function InventoryControl(data){
     }
     componentDidMount(){
       try{
-        fetch(BASE_URL+"/products",{ method:"GET" })
+        fetch(BASE_URL+"content/products",{ method:"GET" })
         .then(r=>r.json()).then(r=>r.map(f=>f.path))
         .then(paths=>Promise.all(
           paths.filter(p=>p!='content/products/.init').map(path=>
-            fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/`+path,{ method:"GET" })
+            fetch(BASE_URL+path,{ method:"GET" })
             .then(r=>r.json()).then(r=>JSON.parse(atob(r.content)))
           )
         ))
