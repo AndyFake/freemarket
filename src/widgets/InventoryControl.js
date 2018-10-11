@@ -1,37 +1,16 @@
 import React from 'react'
 import {GITHUB_USERNAME} from '../PUBLIC_KEY.js'
+
 const BASE_URL = `https://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/content`
 
-
-const URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/store/store.json`
-
-// file = products
-
-const InventoryLine = ({
-  forID,
-  classNameWrapper,
-  setActiveStyle,
-  setInactiveStyle,
-  item,
-  handleChange }) =>
+const InventoryLine = ({ forID,classNameWrapper,setActiveStyle,setInactiveStyle,item,handleChange }) =>
     <div>
-      <div>
-        {item.title}
-      </div>
+      <div>{item.title}</div>
       <input
         type="text"
         id={forID}
         value={item.value}
-        onChange={(e)=>{
-          // console.log('onChange child=>')
-          // console.log(item.title + '  ' + e.target.value)
-          handleChange(
-            {
-              title:item.title,
-              value:e.target.value
-            }
-          )
-        }}
+        onChange={(e)=>handleChange({title:item.title,value:e.target.value})}
         className={classNameWrapper}
         onFocus={setActiveStyle}
         onBlur={setInactiveStyle}
@@ -42,22 +21,9 @@ export function InventoryControl(data){
   class InventoryControl extends React.Component{
     constructor(props){
       super(props)
-      this.state={
-        inventory:data.products? getLines(data.products) :[]
-      }
+      this.state={inventory:data.products? this.getLines(data.products) :[]}
     }
-
     componentDidMount(){
-      // console.log(this.props)
-      // console.log("value=>")
-      // console.log(JSON.stringify(this.props.value))
-      // Object.keys(this.props.value).forEach(k=>{
-      //   console.log(k)
-      //   console.log(this.props.value[k])
-      // })
-      // console.log('building inventory=>')
-      // const inventory = this.getStockDisplayObject()
-      // console.log(inventory)
       try{
         fetch(BASE_URL+"/products",{ method:"GET" })
         .then(r=>r.json()).then(r=>r.map(f=>f.path))
@@ -67,7 +33,7 @@ export function InventoryControl(data){
             .then(r=>r.json()).then(r=>JSON.parse(atob(r.content)))
           )
         ))
-        .then(r=>this.setState({options:getLines(r)}))
+        .then(r=>this.setState({options:this.getLines(r)}))
       }catch(e){console.log(e)}
     }
 
@@ -75,8 +41,6 @@ export function InventoryControl(data){
       var display = []
       const stock = this.props.value
       const products = []
-      //check that there are products, to avoid error 'forEach of undefined'
-      // .filter(p=>p.trackInventory)
       rawProducts.forEach(p=>{
         if(p.options.length<1 && p.trackInventory){products.push(p.title)}
         //if every option tracks its own stock, dont include the parent category
@@ -99,9 +63,6 @@ export function InventoryControl(data){
       })
       return display
     }
-    
-    
-
     handleChange = ({title,value}) => {
       var {inventory} = this.state
       //find the element fo the array with the right title
@@ -109,11 +70,6 @@ export function InventoryControl(data){
       field.value = value
       this.props.onChange(inventory);
       this.setState({inventory})
-      // console.log('onChange in Parent=>')
-      // console.log(title + '  ' + value)
-      // console.log('new Inventory=>')
-      // console.log(inventory)
-
     };
     
     render(){
