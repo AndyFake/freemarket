@@ -7,6 +7,46 @@
         {
           "title": "Canada",
           "cost": "10",
+          "maxPack": "-1"
+        },
+        {
+          "title": "USA",
+          "cost": "14",
+          "maxPack": "2"
+        },
+        {
+          "title": "Rest of World",
+          "cost": "27",
+          "maxPack": "1"
+        }
+      ]
+    },
+    {
+      "title": "FEDEX",
+      "regions": [
+        {
+          "title": "Canada",
+          "cost": "10",
+          "maxPack": "2"
+        },
+        {
+          "title": "USA",
+          "cost": "20",
+          "maxPack": "2"
+        },
+        {
+          "title": "Rest of World",
+          "cost": "30",
+          "maxPack": "1"
+        }
+      ]
+    },
+    {
+      "title": "Canada Post",
+      "regions": [
+        {
+          "title": "Canada",
+          "cost": "5",
           "maxPack": "1"
         }
       ]
