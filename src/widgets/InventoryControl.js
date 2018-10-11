@@ -25,7 +25,7 @@ export function InventoryControl(data){
     }
     componentDidMount(){
       try{
-        fetch(BASE_URL+"content/products",{ method:"GET" })
+        fetch( BASE_URL+ "content/products", { method:"GET" })
         .then(r=>r.json()).then(r=>r.map(f=>f.path))
         .then(paths=>Promise.all(
           paths.filter(p=>p!='content/products/.init').map(path=>
@@ -42,12 +42,16 @@ export function InventoryControl(data){
       const stock = this.props.value
       const products = []
       rawProducts.forEach(p=>{
-        if(p.options.length<1 && p.trackInventory){products.push(p.title)}
+        // if(p.options.length<1 && p.trackInventory){products.push(p.title)}
+        // if(!(p.options.length>0 && p.options.every(o=>o.separateStock))){
+        //   if(p.trackInventory){
+        //     products.push(p.title)
+        //   }
+        // }
+        if(p.options.length==0 && p.trackInventory){products.push(p.title)}
         //if every option tracks its own stock, dont include the parent category
-        if(!(p.options.length>0 && p.options.every(o=>o.separateStock))){
-          if(p.trackInventory){
-            products.push(p.title)
-          }
+        if(p.options.length>0 && p.trackInventory){
+          if(!p.options.every(o=>o.separateStock)){products.push(p.title)}
         }
         if(p.options.length>0){
           p.options.forEach(o=>{
