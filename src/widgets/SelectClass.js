@@ -1,6 +1,7 @@
 import React from 'react'
 
-const URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/store/store.json`
+// const URL = `https://api.github.com/repos/marchingband/freemarket/contents/content/store/store.json`
+const BASE_URL = `https://api.github.com/repos/marchingband/freemarket/contents/content`
 
 // file = products
 
@@ -29,6 +30,27 @@ export function SelectClass(data){
     // static defaultProps = {
     //   value: '',
     // };
+
+    constructor(props){
+      super(props)
+      this.state={
+        options : data.shipping ? data.shipping.map(x=>x.title) : []
+      }
+    }
+
+    componentDidMount(){
+      try{
+        fetch('https://api.github.com/repos/marchingband/freemarket/contents/content/shipping',{ method:"GET" })
+        .then(r=>r.json()).then(r=>r.map(f=>f.path))
+        .then(paths=>Promise.all(
+          paths.filter(p=>p!="content/shipping/.init.txt").map(path=>
+            fetch('https://api.github.com/repos/marchingband/freemarket/contents/'+path,{ method:"GET" })
+            .then(r=>r.json()).then(r=>JSON.parse(atob(r.content)))
+          )
+        ))
+        .then(r=>this.setState({options:r.map(c=>c.title)}))
+      }catch(e){console.log(e)}
+    }
   
     handleChange = e => {
       this.props.onChange(e.target.value);
@@ -51,7 +73,7 @@ export function SelectClass(data){
       //     return Map.isMap(option) ? option.toJS() : option;
       //   }),
       // ];
-      const options = data.shipping ? data.shipping.map(x=>x.title) : []
+      // const options = data.shipping ? data.shipping.map(x=>x.title) : []
       // const options = data.shipping.map(x=>x.title)
       return (
         <select
