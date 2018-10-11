@@ -18,6 +18,22 @@
   align-items: center;
   /* justify-content: center */
 }
+.Checkout-Stripe-Container{
+  position:relative;
+  width:250px;
+  height:60px;
+  display:flex;
+  align-items: center;
+  justify-content: center
+}
+.Checkout-Stripe-Blocker{
+  position: absolute;
+  top:0px;
+  left:0px;
+  width:250px;
+  height:60px;
+  z-index: 1000;
+}
 
 input{
   width: 250px;

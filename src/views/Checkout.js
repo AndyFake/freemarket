@@ -9,6 +9,7 @@ import data from '../data.json'
 import './Checkout.css'
 
 import {PUBLIC_KEY} from '../PUBLIC_KEY.js'
+import { AlertCircle } from 'react-feather';
 
 const formfields = ['Name','Street Address','City', 'State/Province','ZIP code / Postal Code', 'Country']
 
@@ -175,7 +176,17 @@ const Checkout = () => {
     </form>
       <p className="Checkout-Text">{"total with shipping : $" + (getTotalWithShipping()).toFixed(2)}</p>
       <p className="Checkout-Text">{"total with taxes    : $" + ((getTotalWithShipping())*1.15).toFixed(2)}</p>
-    <StripeCheckout token={onToken} stripeKey={PUBLIC_KEY}/>  
+    <div className="Checkout-Stripe-Container">
+      <div 
+        className='Checkout-Stripe-Blocker'
+        style={{display:State.getCarrier()==' ' ? 'absolute' : 'none'}}
+        onClick={(e)=>{
+          e.preventDefault()
+          alert('please select shipping')
+        }}
+      />
+      <StripeCheckout token={onToken} stripeKey={PUBLIC_KEY}/>  
+    </div>
   </div>
 )}
 
