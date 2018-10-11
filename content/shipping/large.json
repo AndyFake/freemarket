@@ -1,0 +1,55 @@
+{
+  "title": "large",
+  "carriers": [
+    {
+      "title": "UPS",
+      "regions": [
+        {
+          "title": "Canada",
+          "cost": "80",
+          "maxPack": "1"
+        },
+        {
+          "title": "USA",
+          "cost": "100",
+          "maxPack": "1"
+        },
+        {
+          "title": "Rest of World",
+          "cost": "120",
+          "maxPack": "1"
+        }
+      ]
+    },
+    {
+      "title": "FEDEX",
+      "regions": [
+        {
+          "title": "Canada",
+          "cost": "120",
+          "maxPack": "1"
+        },
+        {
+          "title": "USA",
+          "cost": "183",
+          "maxPack": "1"
+        },
+        {
+          "title": "Rest of World",
+          "cost": "190",
+          "maxPack": "1"
+        }
+      ]
+    },
+    {
+      "title": "Canada Post",
+      "regions": [
+        {
+          "title": "Canada",
+          "cost": "80",
+          "maxPack": "1"
+        }
+      ]
+    }
+  ]
+}
