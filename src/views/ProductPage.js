@@ -24,9 +24,9 @@ export default ({ fields }) => {
   const { title, price, longDescription, images, options } = fields
   State.setSelection('')
   return (
-    <div className="App">
-      <div className="Container">
-        <div className="Product">
+    <div className="Product-Page-Wrapper">
+      <div className="Product-Page-Container">
+        <div className="Product-Page-Product">
           <Gallery imageList={getSmallImages(images)}/>
           <div className="Product-bar">
             <div className="Product-name">{title || ''}</div>

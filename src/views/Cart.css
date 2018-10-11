@@ -61,10 +61,6 @@
   margin:5px;
   background-color: whitesmoke;
   font-size: 12px;
-  /* flex: 1; */
-  /* overflow-y:auto;; */
-  /* overflow:wrap; */
-
 }
 
 .Cart-Item-Name{
@@ -84,9 +80,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  /* flex: 0 0 auto */
-  /* flex: auto; */
-
 }
 
 
@@ -116,10 +109,6 @@
   margin-left: 5px;
   margin-right: 5px;
   transform: translateY(1px)
-  /* flex:1; */
-  /* flex: 1 0 1em */
-  /* flex: auto; */
-
 }
 
 .Cart-Feather{
@@ -128,6 +117,15 @@
   transform: translateY(20%);
   stroke-width: .5px;
 }
-/* div{
-  overflow-wrap: break-word;
-} */
+
+@media (min-width: 750px) {
+  .Cart-Container {
+    padding:50px;
+    padding-top: 10px;
+    width:100%;
+    border: 1px solid black;
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+  }
+}

@@ -9,9 +9,11 @@ import { observer } from 'mobx-react'
 const StoreHeader = ({title,links}) =>
   <Fragment>
     <div className='Store-Header'>
+      { links.length>1 &&
       <div className='Menu-Box'>
         <MenuNav links={links} />
       </div>
+      }
       {title}
         <Link to='/cart' className='Cart-Box'>
           <ShoppingCart className='Store-Feather'/>

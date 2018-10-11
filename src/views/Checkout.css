@@ -1,6 +1,13 @@
-.checkout-shipping-dropdown{
+.Checkout-Region-Dropdown{
   width:250px;
-  height:60px;
+  height:30px;
+  margin:10px;
+  /* margin-bottom: 10px */
+}
+
+.Checkout-Shipping-Dropdown{
+  width:250px;
+  height:30px;
   margin:10px;
   margin-bottom: 10px
 }
@@ -17,6 +24,9 @@
   flex-direction: column;
   align-items: center;
   /* justify-content: center */
+}
+.Checkout-Register{
+  text-align: center;
 }
 .Checkout-Stripe-Container{
   position:relative;

@@ -86,7 +86,10 @@ class App extends Component {
 
     return (
       <Router>
-        <div className='React-Wrap'>
+        <div 
+          className='React-Wrap'
+          // style={{paddingRight:"15%",paddingLeft:"15%"}} 
+        >
           <ScrollToTop />
           <ServiceWorkerNotifications reloadOnUpdate />
           <Helmet

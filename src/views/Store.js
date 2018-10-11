@@ -2,14 +2,11 @@ import React from 'react'
 import Link from '../components/Link'
 import { slugify } from '../util/url'
 import './Store-Page.css';
-import StoreHeader from '../components/StoreHeader'
-import State from './state'
-// import {ShoppingCart} from 'react-feather'
 
 export default ({data}) => { 
   const {products=[]} = data
   return(
-    <div>
+    <div className="Store-Container">
       {products.map(({title,primaryImage})=>
         <div className="Store-Product">
           <Link  to={'/'+slugify(title)}>

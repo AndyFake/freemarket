@@ -15,6 +15,9 @@ class Select extends React.Component{
     //   }
     // }
   }
+  reset(){
+    this.setState({open:false,selection:null,options:this.props.options})
+  }
   render(){
     const {options=[],onChange=()=>{},title=''} = this.props
     const {open,selection} = this.state

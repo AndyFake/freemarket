@@ -117,8 +117,7 @@ const getHighestShippingCost = () =>{
   return highestShippingCost
 }
 
-const getTotalWithShipping=()=>{
-  const shippingCost = getHighestShippingCost()
+const getSubtotal=()=>{
   var cartTotal = 0
   State.getCart().forEach(item=>{
     var price = parseFloat(item.price)
@@ -130,7 +129,7 @@ const getTotalWithShipping=()=>{
     }
     cartTotal += (price * parseFloat(item.quantity))
   })
-  return shippingCost + cartTotal
+  return cartTotal
 }
 
 
@@ -139,47 +138,64 @@ const Checkout = () => {
   <div className='checkout-container'>
     <p>Please enter your shipping info:</p>
     <form name='purchase'>
+      <div className='Checkout-Region-Dropdown'>
+        <Select
+          ref={i=>this.regionDropdown=i}
+          title={State.getRegion()==' ' ? 'Please Select Region :' : State.getRegion()}
+          options={getRegions().map(r=>({label:r,value:r}))}
+          onChange={(e)=>{
+            this.shippingDropdown.reset()
+            State.setRegion(e.label);
+            State.setCarriers(getCarriers(e.label))
+            State.setCarrier(' ')
+            // encodeData()
+            console.log('from region change=>')
+            console.log(State.getCarrier())
+          }}
+        />
+      </div>
       {formfields.map((field,index)=>{
         const slug = slugify(field)
         return(
           <div>
-          <input
-            key={index}
-            placeholder={field}
-            name={slug} 
-            value={State.getField(slug) || ''} 
-            onChange={(e)=>State.setField(e.target.name,e.target.value)}/>
+            <input
+              key={index}
+              placeholder={field}
+              name={slug} 
+              value={State.getField(slug) || ''} 
+              onChange={(e)=>State.setField(e.target.name,e.target.value)}
+            />
           </div>
       )})}
-      <div className='checkout-shipping-dropdown'>
-      <Select 
-        title='Please Select Region :'
-        options={getRegions().map(r=>({label:r,value:r}))}
-        onChange={(e)=>{
-          State.setRegion(e.label);
-          State.setCarriers(getCarriers(e.label))
-          State.setCarrier(' ')
-          // encodeData()
-        }}
-      />
-      </div>
-      <div className='checkout-shipping-dropdown'>
-      <Select 
-        title='Please Select Shipping :'
-        options={State.getCarriers().map(c=>({label:c,value:c}))}
-        onChange={(e)=>{
-          State.setCarrier(e.label);
-          encodeData()
-        }}
-      />
+      <div className='Checkout-Shipping-Dropdown'>
+        <Select 
+          ref={i=>this.shippingDropdown=i}
+          title={State.getCarrier()==' ' ? 'Please Select Shipping :' : State.getCarrier()}
+          options={State.getCarriers().map(c=>({label:c,value:c}))}
+          onChange={(e)=>{
+            if(e!=null){
+              State.setCarrier(e.label);
+              encodeData()
+              console.log('from carrier change=>')
+              console.log(State.getCarrier())
+            }
+            console.log('from carrier change (with null)=>')
+            console.log(State.getCarrier())
+
+          }}
+        />
       </div>
     </form>
-      <p className="Checkout-Text">{"total with shipping : $" + (getTotalWithShipping()).toFixed(2)}</p>
-      <p className="Checkout-Text">{"total with taxes    : $" + ((getTotalWithShipping())*1.15).toFixed(2)}</p>
+    <div className="Checkout-Register">
+      <p className="Checkout-Text">{"subtotal : $" + (getSubtotal()).toFixed(2)}</p>
+      <p className="Checkout-Text">{"shipping : $" + (getHighestShippingCost()).toFixed(2)}</p>
+      <p className="Checkout-Text">{"taxes    : $" + ((getSubtotal()+getHighestShippingCost())*0.15).toFixed(2)}</p>
+      <p className="Checkout-Text">{"total    : $" + ((getSubtotal()+getHighestShippingCost())*1.15).toFixed(2)}</p>
+    </div>
     <div className="Checkout-Stripe-Container">
       <div 
         className='Checkout-Stripe-Blocker'
-        style={{display: State.getCarrier()==' ' ?'absolute' :'none'}}
+        style={{height: State.getCarrier()!=' ' ? '1px' : '60px'}}
         onClick={(e)=>{
           e.preventDefault()
           alert('Please Select Shipping')
