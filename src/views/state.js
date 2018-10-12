@@ -10,7 +10,7 @@ class State {
   carriers = observable([])
   
   setField =(field,val)=>this.fields[field]=val
-  getField = field => this.fields[field]
+  getField = field => this.fields[field] ? this.fields[field] : false
   ATC = (item,selected='')=> this.cart.push({...item,quantity:1,selected})
   RFC = i=> this.cart.replace(this.cart.slice(0,i).concat(this.cart.slice(i+1)))
   modCart=(index,q)=>this.cart[index].quantity=q
@@ -28,7 +28,8 @@ class State {
   getRegions=()=>this.regions.slice()
   setCarriers=x=>this.carriers.replace(x)
   getCarriers=()=>this.carriers.slice()
-  setSelection=(x)=>this.selection=x
+  setSelection=(x)=>this.selection.set(x)
+  getSelection=()=>this.selection.get()
   setCarrier=x=>this.carrier.set(x)
   getCarrier=()=>this.carrier.get()
   setRegion=x=>this.region.set(x)

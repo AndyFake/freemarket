@@ -5,26 +5,32 @@ import State from './state'
 import { observer } from 'mobx-react';
 import {PlusSquare, MinusSquare, XSquare} from 'react-feather'
 import atob from 'atob'
+import data from '../data.json'
 import {GITHUB_USERNAME} from '../PUBLIC_KEY.js'
 
 const URL = `https://api.github.com/repos/${GITHUB_USERNAME}/freemarket/contents/content/settings/stock.json`
+const stock = data.inventory[0].inventory
 
-// fetch( URL, { method:"GET" } )
-// .then(r => r.json() )
-// .then(r => console.log(atob(r.content)) )
-
-//this is broken
 const getStock=item=>{
-  if(item.selected!='' && item.options.filter(o=>o.title==item.selected)[0].separateStock){
-    return item.options.filter(o=>o.title==item.selected)[0].stock
+  var chosenOption = {}
+  if(item.options && item.options.filter(o=>o.title==item.selected) > 0 ){
+    chosenOption = item.options.filter(o=>o.title==item.selected)[0]
   }
-  return item.stock
+  if(item.selected!='' && chosenOption.separateStock){
+    const name = ''+item.title+'('+chosenOption.title+')'
+    return stock.filter(i=>i.title==name)[0].value
+  }
+  if(item.trackInventory){
+    if(stock.filter(i=>i.title==item.title).length>0){
+      return stock.filter(i=>i.title==item.title)[0].value
+    }
+    return 1
+  }
+  return -1
 }
 
 const Cart = () =>{
   
-// console.log('cart : ' + JSON.stringify(State.getCart()))
-
 return(
   <div className='Cart-Container'>
     <Link to='/store'><div className='Cart-Back'>continue shopping</div></Link>
@@ -54,15 +60,14 @@ return(
             onClick={(e)=>{
               e.preventDefault()
               // getStock() is broken
-              // if(getStock(item) < item.quantity+1){
-              //   window.alert(`sorry we only have ${getStock(item)} in stock `)
-              // }else{
-              //   State.modCart(i,item.quantity+1)
-              // }
-              State.modCart(i,item.quantity+1)
+              if(getStock(item)>=0 && (getStock(item) < item.quantity+1)){
+                window.alert(`sorry we only have ${getStock(item)} in stock `)
+              }else{
+                State.modCart(i,item.quantity+1)
+              }
             }}
           >
-          <PlusSquare size={29} className='Cart-Feather'/>
+            <PlusSquare size={29} className='Cart-Feather'/>
           </div>
           <div className='Cart-Item-Quantity'>
             <input
@@ -71,12 +76,11 @@ return(
               value={item.quantity?item.quantity:''}
               onChange={e=>{
                 // getStock() is broken
-                // if(getStock(item) < parseInt(e.target.value)||0){
-                //   window.alert(`sorry we only have ${getStock(item)} in stock `)
-                // }else{
-                //   State.modCart(i,parseInt(e.target.value)||0)
-                // }
-                State.modCart(i,parseInt(e.target.value)||0)
+                if(getStock(item)>=0 && (getStock(item) < parseInt(e.target.value)||0)){
+                  window.alert(`sorry we only have ${getStock(item)} in stock `)
+                }else{
+                  State.modCart(i,parseInt(e.target.value)||0)
+                }
               }}
               onKeyPress={e=>e.key==='Enter'&&this[i].blur()}
             />
@@ -84,7 +88,7 @@ return(
           <div 
             onClick={(e)=>{
               e.preventDefault()
-              item.quantity>1&&State.modCart(i,item.quantity-1)
+              item.quantity>1&& State.modCart(i,item.quantity-1)
             }}
           >
             <MinusSquare size={29} className='Cart-Feather'/>

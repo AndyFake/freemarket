@@ -4,6 +4,8 @@ import ReactMarkdown from 'react-markdown'
 import Link from '../components/Link'
 import Select from '../components/Select'
 import Gallery from '../components/Gallery'
+import { observer } from 'mobx-react';
+
 
 import './ProductPage.css'
 
@@ -19,40 +21,75 @@ const getSmallImages = (images) => {
   return smallImages
 }
 
-export default ({ fields }) => {
-  // console.log(fields)
-  const { title, price, longDescription, images, options } = fields
-  State.setSelection('')
-  return (
-    <div className="Product-Page-Wrapper">
-      <div className="Product-Page-Container">
-        <div className="Product-Page-Product">
-          <Gallery imageList={getSmallImages(images)}/>
-          <div className="Product-bar">
-            <div className="Product-name">{title || ''}</div>
-            <div className="Product-price">${price}</div>
-          </div>
-          {options.length>0 &&
-            <Select
-              title='Please Select :'
-              options={[...options.map(o=>({label:o.title,value:o.title}))]}
-              onChange={(selection)=>{State.setSelection(selection.label?selection.label:selection)}}
-            />
-          }
-          <Link to='/cart'>
-            <div 
-              className="Add-to-cart" 
-              onClick={()=>{State.ATC(fields,String(State.selection))}}
-            >
-              add to cart
+const getCost = (price,options,selection) =>{
+  if(options.filter(o=>o.title==selection).length>0){
+    return parseFloat(price) + parseFloat(options.filter(o=>o.title==selection)[0].cost)
+  }
+  return price
+}
+
+const setSelection=x=>State.setSelection(x)
+
+class ProductPage extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={cost:props.fields.price}
+  }
+  componentDidMount(){
+    State.setSelection('')
+
+  }
+  render(){
+    const { title, price, longDescription, images, options=[] } = this.props.fields
+    return (
+      <div className="Product-Page-Wrapper">
+        <div className="Product-Page-Container">
+          <div className="Product-Page-Product">
+            <Gallery imageList={getSmallImages(images)}/>
+            <div className="Product-bar">
+              <div className="Product-name">{title || ''}</div>
+              <div className="Product-price">${this.state.cost}</div>
             </div>
-          </Link>
-          <ReactMarkdown 
-            source={longDescription} 
-            renderers={{image:(props)=><img {...props} style={{maxWidth: '100%'}}/>}}
-            className="Product-description"/>
+            {options && options.length>0 &&
+              <Select
+                title='Please Select :'
+                options={[...options.map(o=>({
+                  // ({label:( o.cost==0 || o.cost=='') ? 
+                  //           o.title :
+                  //           `${o.title}  (+ $${o.cost})`,
+                  //   value:o.title
+                  // }))
+                  label:o.title,
+                  value:o.title,
+                  cost:o.cost
+                }))
+                ]}
+                onChange={(selection)=>{
+                  setSelection(selection.value?selection.value:selection)
+                  this.setState({cost:getCost(price,options,State.getSelection())})
+                }}
+              />
+            }
+            <Link to='/cart'>
+              <div 
+                className="Add-to-cart"
+                onClick={()=>{ 
+                  State.ATC({...this.props.fields,price:this.state.cost},String(State.getSelection()))
+                }}
+              >
+                add to cart
+              </div>
+            </Link>
+            <ReactMarkdown 
+              source={longDescription} 
+              renderers={{image:(props)=><img {...props} style={{maxWidth: '100%'}}/>}}
+              className="Product-description"/>
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
+
+
+export default ProductPage
