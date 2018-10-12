@@ -1,6 +1,7 @@
 ---
-title: Blog
-featuredImage: /images/uploads/ng-32703.jpg
-subtitle: subtitle
+show: true
+title: Ho Hum Drums
+featuredImage: /images/uploads/family.jpg
+subtitle: 'Craft in Action and in Heart, Victoria BC'
 ---
 
