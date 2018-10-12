@@ -15,13 +15,15 @@ class Gallery extends React.Component{
     return(
       <div className='Gallery-Container'>
         <div className='Gallery-Image-Container'>
-          <div className='Gallery-Left-Nav' onClick={this.handleClickLeft}>
-            <div className='Gallery-Left-Nav-Icon'
-              style={{opacity:view==0?.5:1}}
-            >
-              <ChevronLeft className='Gallery-Feather'/>
+          {imageList.length>1 && 
+            <div className='Gallery-Left-Nav' onClick={this.handleClickLeft}>
+              <div className='Gallery-Left-Nav-Icon'
+                style={{opacity:view==0?.5:1}}
+              >
+                <ChevronLeft className='Gallery-Feather'/>
+              </div>
             </div>
-          </div>
+          }
           {imageList.length>0 && 
             imageList.map((_,i)=>
               <img 
@@ -30,18 +32,20 @@ class Gallery extends React.Component{
                 src={imageList[i].image}/>
             )
           }
-          <div className='Gallery-Right-Nav' onClick={this.handleClickRight}>
-            <div
-                className='Gallery-Right-Nav-Icon'
-                style={{opacity:view==imageList.length-1?.5:1}}
-            >
-              <ChevronRight className='Gallery-Feather'/>
+          {imageList.length>1 && 
+            <div className='Gallery-Right-Nav' onClick={this.handleClickRight}>
+              <div
+                  className='Gallery-Right-Nav-Icon'
+                  style={{opacity:view==imageList.length-1?.5:1}}
+              >
+                <ChevronRight className='Gallery-Feather'/>
+              </div>
             </div>
-          </div>
+          }
         </div>
         <div>
           <div style={{height:'13px'}}>
-          {imageList.map((_,i)=>
+          {imageList.length>1 && imageList.map((_,i)=>
             <div 
               className='Gallery-Select-Bullets' 
               style={{fontSize:i==view?'10px':'8px' ,opacity:i!=view?0.4:1}}>

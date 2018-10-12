@@ -21,7 +21,7 @@
   width:70vw;
   height:70vw;
   max-width: 700px;
-  max-height: 700px;
+  max-height: 500px;
   object-fit: contain;
   border: 1px solid lightgray;
 }

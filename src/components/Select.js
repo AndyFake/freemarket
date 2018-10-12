@@ -24,8 +24,10 @@ class Select extends React.Component{
     return(
       <div className='Select-Container'>
         <div className='Select-Main' onClick={()=>this.setState(s=>({open:!s.open})) } >
-          <div className='Select-Text'>{!open ? selection!=null ? (options[selection].label?options[selection].label:options[selection]) : title : title}</div>
-            <div className='Select-Icon-Box'>
+          <div className='Select-Text'>
+            {!open ? selection!=null ? (options[selection].label?options[selection].label:options[selection]) : title : title}
+          </div>
+          <div className='Select-Icon-Box'>
             <div className='Select-Feather-Circle'>
               <ChevronLeft size={19} className='Select-Feather' style={{transform: [`rotate(${open?90:-90}deg)`]}}/>
             </div>
@@ -43,6 +45,9 @@ class Select extends React.Component{
                 }}
                   >
                   <p className='Select-Text'>{option.label?option.label:option}</p>
+                  <p className='Select-Text' style={{whiteSpace: 'pre-wrap',color:'grey',fontSize:11}}>
+                    {option.cost && option.cost>0 ? `   (+$${option.cost})`:null}
+                  </p>
               </div>
             )
           })
