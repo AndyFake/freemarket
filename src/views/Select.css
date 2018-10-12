@@ -1,0 +1,78 @@
+.Select-Container{
+  box-sizing: border-box;
+  position: relative;
+  width:100%;
+  height:40px;
+}
+
+.Select-Icon-Box{
+  position: absolute;
+  height:30px;
+  width:30px;
+  top:0px;
+  right:0px;
+}
+
+.Select-Feather-Circle {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.Select-Feather{
+  position: absolute;
+  top: 3%;
+  left: -15%;
+  stroke: black;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  transform-origin: 70% 50%;
+  transition: .2s ease-in-out;
+}
+
+.Select-Dropdown{
+  box-sizing: border-box;
+  position: absolute;
+  width:100%;
+  height:30px;
+  border: 1px solid black;
+  border-top-width: 0px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.Select-Dropdown:hover {
+  background-color:grey;
+  transition: .2s ease-in-out;
+}
+
+.Select-Main{
+  box-sizing: border-box;
+  position: relative;
+  top:0;
+  width:100%;
+  height:30px;
+  border: 1px solid black;
+  background-color: 'white';
+  cursor: pointer;
+}
+
+.Select-Main:hover {
+  opacity: .6;
+  transition: .2s ease-in-out;
+
+}
+
+.Select-Text{
+  position: relative;
+  top:15%;
+  user-select: none;
+  display: inline;
+}

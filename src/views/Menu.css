@@ -1,0 +1,70 @@
+.Menu-Container{
+  position: absolute;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* width:100%; */
+  width:100vw;
+  height:100vh;
+  background-color:  #3d3838;
+  z-index: 50;
+  cursor: auto;
+}
+
+.Menu-Link{
+  display:flex;
+  flex:1;
+  background-color: #3d3838;
+  
+}
+
+.Menu-Feather{
+  width: 24px;
+  height: 24px;
+  stroke: black;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Menu-Dropdown{
+  box-sizing: border-box;
+  position: absolute;
+  width:100px;
+  height:30px;
+  line-height: 30px;
+  cursor: pointer;
+  z-index: 5;
+  background-color: lightgray;
+}
+
+.Menu-Dropdown:hover {
+  background-color:grey;
+  transition: .2s ease-in-out;
+}
+
+.Menu-hr{
+  position: absolute;
+  margin:0;
+  border: 0;
+  height: 1px;
+  background: #333;
+  width:80%;
+  left:10%
+}
+
+.Menu-Text{
+  /* position: relative; */
+  user-select: none;
+  /* display: inline; */
+  background-color:  #3d3838;
+  color: white;
+  /* line-height: 30px; */
+  font-size: large;
+  letter-spacing: 3px;
+}
