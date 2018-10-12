@@ -20,11 +20,11 @@ collections: # A list of collections the CMS should be able to edit
     fields: # The fields each document in this collection have
       - {label: Name, name: title, widget: "string"}
       - {label: Price, name: price, widget: number, required: true}
+      - {label: Sorting Number, name: position, widget: number, required: false, default: 1}
       - {label: Track Inventory, name: trackInventory, widget: boolean}
-      - {label: BriefDescription, name: briefDescription, widget: markdown}
-      - {label: Primary Image, name: primaryImage, widget: image, required: true}
-      - {label: FullDescription, name: longDescription, widget: markdown}
-      - label: "Images"
+      - {label: Store Image, name: primaryImage, widget: image, required: true}
+      - {label: Description, name: longDescription, widget: markdown}
+      - label: "Carousel Images"
         name: "images"
         widget: "list"
         required: true
@@ -131,6 +131,26 @@ collections: # A list of collections the CMS should be able to edit
         name: "inventory"
         fields:
           - {label: Inventory, name: inventory, widget: inventory}
+  - name: sortinventory
+    label: "Sort Inventory"
+    editor:
+      preview: false
+    files:
+      - file: "content/inventory/sortinventory.json"
+        label: "sort inventory"
+        name: "sortinventory"
+        fields:
+          - name: "sortinventory"
+            label: "Sort Inventory"
+            widget: list
+            fields:
+              - name: item
+                label: Item
+                widget: selectproduct
+              - name: stock
+                label: "current stock"
+                widget: number
+
   - name: "pages"
     label: Contact, About, Blog
     create: false
@@ -297,4 +317,18 @@ collections: # A list of collections the CMS should be able to edit
               - {label: Twitter Creator Account, name: twitterCreatorAccount, widget: string, required: false}
           - {label: Header Meta / Scripts, name: headerScripts, widget: text, required: false}
           - {label: Enable Service Worker Pre-Cache, name: enableServiceWorker, widget: boolean, required: false}
+  - name: test
+    label: Test
+    files:
+      - file: "content/inventory/test.json"
+        label: Test
+        name: test
+        fields:
+          - label: Test
+            name: test
+            widget: selectlist
+            fields:
+              - name: title
+                label: Name
+                widget: string
 
