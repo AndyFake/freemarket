@@ -1,6 +1,6 @@
 {
-  "longDescription": "full",
-  "briefDescription": "brief",
+  "longDescription": "DB-01 connects to HP-01 with a standard midi cable, and takes 9v. Load your sounds onto an SDD card, and trigger them from the HP-01.\n\n1/4\" output is stereo or mono, line-level, but robust enough to listen through headphones as well.\n\nThe toggle switch increases or decreases the output volume.\n\nDB-01 also sends power to the HP-01, so only one 9v power source is required to use both.",
+  "position": "3",
   "price": "199",
   "date": "2018-10-11T22:53:52.619Z",
   "trackInventory": false,
